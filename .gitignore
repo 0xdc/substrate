@@ -1,0 +1,6 @@
+builds/*/*tar.bz2*
+kerncache/
+packages/
+snapshot_cache/
+snapshots/
+tmp/
