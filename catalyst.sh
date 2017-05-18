@@ -17,6 +17,8 @@ BASE_DIR=$(dirname $0)
 REPO_DIR=$BASE_DIR/releng
 BUILDS_DIR=$BASE_DIR/builds
 
+test -d $BUILDS_DIR/systemd/$date || mkdir $BUILDS_DIR/systemd/$date
+
 tempstage=$(mktemp)
 cataconf=$(mktemp)
 
@@ -39,7 +41,8 @@ for stage in stage1 stage2 stage3 stage4; do
 
 	$catalyst -f $tempstage
 
-	rm -f $BUILDS_DIR/systemd/$stage-amd64-systemd-latest.tar.bz2
-	ln -s $BUILDS_DIR/systemd/$stage-amd64-systemd-$date.tar.bz2 $BUILDS_DIR/systemd/$stage-amd64-systemd-latest.tar.bz2
-done
+	mv $BUILDS_DIR/systemd/$stage-amd64-systemd-$date.tar.bz2* $BUILDS_DIR/systemd/$date/
 
+	(cd $BUILDS_DIR/systemd && ln -s $date/$stage-amd64-systemd-$date.tar.bz2 $BUILDS_DIR/systemd/$stage-amd64-systemd-latest.tar.bz2)
+	tee $BUILDS_DIR/systemd/current-$stage-systemd.txt <<<"$date/$stage-amd64-systemd-$date.tar.bz2"
+done
