@@ -31,5 +31,6 @@
       creates: '/var/tmp/catalyst/snapshots/portage-{{ todays_date.stdout }}.tar.bz2'
 
   - git:
-      repo: https://anongit.gentoo.org/git/proj/releng.git
+      repo: https://github.com/0xdc/releng-specs
       dest: /release/releng
+      version: 0xdc
