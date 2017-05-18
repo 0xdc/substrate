@@ -24,7 +24,8 @@ tee -a $cataconf <<<"snapshot_cache=\"$BASE_DIR/snapshot_cache\""
 catalyst="catalyst -c $cataconf"
 
 if ! test -e $(dirname $0)/snapshots/portage-$date.tar.bz2; then
-	emaint sync -r gentoo
+	# If the system has a unit to sync the tree, skip syncing the repo
+	systemctl is-active portage-sync.timer || emaint sync -r gentoo
 	$catalyst -s $date
 fi
 
