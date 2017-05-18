@@ -7,6 +7,9 @@ date=$(date +%Y%m%d)
 cleanup() {
 	test -e $tempstage && rm -f $tempstage
 	test -e $cataconf  && rm -f $cataconf
+	rm -fr $BASE_DIR/tmp
+	rm -fr $BASE_DIR/kerncache
+	rm -fr $BASE_DIR/snapshot_cache
 }
 trap cleanup EXIT
 
@@ -39,3 +42,4 @@ for stage in stage1 stage2 stage3 stage4; do
 	rm -f $BUILDS_DIR/systemd/$stage-amd64-systemd-latest.tar.bz2
 	ln -s $BUILDS_DIR/systemd/$stage-amd64-systemd-$date.tar.bz2 $BUILDS_DIR/systemd/$stage-amd64-systemd-latest.tar.bz2
 done
+
