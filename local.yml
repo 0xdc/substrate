@@ -11,12 +11,10 @@
     - qemu
     - git
 
-  - name: catalyst storage directory
-    file:
-      state: directory
-      path: "{{ item }}"
-    with_items:
-    - /release
+  - name: catalyst scripts
+    git:
+      repo: https://github.com/0xdc/catalyst-scripts
+      dest: /release
 
   - name: fetch upstream stage3
     make:
