@@ -17,20 +17,3 @@
       path: "{{ item }}"
     with_items:
     - /release
-    - /var/tmp/catalyst
-    - /var/tmp/catalyst/builds
-    - /var/tmp/catalyst/builds/default
-
-  - name: get today's date
-    shell: 'date +%Y%m%d'
-    register: todays_date
-
-  - name: create portage snapshot
-    shell: 'catalyst -s {{ todays_date.stdout }}'
-    args:
-      creates: '/var/tmp/catalyst/snapshots/portage-{{ todays_date.stdout }}.tar.bz2'
-
-  - git:
-      repo: https://github.com/0xdc/releng-specs
-      dest: /release/releng
-      version: 0xdc
