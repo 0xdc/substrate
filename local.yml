@@ -17,3 +17,7 @@
       path: "{{ item }}"
     with_items:
     - /release
+
+  - name: fetch upstream stage3
+    make:
+      chdir: /release/builds/systemd
