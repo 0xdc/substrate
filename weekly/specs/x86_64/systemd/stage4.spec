@@ -4,8 +4,8 @@ version_stamp: systemd-@latest@
 rel_type: systemd
 profile: default/linux/amd64/13.0/systemd
 snapshot: @latest@
-source_subpath: systemd/stage3-amd64-systemd-latest
-portage_confdir: @REPO_DIR@/releases/weekly/portage/sso
+source_subpath: x86_64/systemd/stage3-amd64-systemd-latest
+portage_confdir: @REPO_DIR@/weekly/portage/sso
 
 stage4/use:
 	bindist
@@ -20,7 +20,7 @@ stage4/packages:
 	sys-auth/nss-pam-ldapd
 	sys-auth/pam_krb5
 
-stage4/root_overlay: @REPO_DIR@/releases/weekly/overlays/sso
+stage4/root_overlay: @REPO_DIR@/weekly/overlays/sso
 
 stage4/unmerge:
 	app-editors/nano
