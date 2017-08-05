@@ -2,7 +2,8 @@
 
 set -e
 
-date=$(date +%Y%m%d)
+date=${1:-$(date +%Y%m%d)}
+arch=$(uname -m)
 
 cleanup() {
 	test -e $tempstage && rm -f $tempstage
@@ -14,10 +15,16 @@ cleanup() {
 trap cleanup EXIT
 
 BASE_DIR=$(dirname $0)
-REPO_DIR=$BASE_DIR/releng
-BUILDS_DIR=$BASE_DIR/builds
+REPO_DIR=$BASE_DIR/weekly
+BUILDS_DIR=$BASE_DIR/builds/$arch
 
-test -d $BUILDS_DIR/systemd/$date || mkdir $BUILDS_DIR/systemd/$date
+if test x"$arch" = "xx86_64"; then
+	targets="systemd"
+	upstream="amd64"
+elif test x"$arch" = "xarmv7l"; then
+	targets="hardfp"
+	upstream="armv7a_hardfp"
+fi
 
 tempstage=$(mktemp)
 cataconf=$(mktemp)
@@ -30,20 +37,25 @@ catalyst="catalyst -c $cataconf"
 
 if ! test -e $(dirname $0)/snapshots/portage-$date.tar.bz2; then
 	# If the system has a unit to sync the tree, skip syncing the repo
+	echo -n "Checking for automatic portage tree synchroniser... "
 	systemctl is-active portage-sync.timer || emaint sync -r gentoo
 	$catalyst -s $date
 fi
 
-for stage in stage1 stage2 stage3 stage4; do
-	sed "s:@REPO_DIR@:$REPO_DIR:;s/@latest@/$date/" \
-		$REPO_DIR/releases/weekly/specs/amd64/$stage-systemd.spec | \
-		tee $tempstage
+for target in $targets; do
+	test -d $BUILDS_DIR/$target/$date || mkdir $BUILDS_DIR/$target/$date
 
-	$catalyst -f $tempstage
+	for stage in stage1 stage2 stage3; do
+		sed "s:@REPO_DIR@:$REPO_DIR:;s/@latest@/$date/" \
+			$REPO_DIR/specs/$arch/$target/$stage.spec | \
+			tee $tempstage
 
-	mv $BUILDS_DIR/systemd/$stage-amd64-systemd-$date.tar.bz2* $BUILDS_DIR/systemd/$date/
+		$catalyst -f $tempstage
 
-	rm -f $BUILDS_DIR/systemd/$stage-amd64-systemd-latest.tar.bz2
-	(cd $BUILDS_DIR/systemd && ln -s $date/$stage-amd64-systemd-$date.tar.bz2 $BUILDS_DIR/systemd/$stage-amd64-systemd-latest.tar.bz2)
-	tee $BUILDS_DIR/systemd/current-$stage-systemd.txt <<<"$date/$stage-amd64-systemd-$date.tar.bz2"
+		mv $BUILDS_DIR/$target/$stage-$upstream-$target-$date.tar.bz2* $BUILDS_DIR/$target/$date/
+
+		rm -f $BUILDS_DIR/$target/$stage-$upstream-$target-latest.tar.bz2
+		(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream-$target-$date.tar.bz2 $BUILDS_DIR/$target/$stage-$upstream-$target-latest.tar.bz2)
+		tee $BUILDS_DIR/$target/current-$stage-$target.txt <<<"$date/$stage-$upstream-$target-$date.tar.bz2"
+	done
 done
