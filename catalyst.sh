@@ -19,10 +19,10 @@ REPO_DIR=$BASE_DIR/weekly
 BUILDS_DIR=$BASE_DIR/builds/$arch
 
 if test x"$arch" = "xx86_64"; then
-	targets="systemd"
+	targets="systemd:stage1 systemd:stage2 systemd:stage3 systemd:stage4 plasma:stage5"
 	upstream="amd64"
 elif test x"$arch" = "xarmv7l"; then
-	targets="hardfp"
+	targets="hardfp:stage1 hardfp:stage2 hardfp:stage3"
 	upstream="armv7a_hardfp"
 fi
 
@@ -42,22 +42,26 @@ if ! test -e $(dirname $0)/snapshots/portage-$date.tar.bz2; then
 	$catalyst -s $date
 fi
 
-for target in $targets; do
+for combo in $targets; do
+	target=$(cut -d: -f1 <<<$combo)
+	stage=$( cut -d: -f2 <<<$combo)
+
 	make -C $BUILDS_DIR/$target
 
 	test -d $BUILDS_DIR/$target/$date || mkdir $BUILDS_DIR/$target/$date
 
-	for stage in stage1 stage2 stage3; do
-		sed "s:@REPO_DIR@:$REPO_DIR:;s/@latest@/$date/" \
-			$REPO_DIR/specs/$arch/$target/$stage.spec | \
-			tee $tempstage
+	# Skip a build if it already exists
+	test -f $BUILDS_DIR/$target/$date/$stage-$upstream-$target-$date.tar.bz2 && continue
 
-		$catalyst -f $tempstage
+	sed "s:@REPO_DIR@:$REPO_DIR:;s/@latest@/$date/" \
+		$REPO_DIR/specs/$arch/$target/$stage.spec | \
+		tee $tempstage
 
-		mv $BUILDS_DIR/$target/$stage-$upstream-$target-$date.tar.bz2* $BUILDS_DIR/$target/$date/
+	$catalyst -f $tempstage
 
-		rm -f $BUILDS_DIR/$target/$stage-$upstream-$target-latest.tar.bz2
-		(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream-$target-$date.tar.bz2 $BUILDS_DIR/$target/$stage-$upstream-$target-latest.tar.bz2)
-		tee $BUILDS_DIR/$target/current-$stage-$target.txt <<<"$date/$stage-$upstream-$target-$date.tar.bz2"
-	done
+	mv $BUILDS_DIR/$target/$stage-$upstream-$target-$date.tar.bz2* $BUILDS_DIR/$target/$date/
+
+	rm -f $BUILDS_DIR/$target/$stage-$upstream-$target-latest.tar.bz2
+	(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream-$target-$date.tar.bz2 $BUILDS_DIR/$target/$stage-$upstream-$target-latest.tar.bz2)
+	tee $BUILDS_DIR/$target/current-$stage-$target.txt <<<"$date/$stage-$upstream-$target-$date.tar.bz2"
 done
