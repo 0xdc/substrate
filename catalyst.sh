@@ -59,7 +59,7 @@ for combo in $targets; do
 
 	$catalyst -f $tempstage
 
-	mv $BUILDS_DIR/$target/$stage-$upstream-$target-$date.tar.bz2* $BUILDS_DIR/$target/$date/
+	mv $BASE_DIR/builds/$target/$stage-$upstream-$target-$date.tar.bz2* $BUILDS_DIR/$target/$date/
 
 	rm -f $BUILDS_DIR/$target/$stage-$upstream-$target-latest.tar.bz2
 	(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream-$target-$date.tar.bz2 $BUILDS_DIR/$target/$stage-$upstream-$target-latest.tar.bz2)
