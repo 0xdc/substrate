@@ -43,6 +43,8 @@ if ! test -e $(dirname $0)/snapshots/portage-$date.tar.bz2; then
 fi
 
 for target in $targets; do
+	make -C $BUILDS_DIR/$target
+
 	test -d $BUILDS_DIR/$target/$date || mkdir $BUILDS_DIR/$target/$date
 
 	for stage in stage1 stage2 stage3; do
