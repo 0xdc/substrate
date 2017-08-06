@@ -46,9 +46,11 @@ for combo in $targets; do
 	target=$(cut -d: -f1 <<<$combo)
 	stage=$( cut -d: -f2 <<<$combo)
 
-	make -C $BUILDS_DIR/$target
+	# Test that target directory exists (parents=yes)
+	test -d $BUILDS_DIR/$target || mkdir -p $BUILDS_DIR/$target
 
-	test -d $BUILDS_DIR/$target/$date || mkdir $BUILDS_DIR/$target/$date
+	# If a Makefile exists for the target, run the default target
+	test -f $BUILDS_DIR/$target/Makefile && make -C $BUILDS_DIR/$target
 
 	# Skip a build if it already exists
 	test -f $BUILDS_DIR/$target/$date/$stage-$upstream-$target-$date.tar.bz2 && continue
@@ -59,7 +61,10 @@ for combo in $targets; do
 
 	$catalyst -f $tempstage
 
+	# Make a directory for $date and move output into it (parents=no)
+	test -d $BUILDS_DIR/$target/$date || mkdir $BUILDS_DIR/$target/$date
 	mv $BASE_DIR/builds/$target/$stage-$upstream-$target-$date.tar.bz2* $BUILDS_DIR/$target/$date/
+	rmdir --ignore-fail-on-non-empty $BASE_DIR/builds/$target # Cleanup, but don't care about it
 
 	rm -f $BUILDS_DIR/$target/$stage-$upstream-$target-latest.tar.bz2
 	(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream-$target-$date.tar.bz2 $BUILDS_DIR/$target/$stage-$upstream-$target-latest.tar.bz2)
