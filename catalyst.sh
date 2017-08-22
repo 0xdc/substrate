@@ -22,7 +22,7 @@ if test x"$arch" = "xx86_64"; then
 	targets="systemd:stage1 systemd:stage2 systemd:stage3 systemd:stage4 plasma:stage4"
 	upstream="amd64"
 elif test x"$arch" = "xarmv7l"; then
-	targets="hardfp:stage1 hardfp:stage2 hardfp:stage3"
+	targets="hardfp:stage1 hardfp:stage2 hardfp:stage3 hardfp:stage4"
 	upstream="armv7a"
 	subarch="_hardfp"
 fi
