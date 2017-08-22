@@ -2,7 +2,7 @@
 
 set -e
 
-date=${1:-$(date +%Y%m%d)}
+date=${1:-$(date --date=yesterday +%Y%m%d)}
 arch=$(uname -m)
 
 cleanup() {
@@ -37,10 +37,7 @@ tee -a $cataconf <<<"snapshot_cache=\"$BASE_DIR/snapshot_cache\""
 catalyst="catalyst -c $cataconf"
 
 if ! test -e $(dirname $0)/snapshots/portage-$date.tar.bz2; then
-	# If the system has a unit to sync the tree, skip syncing the repo
-	echo -n "Checking for automatic portage tree synchroniser... "
-	systemctl is-active portage-sync.timer || emaint sync -r gentoo
-	$catalyst -s $date
+	wget -P $(dirname $0)/snapshots http://distfiles.gentoo.org/snapshots/portage-$date.tar.bz2
 fi
 
 for combo in $targets; do
