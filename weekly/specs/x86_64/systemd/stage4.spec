@@ -5,6 +5,7 @@ rel_type: systemd
 profile: default/linux/amd64/13.0/systemd
 snapshot: @latest@
 source_subpath: x86_64/systemd/stage3-amd64-systemd-latest
+portage_confdir: @REPO_DIR@/portage/base
 
 stage4/use:
 	bindist
