@@ -5,7 +5,6 @@ rel_type: plasma
 profile: default/linux/amd64/13.0/desktop/plasma/systemd
 snapshot: @latest@
 source_subpath: x86_64/systemd/stage4-amd64-systemd-latest
-portage_confdir: @REPO_DIR@/portage/sso
 
 stage4/use:
 	bindist
