@@ -17,9 +17,6 @@ stage4/packages:
 
 stage4/root_overlay: @REPO_DIR@/overlays/sso
 
-stage4/unmerge:
-	app-editors/nano
-
 stage4/empty:
 	/root/.ccache
 	/tmp
