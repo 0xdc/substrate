@@ -67,5 +67,5 @@ for combo in $targets; do
 
 	rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.bz2
 	(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream$rel-$date.tar.bz2 $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.bz2)
-	tee $BUILDS_DIR/$target/current-$stage$rel.txt <<<"$date/$stage-$upstream$rel-$date.tar.bz2"
+	tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$stage-$upstream$rel-$date.tar.bz2"
 done
