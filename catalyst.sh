@@ -16,7 +16,6 @@ trap cleanup EXIT
 
 BASE_DIR=$(dirname $0)
 REPO_DIR=$BASE_DIR/weekly
-BUILDS_DIR=$BASE_DIR/builds/$arch
 
 if test x"$arch" = "xx86_64"; then
 	targets="systemd:stage1 systemd:stage2 systemd:stage3 systemd:stage4 sso:stage4 plasma:stage4 plasma-sso:stage4"
@@ -27,6 +26,7 @@ elif test x"$arch" = "xarmv7l"; then
 	subarch="_hardfp"
 fi
 
+BUILDS_DIR=$BASE_DIR/builds/$upstream
 tempstage=$(mktemp)
 cataconf=$(mktemp)
 
