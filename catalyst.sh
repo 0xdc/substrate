@@ -55,7 +55,7 @@ for combo in $targets; do
 	test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.bz2 && continue
 
 	sed "s:@REPO_DIR@:$REPO_DIR:;s/@latest@/$date/" \
-		$REPO_DIR/specs/$arch/$target/$stage.spec | \
+		$REPO_DIR/specs/$upstream/$target/$stage.spec | \
 		tee $tempstage
 
 	$catalyst -f $tempstage

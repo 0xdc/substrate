@@ -4,7 +4,7 @@ version_stamp: @latest@
 rel_type: default
 profile: default/linux/arm/13.0/armv7a
 snapshot: @latest@
-source_subpath: armv7l/default/stage3-armv7a_hardfp-latest
+source_subpath: armv7a/default/stage3-armv7a_hardfp-latest
 
 stage4/use:
 	bindist
