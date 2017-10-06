@@ -12,7 +12,6 @@ stage4/use:
 	ipv6
 
 stage4/packages:
-	app-admin/ansible
 	app-editors/vim
 	app-shells/bash-completion
 	dev-vcs/git
