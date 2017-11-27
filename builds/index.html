@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+function loadXMLDoc(filename)
+{
+	if (window.ActiveXObject)
+	{
+		xhttp = new ActiveXObject("Msxml2.XMLHTTP");
+	}
+	else
+	{
+		xhttp = new XMLHttpRequest();
+	}
+	xhttp.open("GET", filename, false);
+	try {xhttp.responseType = "document"} catch(err) {} // Helping IE11
+	xhttp.send("");
+	return xhttp.responseXML;
+}
+
+function displayResult()
+{
+	xml = loadXMLDoc("./?format=xml");
+	xsl = loadXMLDoc("style.xsl");
+	// code for IE
+	if (window.ActiveXObject || xhttp.responseType == "msxml-document")
+	{
+		ex = xml.transformNode(xsl);
+		document.getElementById("builds").innerHTML = ex;
+	}
+	// code for Chrome, Firefox, Opera, etc.
+	else if (document.implementation && document.implementation.createDocument)
+	{
+		xsltProcessor = new XSLTProcessor();
+		xsltProcessor.importStylesheet(xsl);
+		resultDocument = xsltProcessor.transformToFragment(xml, document);
+		document.getElementById("builds").appendChild(resultDocument);
+	}
+	document.querySelectorAll("a").forEach(function(a){a.href = a.text});
+}
+</script>
+</head>
+<body onload="displayResult()">
+<noscript>Javascript is required for this page to function</noscript>
+<div id="builds" />
+</body>
+</html>
+
