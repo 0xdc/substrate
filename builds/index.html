@@ -1,48 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script>
-function loadXMLDoc(filename)
-{
-	if (window.ActiveXObject)
-	{
-		xhttp = new ActiveXObject("Msxml2.XMLHTTP");
+<style>
+
+#builds > div {
+	display: grid;
+	grid-template-columns: 5fr 1.25fr .5fr;
+}
+span:nth-child(2) {
+	     font-family: mono;
+	     text-align: center;
+     }
+span:nth-child(3) {
+	     font-weight: bold;
+	     text-align: right;
+     }
+#builds div:nth-child(1) span {
+	font-weight: bold;
+border: 2px solid black;
+	margin-bottom: 5px;
+}
+#builds div:nth-child(2n) {
+	background-color: lightcyan;
+}
+</style>
+</head>
+<body>
+<noscript>Javascript is required for this page to function</noscript>
+<div id="builds">
+<div>
+<span>name</span>
+<span>hash</span>
+<span>size</span>
+</div>
+</div>
+<script>
+"use strict";
+
+// https://developers.google.com/web/updates/2015/03/introduction-to-fetch
+function status(response) {
+	if (response.status >= 200 && response.status < 300) {
+		return Promise.resolve(response)
+	} else {
+		return Promise.reject(new Error(response.statusText))
 	}
-	else
-	{
-		xhttp = new XMLHttpRequest();
-	}
-	xhttp.open("GET", filename, false);
-	try {xhttp.responseType = "document"} catch(err) {} // Helping IE11
-	xhttp.send("");
-	return xhttp.responseXML;
 }
 
-function displayResult()
-{
-	xml = loadXMLDoc("./?format=xml");
-	xsl = loadXMLDoc("style.xsl");
-	// code for IE
-	if (window.ActiveXObject || xhttp.responseType == "msxml-document")
-	{
-		ex = xml.transformNode(xsl);
-		document.getElementById("builds").innerHTML = ex;
-	}
-	// code for Chrome, Firefox, Opera, etc.
-	else if (document.implementation && document.implementation.createDocument)
-	{
-		xsltProcessor = new XSLTProcessor();
-		xsltProcessor.importStylesheet(xsl);
-		resultDocument = xsltProcessor.transformToFragment(xml, document);
-		document.getElementById("builds").appendChild(resultDocument);
-	}
-	document.querySelectorAll("a").forEach(function(a){a.href = a.text});
+function json(response) {
+	return response.json()
 }
+
+function dodata(data) {
+	console.log('Request succeeded with JSON response', data);
+
+	for (var i in data) {
+		var entry = document.createElement("div");
+
+		var namea = document.createElement("a");
+		namea.href = data[i].name;
+		namea.innerText = data[i].name;
+
+		var name = document.createElement("span");
+		name.appendChild(namea);
+		entry.appendChild(name);
+
+		var hash = document.createElement("span");
+		hash.innerText = data[i].hash;
+		entry.appendChild(hash);
+
+		var bytes = document.createElement("span");
+		bytes.innerText = data[i].bytes;
+		entry.appendChild(bytes);
+
+		document.querySelector("#builds").appendChild(entry);
+	}
+};
+
+function catcherror(error){
+	console.log('Request failed', error);
+};
+
+function main() {
+	fetch('/?format=json')
+		.then(status)
+		.then(json)
+		.then(dodata)
+		.catch(catcherror);
+};
+
+document.addEventListener('DOMContentLoaded', main);
+
 </script>
-</head>
-<body onload="displayResult()">
-<noscript>Javascript is required for this page to function</noscript>
-<div id="builds" />
 </body>
 </html>
 
