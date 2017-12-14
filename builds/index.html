@@ -72,7 +72,9 @@ function dodata(data) {
 		bytes.innerText = data[i].bytes;
 		entry.appendChild(bytes);
 
-		document.querySelector("#builds").appendChild(entry);
+		if (data[i].name.indexOf("/") > 0) {
+			document.querySelector("#builds").appendChild(entry);
+		}
 	}
 };
 
