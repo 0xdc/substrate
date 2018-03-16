@@ -9,8 +9,6 @@ cleanup() {
 	test -e $tempstage && rm -f $tempstage
 	test -e $cataconf  && rm -f $cataconf
 	rm -fr $BASE_DIR/tmp
-	rm -fr $BASE_DIR/kerncache
-	rm -fr $BASE_DIR/snapshot_cache
 }
 trap cleanup EXIT
 
