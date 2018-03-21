@@ -1,1 +1,1 @@
-/usr/lib/systemd/system/nslcd.service
+/lib/systemd/system/nslcd.service
