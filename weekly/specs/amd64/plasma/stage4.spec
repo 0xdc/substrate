@@ -21,7 +21,7 @@ stage4/root_overlay: @REPO_DIR@/overlays/plasma
 stage4/empty:
 	/root/.ccache
 	/tmp
-	/usr/portage/distfiles
+	/usr/portage
 	/usr/src
 	/var/cache/edb/dep
 	/var/cache/genkernel

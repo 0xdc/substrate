@@ -25,7 +25,7 @@ stage4/unmerge:
 stage4/empty:
 	/root/.ccache
 	/tmp
-	/usr/portage/distfiles
+	/usr/portage
 	/usr/src
 	/var/cache/edb/dep
 	/var/cache/genkernel
