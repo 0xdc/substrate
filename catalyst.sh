@@ -46,11 +46,12 @@ for combo in $targets; do
 	# Test that target directory exists (parents=yes)
 	test -d $BUILDS_DIR/$target || mkdir -p $BUILDS_DIR/$target
 
+	# Skip a build if it already exists
+	test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.bz2 && continue
+	
 	# If a Makefile exists for the target, run the default target
 	test -f $BUILDS_DIR/$target/Makefile && make -C $BUILDS_DIR/$target
 
-	# Skip a build if it already exists
-	test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.bz2 && continue
 
 	sed "s:@REPO_DIR@:$REPO_DIR:;s/@latest@/$date/" \
 		$REPO_DIR/specs/$upstream/$target/$stage.spec | \
