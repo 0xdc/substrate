@@ -5,13 +5,6 @@ set -e
 date=${1:-$(date --date=yesterday +%Y%m%d)}
 arch=$(uname -m)
 
-cleanup() {
-	test -e $tempstage && rm -f $tempstage
-	test -e $cataconf  && rm -f $cataconf
-	rm -fr $BASE_DIR/tmp
-}
-trap cleanup EXIT
-
 BASE_DIR=$(dirname $0)
 REPO_DIR=$BASE_DIR/weekly
 
