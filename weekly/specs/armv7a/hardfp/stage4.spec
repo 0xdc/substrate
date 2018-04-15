@@ -14,6 +14,7 @@ stage4/packages:
 	app-editors/vim
 	app-shells/bash-completion
 	dev-vcs/git
+	sys-fs/dosfstools
 
 stage4/root_overlay: @REPO_DIR@/overlays/base
 
