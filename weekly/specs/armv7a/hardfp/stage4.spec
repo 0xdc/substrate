@@ -5,6 +5,7 @@ rel_type: hardfp
 profile: default/linux/arm/13.0/armv7a
 snapshot: @latest@
 source_subpath: armv7a/hardfp/stage3-armv7a_hardfp-latest
+portage_confdir: @REPO_DIR@/portage/vboot
 
 stage4/use:
 	bindist
@@ -14,6 +15,7 @@ stage4/packages:
 	app-editors/vim
 	app-shells/bash-completion
 	dev-vcs/git
+	sys-boot/vboot-utils
 	sys-fs/dosfstools
 
 stage4/root_overlay: @REPO_DIR@/overlays/base
