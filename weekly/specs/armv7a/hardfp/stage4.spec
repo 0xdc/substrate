@@ -16,6 +16,7 @@ stage4/packages:
 	app-shells/bash-completion
 	dev-vcs/git
 	sys-boot/vboot-utils
+	sys-devel/distcc
 	sys-fs/dosfstools
 
 stage4/root_overlay: @REPO_DIR@/overlays/base
