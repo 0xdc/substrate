@@ -34,9 +34,7 @@ tee -a $cataconf <<<"snapshot_cache=\"$BASE_DIR/snapshot_cache\""
 
 catalyst="catalyst -c $cataconf"
 
-if ! test -e $(dirname $0)/snapshots/portage-$date.tar.bz2; then
-	wget -P $(dirname $0)/snapshots http://distfiles.gentoo.org/snapshots/portage-$date.tar.bz2
-fi
+rsync -P $(dirname $0)/snapshots mirrors.bytemark.co.uk::gentoo/snapshots/portage-$date.tar.bz2
 
 for combo in $targets; do
 	target=$(cut -d: -f1 <<<$combo)
