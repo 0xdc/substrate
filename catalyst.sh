@@ -30,7 +30,6 @@ cataconf=$(mktemp)
 
 cat $BASE_DIR/catalyst.conf > $cataconf
 tee -a $cataconf <<<"storedir=\"$BASE_DIR\""
-tee -a $cataconf <<<"snapshot_cache=\"$BASE_DIR/snapshot_cache\""
 
 catalyst="catalyst -c $cataconf"
 
