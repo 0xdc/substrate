@@ -37,6 +37,7 @@ catalyst="catalyst -c $cataconf"
 rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/portage-$date.tar.bz2* $(dirname $0)/snapshots
 pushd $(dirname $0)/snapshots
 md5sum -c portage-$date.tar.bz2.md5sum
+chattr +i portage-$date.tar.bz2
 popd
 
 for combo in $targets; do
