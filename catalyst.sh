@@ -34,11 +34,13 @@ tee -a $cataconf <<<"snapshot_cache=\"$BASE_DIR/snapshot_cache\""
 
 catalyst="catalyst -c $cataconf"
 
-rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/portage-$date.tar.bz2* $(dirname $0)/snapshots
-pushd $(dirname $0)/snapshots
-md5sum -c portage-$date.tar.bz2.md5sum
-chattr +i portage-$date.tar.bz2
-popd
+if ! tar tvvf $(dirname $0)/snapshots/portage-$date.tar.bz2 >/dev/null; then
+	rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/portage-$date.tar.bz2* $(dirname $0)/snapshots || true
+	pushd $(dirname $0)/snapshots
+		md5sum -c portage-$date.tar.bz2.md5sum
+		chattr +i portage-$date.tar.bz2 || true
+	popd
+fi
 
 for combo in $targets; do
 	target=$(cut -d: -f1 <<<$combo)
