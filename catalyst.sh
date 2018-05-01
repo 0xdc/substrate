@@ -27,8 +27,11 @@ fi
 BUILDS_DIR=$BASE_DIR/builds/$upstream
 tempstage=$(mktemp)
 cataconf=$(mktemp)
+envscript=$(mktemp)
 
 cat $BASE_DIR/catalyst.conf > $cataconf
+tee $envscript <<<"export MAKEOPTS=\"-j$(nproc)\""
+tee -a $cataconf <<<"envscript=\"${envscript}\""
 tee -a $cataconf <<<"storedir=\"$BASE_DIR\""
 tee -a $cataconf <<<"snapshot_cache=\"$BASE_DIR/snapshot_cache\""
 
