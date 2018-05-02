@@ -14,8 +14,14 @@ stage4/use:
 stage4/packages:
 	app-editors/vim
 	app-shells/bash-completion
+	dev-embedded/u-boot-tools
 	dev-vcs/git
+	net-wireless/iw
+	net-wireless/rfkill
+	net-wireless/wpa_supplicant
+	sys-apps/dtc
 	sys-boot/vboot-utils
+	sys-devel/bc
 	sys-devel/distcc
 	sys-fs/dosfstools
 
