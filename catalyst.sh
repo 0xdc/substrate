@@ -35,9 +35,13 @@ tee -a $cataconf <<<"snapshot_cache=\"$BASE_DIR/snapshot_cache\""
 catalyst="catalyst -c $cataconf"
 
 if ! tar tvvf $(dirname $0)/snapshots/portage-$date.tar.bz2 >/dev/null; then
-	rm -f $(dirname $0)/snapshots/portage-$date.tar.bz2*
-	wget -P $(dirname $0)/snapshots https://dev.gentoo.org/~swift/snapshots/portage-$date.tar.bz2
-	wget -P $(dirname $0)/snapshots https://dev.gentoo.org/~swift/snapshots/portage-$date.tar.bz2.md5sum
+	if test x"$HISTORICAL" = "xyes"; then
+		rm -f $(dirname $0)/snapshots/portage-$date.tar.bz2*
+		wget -P $(dirname $0)/snapshots https://dev.gentoo.org/~swift/snapshots/portage-$date.tar.bz2
+		wget -P $(dirname $0)/snapshots https://dev.gentoo.org/~swift/snapshots/portage-$date.tar.bz2.md5sum
+	else
+		rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/portage-$date.tar.bz2* $(dirname $0)/snapshots || true
+	fi
 	pushd $(dirname $0)/snapshots
 		md5sum -c portage-$date.tar.bz2.md5sum
 		chattr +i portage-$date.tar.bz2 || true
