@@ -20,7 +20,6 @@ stage4/root_overlay: @REPO_DIR@/overlays/sso
 stage4/empty:
 	/root/.ccache
 	/tmp
-	/usr/portage
 	/usr/src
 	/var/cache/edb/dep
 	/var/cache/genkernel
@@ -38,6 +37,7 @@ stage4/rm:
 	/root/.lesshst
 	/root/.ssh/known_hosts
 	/root/.viminfo
+	/usr/portage
 	# Remove any generated stuff by genkernel
 	/usr/share/genkernel
 	# This is 3MB of crap for each copy
