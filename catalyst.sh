@@ -12,7 +12,7 @@ cleanup() {
 }
 trap cleanup EXIT
 
-BASE_DIR=$(dirname $0)
+BASE_DIR="$(dirname $(readlink -f '$0'))"
 REPO_DIR=$BASE_DIR/weekly
 
 if test x"$arch" = "xx86_64"; then
