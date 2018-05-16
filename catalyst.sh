@@ -3,7 +3,7 @@
 set -e
 
 date=${1:-$(date --date=yesterday +%Y%m%d)}
-arch=$(uname -m)
+arch=${ARCH:-$(uname -m)}
 
 cleanup() {
 	test -e $tempstage && rm -f $tempstage
