@@ -1,38 +1,24 @@
-subarch: armv7a_hardfp
+subarch: amd64
 target: stage4
-version_stamp: @latest@
-rel_type: hardfp
-profile: default/linux/arm/13.0/armv7a
+version_stamp: router-@latest@
+rel_type: router
+profile: default/linux/amd64/17.0/systemd
 snapshot: @latest@
-source_subpath: armv7a/hardfp/stage3-armv7a_hardfp-latest
-portage_confdir: @REPO_DIR@/portage/vboot
+source_subpath: amd64/systemd/stage3-amd64-systemd-latest
 
 stage4/use:
 	bindist
 	ipv6
 
 stage4/packages:
-	app-editors/vim
-	app-shells/bash-completion
-	dev-embedded/u-boot-tools
-	dev-vcs/git
-	net-wireless/iw
-	net-wireless/rfkill
-	net-wireless/wpa_supplicant
-	sys-apps/dtc
-	sys-boot/vboot-utils
-	sys-devel/bc
-	sys-devel/distcc
-	sys-fs/dosfstools
-
-stage4/root_overlay: @REPO_DIR@/overlays/base
-
-stage4/unmerge:
-	app-editors/nano
+	net-dialup/ppp
+	net-dialup/rp-pppoe
+	net-dns/dnsmasq
 
 stage4/empty:
 	/root/.ccache
 	/tmp
+	/usr/portage
 	/usr/src
 	/var/cache/edb/dep
 	/var/cache/genkernel
@@ -50,7 +36,6 @@ stage4/rm:
 	/root/.lesshst
 	/root/.ssh/known_hosts
 	/root/.viminfo
-	/usr/portage
 	# Remove any generated stuff by genkernel
 	/usr/share/genkernel
 	# This is 3MB of crap for each copy
