@@ -5,7 +5,7 @@ set -e
 date=${1:-$(date --date=yesterday +%Y%m%d)}
 arch=${ARCH:-$(uname -m)}
 
-BASE_DIR="$(dirname $(readlink -f '$0'))"
+BASE_DIR="$(dirname $(readlink -f $0))"
 REPO_DIR=$BASE_DIR/weekly
 
 if test x"$arch" = "xx86_64"; then
