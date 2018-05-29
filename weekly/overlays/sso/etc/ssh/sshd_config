@@ -1,4 +1,4 @@
-#	$OpenBSD: sshd_config,v 1.99 2016/07/11 03:19:44 tedu Exp $
+#	$OpenBSD: sshd_config,v 1.101 2017/03/14 07:19:07 djm Exp $
 
 # This is the sshd server system-wide configuration file.  See
 # sshd_config(5) for more information.
@@ -15,20 +15,10 @@
 #ListenAddress 0.0.0.0
 #ListenAddress ::
 
-# The default requires explicit activation of protocol 1
-#Protocol 2
-
-# HostKey for protocol version 1
-#HostKey /etc/ssh/ssh_host_key
-# HostKeys for protocol version 2
 #HostKey /etc/ssh/ssh_host_rsa_key
 #HostKey /etc/ssh/ssh_host_dsa_key
 #HostKey /etc/ssh/ssh_host_ecdsa_key
 #HostKey /etc/ssh/ssh_host_ed25519_key
-
-# Lifetime and size of ephemeral version 1 server key
-#KeyRegenerationInterval 1h
-#ServerKeyBits 1024
 
 # Ciphers and keying
 #RekeyLimit default none
@@ -45,7 +35,6 @@
 #MaxAuthTries 6
 #MaxSessions 10
 
-#RSAAuthentication yes
 #PubkeyAuthentication yes
 
 # The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
@@ -58,11 +47,9 @@ AuthorizedKeysCommand /etc/ssh/ldapkeys.sh
 AuthorizedKeysCommandUser nobody
 
 # For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
-#RhostsRSAAuthentication no
-# similar for protocol version 2
 #HostbasedAuthentication no
 # Change to yes if you don't trust ~/.ssh/known_hosts for
-# RhostsRSAAuthentication and HostbasedAuthentication
+# HostbasedAuthentication
 #IgnoreUserKnownHosts no
 # Don't read the user's ~/.rhosts and ~/.shosts files
 #IgnoreRhosts yes
@@ -106,7 +93,6 @@ PrintMotd no
 PrintLastLog no
 #TCPKeepAlive yes
 #UseLogin no
-#UsePrivilegeSeparation sandbox
 #PermitUserEnvironment no
 #Compression delayed
 #ClientAliveInterval 0
@@ -121,6 +107,22 @@ PrintLastLog no
 # no default banner path
 #Banner none
 
+# here are the new patched ldap related tokens
+# entries in your LDAP must have posixAccount & ldapPublicKey objectclass
+#UseLPK yes
+#LpkLdapConf /etc/ldap.conf
+#LpkServers  ldap://10.1.7.1/ ldap://10.1.7.2/
+#LpkUserDN   ou=users,dc=phear,dc=org
+#LpkGroupDN  ou=groups,dc=phear,dc=org
+#LpkBindDN cn=Manager,dc=phear,dc=org
+#LpkBindPw secret
+#LpkServerGroup mail
+#LpkFilter (hostAccess=master.phear.org)
+#LpkForceTLS no
+#LpkSearchTimelimit 3
+#LpkBindTimelimit 3
+#LpkPubKeyAttr sshPublicKey
+
 # override default of no subsystems
 Subsystem	sftp	/usr/lib64/misc/sftp-server
 
@@ -133,7 +135,6 @@ Subsystem	sftp	/usr/lib64/misc/sftp-server
 
 # buffer size for hpn to non-hpn connections
 #HPNBufferSize 2048
-
 
 # allow the use of the none cipher
 #NoneEnabled no
