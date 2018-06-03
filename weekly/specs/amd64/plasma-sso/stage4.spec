@@ -8,7 +8,6 @@ source_subpath: amd64/plasma/stage4-amd64-plasma-latest
 portage_confdir: @REPO_DIR@/portage/sso
 
 stage4/use:
-	bindist
 	ipv6
 
 stage4/packages:

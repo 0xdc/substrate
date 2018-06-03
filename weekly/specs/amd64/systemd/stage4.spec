@@ -8,7 +8,6 @@ source_subpath: amd64/systemd/stage3-amd64-systemd-latest
 portage_confdir: @REPO_DIR@/portage/base
 
 stage4/use:
-	bindist
 	ipv6
 
 stage4/packages:
