@@ -11,9 +11,11 @@ stage4/use:
 	ipv6
 
 stage4/packages:
+	app-emulation/virt-manager
 	kde-plasma/plasma-meta
 	kde-apps/dolphin
 	kde-apps/konsole
+	www-client/firefox
 
 stage4/root_overlay: @REPO_DIR@/overlays/plasma
 

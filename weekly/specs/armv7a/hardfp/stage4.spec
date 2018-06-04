@@ -24,6 +24,7 @@ stage4/packages:
 	sys-devel/bc
 	sys-devel/distcc
 	sys-fs/dosfstools
+	sys-kernel/linux-firmware
 
 stage4/root_overlay: @REPO_DIR@/overlays/base
 
