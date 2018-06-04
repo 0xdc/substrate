@@ -11,9 +11,11 @@ stage4/use:
 	ipv6
 
 stage4/packages:
+	app-admin/ansible
 	app-editors/vim
 	app-shells/bash-completion
 	dev-vcs/git
+	net-libs/nodejs
 	sys-apps/iproute2
 
 stage4/root_overlay: @REPO_DIR@/overlays/base
