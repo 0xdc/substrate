@@ -1,5 +1,16 @@
-if test -d /run/user/$UID/gnupg; then
-	export SSH_AUTH_SOCK=/run/user/$UID/gnupg/S.gpg-agent.ssh
-else
-	eval $(gpg-agent --enable-ssh-support --daemon)
+if [ "${EUID-}" != "0" ] && [ "${USER-}" != "root" ] ; then
+	if test -S /run/user/$UID/gnupg/S.gpg-agent.ssh; then
+		export SSH_AUTH_SOCK=/run/user/$UID/gnupg/S.gpg-agent.ssh
+	elif test -S $HOME/.gnupg/S.gpg-agent.ssh; then
+		export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
+	else
+		eval $(gpg-agent --enable-ssh-support --daemon)
+	fi
+	GPG_TTY=$(tty) export GPG_TTY
+
+	ssh() {
+		echo UPDATESTARTUPTTY | gpg-connect-agent >/dev/null
+
+		$(which ssh) $@
+	}
 fi
