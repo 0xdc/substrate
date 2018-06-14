@@ -9,7 +9,7 @@ BASE_DIR="$(dirname $(readlink -f $0))"
 REPO_DIR=$BASE_DIR/weekly
 
 if test x"$arch" = "xx86_64"; then
-	targets="${TARGETS:-systemd:stage1 systemd:stage2 systemd:stage3 router:stage4 systemd:stage4 sso:stage4 plasma:stage4 plasma-sso:stage4}"
+	targets="${TARGETS:-systemd:stage1 systemd:stage2 systemd:stage3 router:stage4 systemd:stage4 sso:stage4}"
 	upstream="amd64"
 elif test x"$arch" = "xarmv7l"; then
 	targets="${TARGETS:-hardfp:stage1 hardfp:stage2 hardfp:stage3 hardfp:stage4}"
