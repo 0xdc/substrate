@@ -2,6 +2,11 @@
 
 set -e
 
+if test -z "$(lsns | awk "/$$/&&/mnt/")"; then
+	echo re-executing in our own mount namespace
+	exec unshare -m $0 $@
+fi
+
 date=${1:-$(date --date=yesterday +%Y%m%d)}
 arch=${ARCH:-$(uname -m)}
 
