@@ -15,6 +15,7 @@ stage4/packages:
 	app-editors/vim
 	app-shells/bash-completion
 	dev-embedded/u-boot-tools
+	dev-util/catalyst
 	dev-vcs/git
 	net-wireless/iw
 	net-wireless/rfkill
@@ -24,6 +25,7 @@ stage4/packages:
 	sys-devel/bc
 	sys-devel/distcc
 	sys-fs/dosfstools
+	sys-process/htop
 
 stage4/root_overlay: @REPO_DIR@/overlays/base
 
