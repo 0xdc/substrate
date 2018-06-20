@@ -1,32 +1,24 @@
 subarch: armv7a_hardfp
 target: stage4
-version_stamp: @latest@
-rel_type: hardfp
+version_stamp: xorg-@latest@
+rel_type: xorg
 profile: default/linux/arm/13.0/armv7a
 snapshot: @latest@
-source_subpath: armv7a/hardfp/stage3-armv7a_hardfp-latest
-portage_confdir: @REPO_DIR@/portage/vboot
+source_subpath: armv7a/default/stage4-armv7a_hardfp-latest
+portage_confdir: @REPO_DIR@/portage/xorg
 
 stage4/use:
 	ipv6
 
 stage4/packages:
-	app-editors/vim
-	app-shells/bash-completion
-	dev-embedded/u-boot-tools
-	dev-vcs/git
-	sys-apps/dtc
-	sys-boot/vboot-utils
-	sys-devel/bc
-	sys-devel/distcc
-	sys-fs/dosfstools
+	net-wireless/iw
+	net-wireless/rfkill
+	net-wireless/wpa_supplicant
 	sys-kernel/linux-firmware
-	sys-process/htop
-
-stage4/root_overlay: @REPO_DIR@/overlays/base
-
-stage4/unmerge:
-	app-editors/nano
+	x11-base/xorg-server
+	x11-misc/dmenu
+	x11-terms/st
+	x11-wm/dwm
 
 stage4/empty:
 	/root/.ccache
