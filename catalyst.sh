@@ -18,6 +18,9 @@ x86_64)
 	targets="${TARGETS:-systemd:stage1 systemd:stage2 systemd:stage3 router:stage4 systemd:stage4 sso:stage4}"
 	upstream="amd64"
 	;;
+armv8l)
+	cbuild="armv7a-hardfloat-linux-gnueabi"
+	# fall through
 armv7l)
 	targets="${TARGETS:-hardfp:stage1 hardfp:stage2 hardfp:stage3 hardfp:stage4}"
 	upstream="armv7a"
@@ -73,6 +76,9 @@ for combo in $targets; do
 	sed "s:@REPO_DIR@:$REPO_DIR:;s/@latest@/$date/" \
 		$REPO_DIR/specs/$upstream/$target/$stage.spec | \
 		tee $tempstage
+
+	# append CBUILD to stage spec if set
+	test -n "$cbuild" && tee -a $tempstage <<<"cbuild: $cbuild"
 
 	$catalyst -f $tempstage
 
