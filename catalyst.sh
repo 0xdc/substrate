@@ -24,7 +24,7 @@ aarch64)
 	;;
 armv8l)
 	cbuild="armv7a-hardfloat-linux-gnueabi"
-	# fall through
+	;& # fall through
 armv7l)
 	targets="${TARGETS:-hardfp:stage1 hardfp:stage2 hardfp:stage3 hardfp:stage4}"
 	upstream="armv7a"
