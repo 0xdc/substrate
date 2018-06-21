@@ -18,6 +18,10 @@ x86_64)
 	targets="${TARGETS:-systemd:stage1 systemd:stage2 systemd:stage3 router:stage4 systemd:stage4 sso:stage4}"
 	upstream="amd64"
 	;;
+aarch64)
+	targets="${TARGETS:-default:stage1}"
+	upstream="arm64"
+	;;
 armv8l)
 	cbuild="armv7a-hardfloat-linux-gnueabi"
 	# fall through
