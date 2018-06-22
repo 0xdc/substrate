@@ -11,12 +11,16 @@ stage4/use:
 	ipv6
 
 stage4/packages:
+	app-emulation/docker
 	app-admin/ansible
 	app-editors/vim
 	app-shells/bash-completion
+	dev-util/catalyst
 	dev-vcs/git
 	net-libs/nodejs
 	sys-apps/iproute2
+	sys-devel/distcc
+	sys-process/htop
 
 stage4/root_overlay: @REPO_DIR@/overlays/base
 

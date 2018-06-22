@@ -2,6 +2,11 @@
 
 set -e
 
+if test -z "$(lsns | awk "/$$/&&/mnt/")"; then
+	echo re-executing in our own mount namespace
+	exec unshare -m $0 $@
+fi
+
 date=${1:-$(date --date=yesterday +%Y%m%d)}
 arch=${ARCH:-$(uname -m)}
 
@@ -24,6 +29,11 @@ armv7l)
 	targets="${TARGETS:-hardfp:stage1 hardfp:stage2 hardfp:stage3 hardfp:stage4 xorg:stage4}"
 	upstream="armv7a"
 	subarch="_hardfp"
+	;;
+*)
+	echo "Unknown architecture ARCH=$arch" >&2
+	exit 1
+	;;
 esac
 
 BUILDS_DIR=$BASE_DIR/builds/$upstream
@@ -70,6 +80,9 @@ for combo in $targets; do
 	sed "s:@REPO_DIR@:$REPO_DIR:;s/@latest@/$date/" \
 		$REPO_DIR/specs/$upstream/$target/$stage.spec | \
 		tee $tempstage
+
+	# append CBUILD to stage spec if set
+	test -n "$cbuild" && tee -a $tempstage <<<"cbuild: $cbuild"
 
 	$catalyst -f $tempstage
 
