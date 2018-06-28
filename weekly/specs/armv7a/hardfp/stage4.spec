@@ -17,9 +17,6 @@ stage4/packages:
 	dev-embedded/u-boot-tools
 	dev-util/catalyst
 	dev-vcs/git
-	net-wireless/iw
-	net-wireless/rfkill
-	net-wireless/wpa_supplicant
 	sys-apps/dtc
 	sys-boot/vboot-utils
 	sys-devel/bc
