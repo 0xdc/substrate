@@ -2,9 +2,11 @@
 
 set -e
 
-if test -z "$(lsns | awk "/$$/&&/mnt/")"; then
-	echo re-executing in our own mount namespace
-	exec unshare -m $0 $@
+if which lsns 2>/dev/null >&2; then
+	if test -z "$(lsns | awk "/$$/&&/mnt/")"; then
+		echo re-executing in our own mount namespace
+		exec unshare -m $0 $@
+	fi
 fi
 
 date=${1:-$(date --date=yesterday +%Y%m%d)}
@@ -17,18 +19,22 @@ case "$arch" in
 x86_64)
 	targets="${TARGETS:-systemd:stage1 systemd:stage2 systemd:stage3 router:stage4 systemd:stage4 sso:stage4 plasma:stage4 plasma-sso:stage4}"
 	upstream="amd64"
+	sharedir="/usr/lib64/catalyst"
 	;;
 aarch64)
 	targets="${TARGETS:-default:stage1}"
 	upstream="arm64"
+	sharedir="/usr/lib64/catalyst"
 	;;
 armv8l)
 	cbuild="armv7a-hardfloat-linux-gnueabi"
+	sharedir="/usr/lib64/catalyst"
 	;& # fall through
 armv7l)
 	targets="${TARGETS:-hardfp:stage1 hardfp:stage2 hardfp:stage3 hardfp:stage4 xorg:stage4}"
 	upstream="armv7a"
 	subarch="_hardfp"
+	sharedir="${sharedir:-/usr/lib/catalyst}"
 	;;
 *)
 	echo "Unknown architecture ARCH=$arch" >&2
@@ -44,6 +50,7 @@ envscript=$(mktemp)
 cat $BASE_DIR/catalyst.conf > $cataconf
 tee $envscript <<<"export MAKEOPTS=\"-j$(nproc)\""
 tee -a $cataconf <<<"envscript=\"${envscript}\""
+tee -a $cataconf <<<"sharedir=\"${sharedir}\""
 tee -a $cataconf <<<"storedir=\"$BASE_DIR\""
 
 catalyst="catalyst -c $cataconf"
