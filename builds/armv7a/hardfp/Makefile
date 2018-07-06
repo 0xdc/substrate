@@ -1,7 +1,14 @@
-stage3-armv7a_hardfp-latest.tar.bz2:
-	export getpath=$$(wget -q -O- http://distfiles.gentoo.org/releases/arm/autobuilds/latest-stage3-armv7a_hardfp.txt | awk 'NR==3{print$$1}') && \
-	rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/releases/arm/autobuilds/$${getpath}* . && \
-	sed -n '/SHA512/{N;p}' $$(basename $${getpath}.DIGESTS) | sha512sum -c && \
-	chattr +i $$(basename $${getpath}) && \
-	ln -s $$(basename $$getpath) $@
+stage3-armv7a_hardfp-latest.tar.bz2: stage3-armv7a_hardfp-20161129-1.tar.bz2
+	ln -s $< $@
 
+stage3-armv7a_hardfp-20161129-1.tar.bz2: stage3-armv7a_hardfp-20161129-1.tar
+	bzip2 $<
+
+stage3-armv7a_hardfp-20161129-1.tar: stage3-armv7a_hardfp-20161129.tar.bz2
+	pushd $$(mktemp -d) && \
+	tar xf $$OLDPWD/$<; \
+	rm -fvr tmp/* && \
+	tar cf $$OLDPWD/$@ .
+
+stage3-armv7a_hardfp-20161129.tar.bz2:
+	rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/releases/arm/autobuilds/current-stage3-armv7a_hardfp/$@ .
