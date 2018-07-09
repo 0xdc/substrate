@@ -1,5 +1,5 @@
 stage3-armv7a_hardfp-latest.tar.bz2: stage3-armv7a_hardfp-20161129-1.tar.bz2
-	ln -s $< $@
+	ln -sf $< $@
 
 stage3-armv7a_hardfp-20161129-1.tar.bz2: stage3-armv7a_hardfp-20161129-1.tar
 	bzip2 $<
