@@ -5,8 +5,9 @@ stage3-armv7a_hardfp-20161129-1.tar.bz2: stage3-armv7a_hardfp-20161129-1.tar
 	bzip2 $<
 
 stage3-armv7a_hardfp-20161129-1.tar: stage3-armv7a_hardfp-20161129.tar.bz2
-	pushd $$(mktemp -d) && \
-	tar xf $$OLDPWD/$<; \
+	test -d tmp || mkdir tmp
+	pushd $$(mktemp -d -ptmp) && \
+	tar xf $$OLDPWD/$< && \
 	rm -fvr tmp/* && \
 	tar cf $$OLDPWD/$@ .
 
