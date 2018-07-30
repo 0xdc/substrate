@@ -14,6 +14,7 @@ stage4/use:
 stage4/packages:
 	sys-auth/nss-pam-ldapd
 	sys-auth/pam_krb5
+	sys-auth/pam_yubico
 
 stage4/root_overlay: @REPO_DIR@/overlays/sso
 
