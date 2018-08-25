@@ -17,7 +17,7 @@ REPO_DIR=$BASE_DIR/weekly
 
 case "$arch" in
 x86_64)
-	targets="${TARGETS:-systemd:stage1 systemd:stage2 systemd:stage3 router:stage4 systemd:stage4 sso:stage4 plasma:stage4 plasma-sso:stage4}"
+	targets="${TARGETS:-systemd:stage1 systemd:stage2 systemd:stage3 router:stage4 systemd:stage4 sso:stage4 plasma:stage4 plasma-sso:stage4 dev:stage4}"
 	upstream="amd64"
 	sharedir="/usr/lib64/catalyst"
 	;;
