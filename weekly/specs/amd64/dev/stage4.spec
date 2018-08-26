@@ -5,23 +5,18 @@ rel_type: dev
 profile: default/linux/amd64/17.0/systemd
 snapshot: @latest@
 source_subpath: amd64/systemd/stage4-amd64-systemd-latest
-#portage_confdir: @REPO_DIR@/portage/dev
+portage_confdir: @REPO_DIR@/portage/dev
 
 stage4/use:
 	ipv6
 
 stage4/packages:
 	dev-db/couchdb
-	dev-db/postgres
+	dev-db/postgresql
 	dev-db/redis
 	dev-lang/elixir
-	dev-lang/nodejs
 	dev-python/pipenv
-
-#stage4/root_overlay: @REPO_DIR@/overlays/dev
-
-stage4/unmerge:
-	app-editors/nano
+	net-libs/nodejs
 
 stage4/empty:
 	/root/.ccache
