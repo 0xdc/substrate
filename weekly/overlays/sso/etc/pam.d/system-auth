@@ -1,6 +1,10 @@
 auth               required        pam_env.so
--auth              sufficient      pam_krb5.so use_first_pass
-auth               sufficient      pam_unix.so try_first_pass likeauth nullok
+# Yubikey Challenge-Response for no-network contingency (needs additional setup)
+-auth              [success=1 default=ignore ignore=ignore] pam_yubico.so mode=challenge-response chalresp_path=/etc/yubico
+-auth              requisite       pam_yubico.so id=27760 ldap_uri=ldaps://auth.0xdc.io ldapdn=ou=users,dc=0xdc,dc=io user_attr=uid yubi_attr=yubiKeyId ldap_filter=(uid=%u) mode=client
+-auth              sufficient      pam_krb5.so try_first_pass
+auth               sufficient      pam_unix.so use_first_pass likeauth
+-auth              sufficient      pam_securetty.so
 auth               required        pam_deny.so
 account            required        pam_unix.so
 account            optional        pam_permit.so

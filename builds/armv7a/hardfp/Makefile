@@ -1,5 +1,15 @@
-stage3-armv7a_hardfp-latest.tar.bz2:
-	export getpath=$$(wget -q -O- http://distfiles.gentoo.org/releases/arm/autobuilds/latest-stage3-armv7a_hardfp.txt | awk 'NR==3{print$$1}'); \
-	wget -c http://distfiles.gentoo.org/releases/arm/autobuilds/$$getpath; \
-	ln -s $$(basename $$getpath) $@
+stage3-armv7a_hardfp-latest.tar.bz2: stage3-armv7a_hardfp-20161129-1.tar.bz2
+	ln -sf $< $@
 
+stage3-armv7a_hardfp-20161129-1.tar.bz2: stage3-armv7a_hardfp-20161129-1.tar
+	bzip2 -kf $<
+
+stage3-armv7a_hardfp-20161129-1.tar: stage3-armv7a_hardfp-20161129.tar.bz2
+	test -d tmp || mkdir tmp
+	pushd $$(mktemp -d -ptmp) && \
+	tar xf $$OLDPWD/$< && \
+	rm -fvr tmp/* && \
+	tar cf $$OLDPWD/$@ .
+
+stage3-armv7a_hardfp-20161129.tar.bz2:
+	rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/releases/arm/autobuilds/current-stage3-armv7a_hardfp/$@ .

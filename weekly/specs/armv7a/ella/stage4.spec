@@ -1,27 +1,31 @@
-subarch: amd64
+subarch: armv7a_hardfp
 target: stage4
-version_stamp: systemd-@latest@
-rel_type: systemd
-profile: default/linux/amd64/17.0/systemd
+version_stamp: @latest@
+rel_type: ella
+profile: default/linux/arm/13.0/armv7a
 snapshot: @latest@
-source_subpath: amd64/systemd/stage3-amd64-systemd-latest
-portage_confdir: @REPO_DIR@/portage/base
+source_subpath: armv7a/hardfp/stage3-armv7a_hardfp-latest
 
 stage4/use:
 	bindist
 	ipv6
 
 stage4/packages:
-	app-emulation/docker
 	app-editors/vim
 	app-shells/bash-completion
-	dev-util/catalyst
+	dev-embedded/u-boot-tools
 	dev-vcs/git
-	sys-apps/iproute2
+	sys-apps/dtc
+	sys-devel/bc
 	sys-devel/distcc
-	sys-process/htop
+	sys-fs/dosfstools
 
-stage4/root_overlay: @REPO_DIR@/overlays/base
+stage4/root_overlay: @REPO_DIR@/overlays/ella
+
+stage4/rcadd:
+	busybox-ntpd|default
+	net.eth0|default
+	sshd|default
 
 stage4/unmerge:
 	app-editors/nano
