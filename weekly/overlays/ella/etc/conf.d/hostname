@@ -1,0 +1,2 @@
+# Set to the hostname of this mac
+hostname="ella-$(ip l sh eth0 | awk '/ether/{print$2}' | tr -d : | cut -c 9-)"

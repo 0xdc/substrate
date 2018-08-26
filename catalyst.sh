@@ -39,7 +39,7 @@ armv8l)
 	sharedir="/usr/lib64/catalyst"
 	;& # fall through
 armv7l)
-	targets="${TARGETS:-hardfp:stage1 hardfp:stage2 hardfp:stage3 hardfp:stage4}"
+	targets="${TARGETS:-hardfp:stage1 hardfp:stage2 hardfp:stage3 ella:stage4 hardfp:stage4}"
 	upstream="armv7a"
 	subarch="_hardfp"
 	sharedir="${sharedir:-/usr/lib/catalyst}"
