@@ -5,8 +5,6 @@ rel_type: ella
 profile: default/linux/arm/13.0/armv7a
 snapshot: @latest@
 source_subpath: armv7a/hardfp/stage3-armv7a_hardfp-latest
-update_seed: yes
-update_seed_command: --newuse --deep --update @world
 
 stage4/use:
 	bindist
