@@ -17,6 +17,8 @@ stage4/packages:
 	net-libs/nodejs
 	sys-apps/iproute2
 	sys-devel/distcc
+	sys-fs/cryptsetup
+	sys-kernel/dracut
 	sys-process/htop
 
 stage4/root_overlay: @REPO_DIR@/overlays/base

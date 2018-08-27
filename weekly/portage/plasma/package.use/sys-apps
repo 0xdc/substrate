@@ -1,2 +1,2 @@
 sys-apps/dbus user-session
-sys-apps/systemd gnuefi
+sys-apps/systemd gnuefi policykit cryptsetup
