@@ -7,9 +7,6 @@ snapshot: @latest@
 source_subpath: armv7a/default/stage4-armv7a_hardfp-latest
 portage_confdir: @REPO_DIR@/portage/xorg
 
-stage4/use:
-	ipv6
-
 stage4/packages:
 	net-wireless/iw
 	net-wireless/rfkill

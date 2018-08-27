@@ -7,9 +7,6 @@ snapshot: @latest@
 source_subpath: amd64/systemd/stage3-amd64-systemd-latest
 portage_confdir: @REPO_DIR@/portage/router
 
-stage4/use:
-	ipv6
-
 stage4/packages:
 	net-dialup/ppp
 	net-dialup/rp-pppoe

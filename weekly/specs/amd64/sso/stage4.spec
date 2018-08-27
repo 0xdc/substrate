@@ -7,9 +7,6 @@ snapshot: @latest@
 source_subpath: amd64/systemd/stage4-amd64-systemd-latest
 portage_confdir: @REPO_DIR@/portage/sso
 
-stage4/use:
-	ipv6
-
 stage4/packages:
 	sys-auth/nss-pam-ldapd
 	sys-auth/pam_krb5

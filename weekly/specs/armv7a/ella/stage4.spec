@@ -6,10 +6,6 @@ profile: default/linux/arm/13.0/armv7a
 snapshot: @latest@
 source_subpath: armv7a/hardfp/stage3-armv7a_hardfp-latest
 
-stage4/use:
-	bindist
-	ipv6
-
 stage4/packages:
 	app-editors/vim
 	app-shells/bash-completion
