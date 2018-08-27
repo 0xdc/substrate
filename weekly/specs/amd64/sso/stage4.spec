@@ -6,6 +6,8 @@ profile: default/linux/amd64/17.0/systemd
 snapshot: @latest@
 source_subpath: amd64/systemd/stage4-amd64-systemd-latest
 portage_confdir: @REPO_DIR@/portage/sso
+update_seed: yes
+update_seed_command: --newuse --deep --update @world
 
 stage4/use:
 	bindist
