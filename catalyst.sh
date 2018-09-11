@@ -39,6 +39,7 @@ armv8l)
 	sharedir="/usr/lib64/catalyst"
 	;& # fall through
 armv7l)
+	cflags="-march=armv7-a -mcpu=cortex-a9 -mfpu=vfpv3-d16 -mfloat-abi=softfp --param ggc-min-expand=0 --param ggc-min-heapsize=4096 -fno-inline"
 	targets="${TARGETS:-hardfp:stage1 hardfp:stage2 hardfp:stage3 ella:stage4 hardfp:stage4}"
 	upstream="armv7a"
 	subarch="_hardfp"
@@ -96,8 +97,9 @@ for combo in $targets; do
 		$REPO_DIR/specs/$upstream/$target/$stage.spec | \
 		tee $tempstage
 
-	# append CBUILD to stage spec if set
+	# append CBUILD/CFLAGS to stage spec if set
 	test -n "$cbuild" && tee -a $tempstage <<<"cbuild: $cbuild"
+	test -n "$cflags" && tee -a $tempstage <<<"cflags: $cflags"
 
 	$catalyst -f $tempstage
 
