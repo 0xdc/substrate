@@ -87,7 +87,7 @@ for combo in $targets; do
 
 	# Skip a build if it already exists
 	test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.bz2 && continue
-	
+
 	# If a Makefile exists for the target, run the default target
 	test -f $BUILDS_DIR/$target/Makefile && make -C $BUILDS_DIR/$target
 
