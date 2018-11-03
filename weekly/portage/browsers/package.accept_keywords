@@ -5,7 +5,9 @@ www-client/google-chrome-unstable ~amd64
 
 # www-client/firefox
 =dev-libs/nspr-4.19 ~amd64
+=dev-util/cbindgen-0.6.6 ~amd64
 # networkmanager
-=dev-libs/nss-3.38 ~amd64
+=dev-libs/nss-3.40 ~amd64
+=media-libs/harfbuzz-2.1.0 ~amd64
 # www-client/chromium
 =dev-util/gn-0.1463 ~amd64
