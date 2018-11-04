@@ -25,6 +25,7 @@ stage4/empty:
 	/var/cache/genkernel
 	/var/cache/portage/distfiles
 	/var/empty
+	/var/gentoo/repos
 	/var/run
 	/var/state
 	/var/tmp
