@@ -18,7 +18,7 @@ REPO_DIR=$BASE_DIR/weekly
 catalyst_version=$(catalyst -V | awk 'NR==1{print$NF}')
 case "$arch" in
 x86_64)
-	targets="${TARGETS:-systemd:stage1 systemd:stage2 systemd:stage3 router:stage4 systemd:stage4 sso:stage4 plasma:stage4 plasma-sso:stage4 dev:stage4 browsers:stage4}"
+	targets="${TARGETS:-systemd:stage1 systemd:stage2 systemd:stage3 router:stage4 systemd:stage4 sso:stage4 plasma:stage1 plasma:stage2 plasma:stage3 plasma:stage4 plasma-sso:stage4 dev:stage4 browsers:stage4}"
 	upstream="amd64"
 	case $catalyst_version in
 	2.*)
@@ -39,6 +39,7 @@ armv8l)
 	sharedir="/usr/lib64/catalyst"
 	;& # fall through
 armv7l)
+	cflags="-march=armv7-a -mcpu=cortex-a9 -mfpu=vfpv3-d16 -mfloat-abi=softfp --param ggc-min-expand=0 --param ggc-min-heapsize=4096 -fno-inline"
 	targets="${TARGETS:-hardfp:stage1 hardfp:stage2 hardfp:stage3 ella:stage4 hardfp:stage4 xorg:stage4}"
 	upstream="armv7a"
 	subarch="_hardfp"
@@ -87,7 +88,7 @@ for combo in $targets; do
 
 	# Skip a build if it already exists
 	test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.bz2 && continue
-	
+
 	# If a Makefile exists for the target, run the default target
 	test -f $BUILDS_DIR/$target/Makefile && make -C $BUILDS_DIR/$target
 
@@ -96,8 +97,9 @@ for combo in $targets; do
 		$REPO_DIR/specs/$upstream/$target/$stage.spec | \
 		tee $tempstage
 
-	# append CBUILD to stage spec if set
+	# append CBUILD/CFLAGS to stage spec if set
 	test -n "$cbuild" && tee -a $tempstage <<<"cbuild: $cbuild"
+	test -n "$cflags" && tee -a $tempstage <<<"cflags: $cflags"
 
 	$catalyst -f $tempstage
 
