@@ -9,7 +9,6 @@ portage_confdir: @REPO_DIR@/portage/xorg
 
 stage4/packages:
 	net-wireless/iw
-	net-wireless/rfkill
 	net-wireless/wpa_supplicant
 	sys-kernel/linux-firmware
 	x11-base/xorg-server
