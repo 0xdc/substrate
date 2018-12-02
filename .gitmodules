@@ -1,3 +1,3 @@
 [submodule "library"]
-	path = library
+	path = .ansible/library
 	url = https://gist.github.com/theappleman/e7d795ae2b0f4bf2b0e0c44f5a193c78
