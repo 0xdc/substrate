@@ -21,6 +21,7 @@ stage4/packages:
 	sys-boot/vboot-utils
 	sys-devel/bc
 	sys-devel/distcc
+	sys-fs/cryptsetup
 	sys-fs/dosfstools
 	sys-process/htop
 
