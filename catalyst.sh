@@ -35,10 +35,10 @@ aarch64)
 	sharedir="/usr/lib64/catalyst"
 	;;
 armv8l)
-	cbuild="armv7a-hardfloat-linux-gnueabi"
 	sharedir="/usr/lib64/catalyst"
 	;& # fall through
 armv7l)
+	cbuild="armv7a-unknown-linux-gnueabihf"
 	cflags="-Os -march=armv7-a -mcpu=cortex-a9 -mfpu=vfpv3-d16 -mfloat-abi=hard"
 	test "$(hostname)" = "ella-*" && cflags="$cflags --param ggc-min-expand=0 --param ggc-min-heapsize=4096 -fno-inline"
 	targets="${TARGETS:-hardfp:stage1 hardfp:stage2 hardfp:stage3 ella:stage4 hardfp:stage4}"
