@@ -28,10 +28,10 @@ aarch64)
 	sharedir="/usr/lib64/catalyst"
 	;;
 armv8l)
-	cbuild="armv7a-hardfloat-linux-gnueabi"
 	sharedir="/usr/lib64/catalyst"
 	;& # fall through
 armv7l)
+	chost="armv7a-unknown-linux-gnueabihf"
 	cflags="-O2 -mfloat-abi=hard -mfpu=vfpv3-d16"
 	case "$(hostname)" in
 	spring|daisy)
