@@ -102,7 +102,8 @@ for combo in $targets; do
 	test -n "$cbuild" && tee -a $tempstage <<<"cbuild: $cbuild"
 	test -n "$cflags" && tee -a $tempstage <<<"cflags: $cflags"
 
-	$catalyst -f $tempstage
+	test -d "$BASE_DIR/logs/$target" || mkdir -p "$BASE_DIR/logs/$target"
+	$catalyst -f $tempstage | tee $BASE_DIR/logs/$target/$stage-$upstream$rel-$date.log
 
 	# Make a directory for $date and move output into it (parents=no)
 	test -d $BUILDS_DIR/$target/$date || mkdir $BUILDS_DIR/$target/$date
