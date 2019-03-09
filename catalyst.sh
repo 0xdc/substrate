@@ -39,8 +39,17 @@ armv8l)
 	;& # fall through
 armv7l)
 	cbuild="armv7a-unknown-linux-gnueabihf"
-	cflags="-Os -march=armv7-a -mcpu=cortex-a9 -mfpu=vfpv3-d16 -mfloat-abi=hard"
-	test "$(hostname)" = "ella-*" && cflags="$cflags --param ggc-min-expand=0 --param ggc-min-heapsize=4096 -fno-inline"
+	cflags="-Os -mfloat-abi=hard"
+	case "$(hostname)" in
+	spring|daisy)
+		cflags="$cflags -march=armv7ve -mcpu=cortex-a15 -mfpu=neon-vfpv4 -pipe"
+		;;
+	ella-*)
+		cflags="$cflags -march=armv7-a -mcpu=cortex-a9 -mfpu=vfpv3-d16 --param ggc-min-expand=0 --param ggc-min-heapsize=4096 -fno-inline"
+		;;
+	*)
+		cflags="$cflags -march=armv7-a -mcpu=cortex-a9 -mfpu=vfpv3-d16 -pipe"
+	esac
 	targets="${TARGETS:-hardfp:stage1 hardfp:stage2 hardfp:stage3 ella:stage4 hardfp:stage4}"
 	upstream="armv7a"
 	subarch="_hardfp"
