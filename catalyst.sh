@@ -20,14 +20,7 @@ case "$arch" in
 x86_64)
 	targets="${TARGETS:-systemd:stage1 systemd:stage2 systemd:stage3 router:stage4 systemd:stage4 sso:stage4}"
 	upstream="amd64"
-	case $catalyst_version in
-	2.*)
-		sharedir="/usr/lib64/catalyst"
-		;;
-	3.*)
-		sharedir="/usr/share/catalyst"
-		;;
-	esac
+	sharedir="/usr/lib64/catalyst"
 	;;
 aarch64)
 	targets="${TARGETS:-default:stage1}"
@@ -58,6 +51,11 @@ armv7l)
 *)
 	echo "Unknown architecture ARCH=$arch" >&2
 	exit 1
+	;;
+esac
+case $catalyst_version in
+3.*)
+	sharedir="/usr/share/catalyst"
 	;;
 esac
 
