@@ -105,6 +105,13 @@ for combo in $targets; do
 		$REPO_DIR/specs/$upstream/$target/$stage.spec | \
 		tee $tempstage
 
+	# add subarch and target
+	tee -a $tempstage <<<"subarch: $upstream$subarch"
+	tee -a $tempstage <<<"target: $stage"
+	# append rel_type, version_stamp and snapshot
+	tee -a $tempstage <<<"rel_type: $target"
+	grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
+	tee -a $tempstage <<<"snapshot: $date"
 	# append CBUILD/CFLAGS to stage spec if set
 	test -n "$cbuild" && tee -a $tempstage <<<"cbuild: $cbuild"
 	test -n "$cflags" && tee -a $tempstage <<<"cflags: $cflags"
