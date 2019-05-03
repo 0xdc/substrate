@@ -1,0 +1,4 @@
+../../../../portage/profiles/arch/amd64
+../../../../portage/profiles/arch/amd64/no-multilib
+../../../../portage/profiles/base
+../../../../portage/profiles/targets/systemd
