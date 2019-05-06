@@ -1,0 +1,7 @@
+arch=arm64
+targets=(
+	default:stage1
+)
+
+upstream="$arch"
+sharedir="/usr/lib64/catalyst"
