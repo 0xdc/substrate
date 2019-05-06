@@ -67,6 +67,18 @@ function json(response) {
 	return response.json()
 }
 
+function size(bytes) {
+	if (bytes < 2 ** 10) {
+		return bytes + " B";
+	} else if (bytes < 2 ** 20) {
+		return Math.round(bytes / 2 ** 10) + " KiB";
+	} else if (bytes < 2 ** 30) {
+		return Math.round(bytes / 2 ** 20) + " MiB";
+	} else {
+		return Math.round(bytes / 2 ** 30) + " GiB";
+	}
+}
+
 function dodata(data) {
 	console.log('Request succeeded with JSON response', data);
 
@@ -88,7 +100,7 @@ function dodata(data) {
 		entry.appendChild(hash);
 
 		var bytes = document.createElement("span");
-		bytes.innerText = data[i].bytes;
+		bytes.innerText = size(data[i].bytes);
 		bytes.className = "bytes";
 		entry.appendChild(bytes);
 
