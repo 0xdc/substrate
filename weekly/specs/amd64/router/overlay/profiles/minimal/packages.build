@@ -1,0 +1,11 @@
+app-shells/bash
+net-analyser/nmap
+net-analyser/traceroute
+net-analyser/wireshark
+net-dialup/ppp
+net-dialup/rp-pppoe
+net-dns/dnsmasq
+sys-apps/coreutils
+sys-apps/iproute2
+sys-apps/util-linux
+sys-libs/glibc
