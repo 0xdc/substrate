@@ -4,7 +4,7 @@ targets=(
 	systemd:stage2
 	systemd:stage3
 
-	router:stage4
+	router:stage1
 	systemd:stage4
 	sso:stage4
 )
