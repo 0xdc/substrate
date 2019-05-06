@@ -16,6 +16,7 @@ BASE_DIR="$(dirname $(readlink -f $0))"
 REPO_DIR=$BASE_DIR/weekly
 
 source "arch/$arch"
+targets="${TARGETS:-${targets[*]}}"
 
 catalyst_version=$(catalyst -V | awk 'NR==1{print$NF}')
 case $catalyst_version in
