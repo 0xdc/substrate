@@ -80,7 +80,7 @@ for combo in $targets; do
 	tee -a $tempstage <<<"snapshot: $date"
 	# append CBUILD/CFLAGS to stage spec if set
 	test -n "$cbuild" && tee -a $tempstage <<<"cbuild: $cbuild"
-	test -n "$cflags" && tee -a $tempstage <<<"cflags: $cflags"
+	(test -n "$cflags" && ! grep -q cflags: $tempstage) && tee -a $tempstage <<<"cflags: $cflags"
 
 	$catalyst -f $tempstage | tee $BASE_DIR/logs/$stage-$upstream$rel-$date.log
 
