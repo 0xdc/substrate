@@ -112,9 +112,9 @@ for combo in $targets; do
 	tee -a $tempstage <<<"rel_type: $target"
 	grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
 	tee -a $tempstage <<<"snapshot: $date"
-	# append CBUILD/CFLAGS to stage spec if set
-	test -n "$cbuild" && tee -a $tempstage <<<"cbuild: $cbuild"
-	test -n "$cflags" && tee -a $tempstage <<<"cflags: $cflags"
+	# append CHOST/CFLAGS to stage spec if set
+	test -n "$chost" && tee -a $tempstage <<<"chost: $chost"
+	(test -n "$cflags" && ! grep -q cflags: $tempstage) && tee -a $tempstage <<<"cflags: $cflags"
 
 	test -d "$BASE_DIR/logs/$target" || mkdir -p "$BASE_DIR/logs/$target"
 	$catalyst -f $tempstage | tee $BASE_DIR/logs/$target/$stage-$upstream$rel-$date.log
