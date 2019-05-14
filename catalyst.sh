@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eo pipefail
 
 if which lsns 2>/dev/null >&2; then
 	if test -z "$(lsns | awk "/$$/&&/mnt/")"; then
@@ -57,9 +57,6 @@ for combo in $targets; do
 	rel=${subarch:--$target}
 	stage=$( cut -d: -f2 <<<$combo)
 
-	# Test that target directory exists (parents=yes)
-	test -d $BUILDS_DIR/$target || mkdir -p $BUILDS_DIR/$target
-
 	# Skip a build if it already exists
 	test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.bz2 && continue
 
@@ -75,7 +72,7 @@ for combo in $targets; do
 	tee -a $tempstage <<<"subarch: $upstream$rel"
 	tee -a $tempstage <<<"target: $stage"
 	# append rel_type, version_stamp and snapshot
-	tee -a $tempstage <<<"rel_type: $target"
+	tee -a $tempstage <<<"rel_type: $arch/$target/$date"
 	grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
 	tee -a $tempstage <<<"snapshot: $date"
 	# append CBUILD/CFLAGS to stage spec if set
@@ -83,11 +80,6 @@ for combo in $targets; do
 	(test -n "$cflags" && ! grep -q cflags: $tempstage) && tee -a $tempstage <<<"cflags: $cflags"
 
 	$catalyst -f $tempstage | tee $BASE_DIR/logs/$stage-$upstream$rel-$date.log
-
-	# Make a directory for $date and move output into it (parents=no)
-	test -d $BUILDS_DIR/$target/$date || mkdir $BUILDS_DIR/$target/$date
-	mv $BASE_DIR/builds/$target/$stage-$upstream$rel-$date.tar.bz2* $BUILDS_DIR/$target/$date/
-	rmdir --ignore-fail-on-non-empty $BASE_DIR/builds/$target # Cleanup, but don't care about it
 
 	rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.bz2
 	(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream$rel-$date.tar.bz2 $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.bz2)
