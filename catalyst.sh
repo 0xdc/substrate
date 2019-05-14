@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eo pipefail
 
 if which lsns 2>/dev/null >&2; then
 	if test -z "$(lsns | awk "/$$/&&/mnt/")"; then
@@ -15,7 +15,7 @@ arch=${ARCH:-$(uname -m)}
 BASE_DIR="$(dirname $(readlink -f $0))"
 REPO_DIR=$BASE_DIR/weekly
 
-catalyst_version=$(catalyst -V | awk 'NR==1{print$NF}')
+catalyst_version=$( (catalyst -V || true) | awk 'NR==1{print$NF}')
 case "$arch" in
 x86_64)
 	targets="${TARGETS:-systemd:stage1 systemd:stage2 systemd:stage3 router:stage4 systemd:stage4 sso:stage4}"
@@ -91,9 +91,6 @@ for combo in $targets; do
 	rel=${subarch:--$target}
 	stage=$( cut -d: -f2 <<<$combo)
 
-	# Test that target directory exists (parents=yes)
-	test -d $BUILDS_DIR/$target || mkdir -p $BUILDS_DIR/$target
-
 	# Skip a build if it already exists
 	test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.bz2 && continue
 
@@ -109,7 +106,7 @@ for combo in $targets; do
 	tee -a $tempstage <<<"subarch: $upstream$subarch"
 	tee -a $tempstage <<<"target: $stage"
 	# append rel_type, version_stamp and snapshot
-	tee -a $tempstage <<<"rel_type: $target"
+	tee -a $tempstage <<<"rel_type: $upstream/$target/$date"
 	grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
 	tee -a $tempstage <<<"snapshot: $date"
 	# append CHOST/CFLAGS to stage spec if set
@@ -118,11 +115,6 @@ for combo in $targets; do
 
 	test -d "$BASE_DIR/logs/$target" || mkdir -p "$BASE_DIR/logs/$target"
 	$catalyst -f $tempstage | tee $BASE_DIR/logs/$target/$stage-$upstream$rel-$date.log
-
-	# Make a directory for $date and move output into it (parents=no)
-	test -d $BUILDS_DIR/$target/$date || mkdir $BUILDS_DIR/$target/$date
-	mv $BASE_DIR/builds/$target/$stage-$upstream$rel-$date.tar.bz2* $BUILDS_DIR/$target/$date/
-	rmdir --ignore-fail-on-non-empty $BASE_DIR/builds/$target # Cleanup, but don't care about it
 
 	rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.bz2
 	(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream$rel-$date.tar.bz2 $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.bz2)
