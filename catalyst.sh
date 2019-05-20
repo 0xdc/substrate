@@ -104,7 +104,11 @@ for combo in $targets; do
 	grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
 	tee -a $tempstage <<<"snapshot: $date"
 	# append CHOST/CFLAGS to stage spec if set
-	test -n "$chost" && tee -a $tempstage <<<"chost: $chost"
+	case "$stage" in
+	stage[12])
+		test -n "$chost" && tee -a $tempstage <<<"chost: $chost"
+		;;
+	esac
 	(test -n "$cflags" && ! grep -q cflags: $tempstage) && tee -a $tempstage <<<"cflags: $cflags"
 
 	test -d "$BASE_DIR/logs/$target" || mkdir -p "$BASE_DIR/logs/$target"
