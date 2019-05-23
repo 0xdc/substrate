@@ -1,9 +1,4 @@
-subarch: amd64
-target: stage4
-version_stamp: dev-@latest@
-rel_type: dev
 profile: default/linux/amd64/17.0/systemd
-snapshot: @latest@
 source_subpath: amd64/systemd/stage4-amd64-systemd-latest
 portage_confdir: @REPO_DIR@/portage/dev
 
