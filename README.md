@@ -10,9 +10,6 @@ Instead of creating our own portage snapshots with `catalyst -s`, we can downloa
    * these are recent snapshots (i.e. made in the past week)
    * older snapshots are rotated out
    * portage snapshots for the previous day are taken around 00:45 UTC on the following day
-*  the [portage snapshot historical archives](https://dev.gentoo.org/~swift/snapshots/)
-   * these are useful for upgrades of ancient stages that cannot directly upgrade to software in the recent snapshots
-   * ebuilds often refer to source tarballs that are no longer available from original source mirror URLs (e.g. moved to archive folders)
 
 Of course, these scripts do not prevent you from creating our own portage snapshots and building against them.
 

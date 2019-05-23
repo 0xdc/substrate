@@ -1,9 +1,5 @@
-subarch: armv7a_hardfp
-target: stage4
 version_stamp: @latest@
-rel_type: ella
-profile: default/linux/arm/13.0/armv7a
-snapshot: @latest@
+profile: default/linux/arm/17.0/armv7a
 source_subpath: armv7a/hardfp/stage3-armv7a_hardfp-latest
 
 stage4/packages:
