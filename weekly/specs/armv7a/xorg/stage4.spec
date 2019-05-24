@@ -1,9 +1,4 @@
-subarch: armv7a_hardfp
-target: stage4
-version_stamp: xorg-@latest@
-rel_type: xorg
 profile: default/linux/arm/13.0/armv7a
-snapshot: @latest@
 source_subpath: armv7a/hardfp/stage4-armv7a_hardfp-latest
 portage_confdir: @REPO_DIR@/portage/xorg
 

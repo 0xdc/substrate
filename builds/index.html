@@ -1,34 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-
 #builds > div {
-	display: grid;
-	grid-template-columns: 5fr 1.25fr .5fr;
+    display: grid;
+    grid-template-columns: auto;
+}
+.header > span {
+    display: none;
+}
+.hash {
+    display: none;
+}
+#builds > div:nth-child(2n) {
+    background-color: lightcyan;
 }
 span:nth-child(2) {
-	     font-family: mono;
-	     text-align: center;
-     }
-span:nth-child(3) {
-	     font-weight: bold;
-	     text-align: right;
-     }
-#builds div:nth-child(1) span {
-	font-weight: bold;
-border: 2px solid black;
-	margin-bottom: 5px;
+    font-family: mono;
+    text-align: center;
 }
-#builds div:nth-child(2n) {
-	background-color: lightcyan;
+span:nth-child(3) {
+    font-weight: bold;
+    text-align: right;
+}
+@media (min-width:720px) {
+#builds > div {
+    grid-template-columns: 3fr 2fr 1fr;
+}
+.header > span {
+    display: block;
+}
+.hash {
+    display: block;
+}
+#builds .header span {
+    font-weight: bold;
+    border: 2px solid black;
+    margin-bottom: 5px;
+}
 }
 </style>
 </head>
 <body>
 <noscript>Javascript is required for this page to function</noscript>
 <div id="builds">
-<div>
+<div class="header">
 <span>name</span>
 <span>hash</span>
 <span>size</span>
@@ -50,6 +67,18 @@ function json(response) {
 	return response.json()
 }
 
+function size(bytes) {
+	if (bytes < 2 ** 10) {
+		return bytes + " B";
+	} else if (bytes < 2 ** 20) {
+		return Math.round(bytes / 2 ** 10) + " KiB";
+	} else if (bytes < 2 ** 30) {
+		return Math.round(bytes / 2 ** 20) + " MiB";
+	} else {
+		return Math.round(bytes / 2 ** 30) + " GiB";
+	}
+}
+
 function dodata(data) {
 	console.log('Request succeeded with JSON response', data);
 
@@ -61,15 +90,18 @@ function dodata(data) {
 		namea.innerText = data[i].name;
 
 		var name = document.createElement("span");
+		name.className = "name";
 		name.appendChild(namea);
 		entry.appendChild(name);
 
 		var hash = document.createElement("span");
+		hash.className = "hash";
 		hash.innerText = data[i].hash;
 		entry.appendChild(hash);
 
 		var bytes = document.createElement("span");
-		bytes.innerText = data[i].bytes;
+		bytes.innerText = size(data[i].bytes);
+		bytes.className = "bytes";
 		entry.appendChild(bytes);
 
 		if (data[i].name.indexOf("/") > 0) {
