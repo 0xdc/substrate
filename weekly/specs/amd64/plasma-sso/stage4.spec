@@ -1,9 +1,4 @@
-subarch: amd64
-target: stage4
-version_stamp: plasma-sso-@latest@
-rel_type: plasma-sso
 profile: default/linux/amd64/17.0/desktop/plasma/systemd
-snapshot: @latest@
 source_subpath: amd64/plasma/stage4-amd64-plasma-latest
 portage_confdir: @REPO_DIR@/portage/sso
 
