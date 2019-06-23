@@ -18,7 +18,7 @@ REPO_DIR=$BASE_DIR/weekly
 source "arch/$arch"
 targets="${TARGETS:-${targets[*]}}"
 
-catalyst_version=$(catalyst -V | awk 'NR==1{print$NF}')
+catalyst_version=$( (catalyst -V || true) | awk 'NR==1{print$NF}')
 case $catalyst_version in
 3.*)
 	sharedir="/usr/share/catalyst"
