@@ -18,7 +18,7 @@ stage4/packages:
 	sys-kernel/dracut
 	sys-process/htop
 
-stage4/root_overlay: @REPO_DIR@/overlays/base
+stage4/root_overlay: @REPO_DIR@/root_overlays/base
 
 stage4/unmerge:
 	app-editors/nano

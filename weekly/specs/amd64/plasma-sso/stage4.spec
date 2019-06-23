@@ -10,7 +10,7 @@ stage4/packages:
 	sys-auth/nss-pam-ldapd
 	sys-auth/pam_krb5
 
-stage4/root_overlay: @REPO_DIR@/overlays/sso
+stage4/root_overlay: @REPO_DIR@/root_overlays/sso
 
 stage4/empty:
 	/root/.ccache

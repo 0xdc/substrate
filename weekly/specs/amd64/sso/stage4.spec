@@ -12,7 +12,7 @@ stage4/packages:
 	sys-auth/pam_yubico
 	sys-auth/ssh-ldap-pubkey
 
-stage4/root_overlay: @REPO_DIR@/overlays/sso
+stage4/root_overlay: @REPO_DIR@/root_overlays/sso
 
 stage4/empty:
 	/root/.ccache

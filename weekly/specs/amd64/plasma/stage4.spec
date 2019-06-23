@@ -11,7 +11,7 @@ stage4/packages:
 	kde-apps/dolphin
 	kde-apps/konsole
 
-stage4/root_overlay: @REPO_DIR@/overlays/plasma
+stage4/root_overlay: @REPO_DIR@/root_overlays/plasma
 
 stage4/empty:
 	/root/.ccache
