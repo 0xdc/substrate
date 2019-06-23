@@ -1,6 +1,6 @@
 profile: default/linux/amd64/17.0/desktop/plasma/systemd
 source_subpath: amd64/systemd/stage4-amd64-systemd-latest
-portage_confdir: @REPO_DIR@/portage/plasma
+portage_confdir: @REPO_DIR@/confdirs/plasma
 
 stage4/use:
 	bindist
