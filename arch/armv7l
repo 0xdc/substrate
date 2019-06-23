@@ -22,5 +22,5 @@ targets=(
 	hardfp:stage4
 )
 
-upstream="${arch}_hardfp"
+upstream="${arch}"
 sharedir="/usr/lib/catalyst"
