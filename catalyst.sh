@@ -30,7 +30,7 @@ tempstage=$(mktemp)
 cataconf=$(mktemp)
 envscript=$(mktemp)
 
-cat $BASE_DIR/catalyst.conf > $cataconf
+cat $BASE_DIR/.config > $cataconf
 tee $envscript <<<"export MAKEOPTS=\"-j$(nproc)\""
 tee -a $cataconf <<<"envscript=\"${envscript}\""
 tee -a $cataconf <<<"sharedir=\"${sharedir}\""
