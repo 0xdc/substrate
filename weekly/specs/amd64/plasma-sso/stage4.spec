@@ -1,12 +1,12 @@
 profile: default/linux/amd64/17.0/desktop/plasma/systemd
 source_subpath: amd64/plasma/stage4-amd64-plasma-latest
-portage_confdir: @REPO_DIR@/portage/sso
+portage_confdir: @REPO_DIR@/confdirs/sso
 
 stage4/packages:
 	sys-auth/nss-pam-ldapd
 	sys-auth/pam_krb5
 
-stage4/root_overlay: @REPO_DIR@/overlays/sso
+stage4/root_overlay: @REPO_DIR@/root_overlays/sso
 
 stage4/empty:
 	/root/.ccache
