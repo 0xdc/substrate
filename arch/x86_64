@@ -1,0 +1,19 @@
+arch=amd64
+targets=(
+	systemd:stage1
+	systemd:stage2
+	systemd:stage3
+
+	router:stage1
+	systemd:stage4
+	sso:stage4
+
+	plasma:stage2
+	plasma:stage3
+	plasma:stage4
+
+	plasma-sso:stage4
+	dev:stage4
+)
+
+upstream="$arch"

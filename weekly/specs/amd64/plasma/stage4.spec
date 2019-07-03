@@ -1,6 +1,6 @@
 profile: default/linux/amd64/17.0/desktop/plasma/systemd
 source_subpath: amd64/plasma/stage3-amd64-plasma-latest
-portage_confdir: @REPO_DIR@/portage/plasma
+portage_confdir: @REPO_DIR@/confdirs/plasma
 
 stage4/packages:
 	app-emulation/virt-manager
@@ -9,7 +9,7 @@ stage4/packages:
 	kde-apps/konsole
 	www-client/firefox
 
-stage4/root_overlay: @REPO_DIR@/overlays/plasma
+stage4/root_overlay: @REPO_DIR@/root_overlays/plasma
 
 stage4/empty:
 	/root/.ccache

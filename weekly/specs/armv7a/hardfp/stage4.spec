@@ -1,7 +1,7 @@
 version_stamp: @latest@
 profile: default/linux/arm/17.0/armv7a
 source_subpath: armv7a/hardfp/stage3-armv7a_hardfp-latest
-portage_confdir: @REPO_DIR@/portage/vboot
+portage_confdir: @REPO_DIR@/confdirs/vboot
 
 stage4/packages:
 	app-editors/vim
@@ -17,7 +17,7 @@ stage4/packages:
 	sys-fs/dosfstools
 	sys-process/htop
 
-stage4/root_overlay: @REPO_DIR@/overlays/base
+stage4/root_overlay: @REPO_DIR@/root_overlays/base
 
 stage4/unmerge:
 	app-editors/nano

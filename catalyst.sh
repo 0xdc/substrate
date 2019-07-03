@@ -15,44 +15,10 @@ arch=${ARCH:-$(uname -m)}
 BASE_DIR="$(dirname $(readlink -f $0))"
 REPO_DIR=$BASE_DIR/weekly
 
+source "arch/$arch"
+targets="${TARGETS:-${targets[*]}}"
+
 catalyst_version=$( (catalyst -V || true) | awk 'NR==1{print$NF}')
-case "$arch" in
-x86_64)
-	targets="${TARGETS:-systemd:stage1 systemd:stage2 systemd:stage3 router:stage4 systemd:stage4 sso:stage4 plasma:stage2 plasma:stage3 plasma:stage4 plasma-sso:stage4 dev:stage4}"
-	upstream="amd64"
-	sharedir="/usr/lib64/catalyst"
-	;;
-aarch64)
-	targets="${TARGETS:-default:stage1}"
-	upstream="arm64"
-	sharedir="/usr/lib64/catalyst"
-	;;
-armv8l)
-	sharedir="/usr/lib64/catalyst"
-	;& # fall through
-armv7l)
-	chost="armv7a-unknown-linux-gnueabihf"
-	cflags="-O2 -mfloat-abi=hard -mfpu=vfpv3-d16"
-	case "$(hostname)" in
-	spring|daisy)
-		cflags="$cflags -march=armv7ve -pipe"
-		;;
-	ella-*)
-		cflags="$cflags -march=armv7-a -mcpu=cortex-a9 --param ggc-min-expand=0 --param ggc-min-heapsize=4096 -fno-inline"
-		;;
-	*)
-		cflags="$cflags -march=armv7-a -mcpu=cortex-a9 -pipe"
-	esac
-	targets="${TARGETS:-hardfp:stage1 hardfp:stage2 hardfp:stage3 ella:stage4 hardfp:stage4 xorg:stage4}"
-	upstream="armv7a"
-	subarch="_hardfp"
-	sharedir="${sharedir:-/usr/lib/catalyst}"
-	;;
-*)
-	echo "Unknown architecture ARCH=$arch" >&2
-	exit 1
-	;;
-esac
 case $catalyst_version in
 3.*)
 	sharedir="/usr/share/catalyst"
@@ -64,7 +30,7 @@ tempstage=$(mktemp)
 cataconf=$(mktemp)
 envscript=$(mktemp)
 
-cat $BASE_DIR/catalyst.conf > $cataconf
+cat $BASE_DIR/.config > $cataconf
 tee $envscript <<<"export MAKEOPTS=\"-j$(nproc)\""
 tee -a $cataconf <<<"envscript=\"${envscript}\""
 tee -a $cataconf <<<"sharedir=\"${sharedir}\""
@@ -111,7 +77,8 @@ for combo in $targets; do
 	esac
 	(test -n "$cflags" && ! grep -q cflags: $tempstage) && tee -a $tempstage <<<"cflags: $cflags"
 
-	$catalyst -f $tempstage | tee $BASE_DIR/logs/$stage-$upstream$rel-$date.log
+	test -d "$BASE_DIR/logs/$target" || mkdir -p "$BASE_DIR/logs/$target"
+	$catalyst -f $tempstage | tee $BASE_DIR/logs/$target/$stage-$upstream$rel-$date.log
 
 	rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.bz2
 	(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream$rel-$date.tar.bz2 $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.bz2)
