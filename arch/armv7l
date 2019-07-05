@@ -25,4 +25,5 @@ targets=(
 )
 
 upstream="${arch}"
+subarch="_hardfp"
 sharedir="/usr/lib/catalyst"
