@@ -15,7 +15,7 @@ arch=${ARCH:-$(uname -m)}
 BASE_DIR="$(dirname $(readlink -f $0))"
 REPO_DIR=$BASE_DIR/weekly
 
-source "arch/$arch"
+source "${BASE_DIR}/arch/$arch"
 targets="${TARGETS:-${targets[*]}}"
 
 catalyst_version=$( (catalyst -V || true) | awk 'NR==1{print$NF}')
