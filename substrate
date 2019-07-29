@@ -18,7 +18,7 @@ REPO_DIR=$BASE_DIR/weekly
 source "${BASE_DIR}/arch/$arch"
 targets="${TARGETS:-${targets[*]}}"
 
-catalyst_version=$( (catalyst -V || true) | awk 'NR==1{print$NF}')
+catalyst_version=$( (${BASE_DIR}/catalyst/bin/catalyst.git -V || true) | awk 'NR==1{print$NF}')
 case $catalyst_version in
 3.*)
 	sharedir="/usr/share/catalyst"
@@ -36,7 +36,7 @@ tee -a $cataconf <<<"envscript=\"${envscript}\""
 tee -a $cataconf <<<"sharedir=\"${sharedir}\""
 tee -a $cataconf <<<"storedir=\"$BASE_DIR\""
 
-catalyst="catalyst -c $cataconf"
+catalyst="${BASE_DIR}/catalyst/bin/catalyst.git -c $cataconf"
 
 if ! tar tvvf $(dirname $0)/snapshots/portage-$date.tar.bz2 >/dev/null; then
 	rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/portage-$date.tar.bz2* $(dirname $0)/snapshots || true
