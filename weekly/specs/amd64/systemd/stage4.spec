@@ -4,6 +4,7 @@ portage_confdir: @REPO_DIR@/confdirs/base
 
 stage4/packages:
 	app-editors/vim
+	app-eselect/eselect-repository
 	app-shells/bash-completion
 	dev-util/catalyst
 	dev-vcs/git
