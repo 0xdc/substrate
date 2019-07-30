@@ -55,7 +55,7 @@ tee -a $cataconf <<<"envscript=\"${envscript}\""
 tee -a $cataconf <<<"storedir=\"$BASE_DIR\""
 tee -a $cataconf <<<"repo_name=\"${repo_name:-portage}\""
 
-catalyst="${BASE_DIR}/catalyst/bin/catalyst.git -c $cataconf"
+catalyst="${BASE_DIR}/catalyst/bin/catalyst.git --log-level debug -c $cataconf"
 
 for combo in $targets; do
 	target=$(cut -d: -f1 <<<$combo)
