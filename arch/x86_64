@@ -6,7 +6,7 @@ targets=(
 
 	router:stage1
 	systemd:stage4
-	sso:stage4
+	#sso:stage4 #https://bugs.gentoo.org/688330
 )
 
 upstream="$arch"
