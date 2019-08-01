@@ -1,6 +1,6 @@
 profile: default/linux/arm/13.0/armv7a
 source_subpath: armv7a/hardfp/stage4-armv7a_hardfp-latest
-portage_confdir: @REPO_DIR@/portage/xorg
+portage_confdir: @REPO_DIR@/confdirs/xorg
 
 stage4/packages:
 	net-wireless/iw
