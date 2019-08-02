@@ -18,10 +18,29 @@ REPO_DIR=$BASE_DIR/weekly
 source "${BASE_DIR}/arch/$arch"
 targets="${TARGETS:-${targets[*]}}"
 
-catalyst_version=$( (catalyst -V || true) | awk 'NR==1{print$NF}')
+catalyst_version=$( (${BASE_DIR}/catalyst/bin/catalyst.git -V || true) | awk 'NR==1{print$NF}')
 case $catalyst_version in
 3.*)
 	sharedir="/usr/share/catalyst"
+	repo_name="gentoo"
+
+	# use squashfs snapshots
+	if ! test -f ${BASE_DIR}/snapshots/gentoo-$date.squashfs; then
+		rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/squashfs/{gentoo-$date.xz.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
+		pushd ${BASE_DIR}/snapshots
+			grep ${date}.xz sha512sum.txt | sha512sum -c
+			mv -v gentoo-$date.xz.sqfs gentoo-$date.squashfs
+		popd
+	fi
+	;;
+*)
+	if ! tar tvvf $(dirname $0)/snapshots/portage-$date.tar.bz2 >/dev/null; then
+		rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/portage-$date.tar.bz2* $(dirname $0)/snapshots || true
+		pushd $(dirname $0)/snapshots
+			md5sum -c portage-$date.tar.bz2.md5sum
+			chattr +i portage-$date.tar.bz2 || true
+		popd
+	fi
 	;;
 esac
 
@@ -33,18 +52,10 @@ envscript=$(mktemp)
 cat $BASE_DIR/.config > $cataconf
 tee $envscript <<<"export MAKEOPTS=\"-j$(nproc)\""
 tee -a $cataconf <<<"envscript=\"${envscript}\""
-tee -a $cataconf <<<"sharedir=\"${sharedir}\""
 tee -a $cataconf <<<"storedir=\"$BASE_DIR\""
+tee -a $cataconf <<<"repo_name=\"${repo_name:-portage}\""
 
-catalyst="catalyst -c $cataconf"
-
-if ! tar tvvf $(dirname $0)/snapshots/portage-$date.tar.bz2 >/dev/null; then
-	rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/portage-$date.tar.bz2* $(dirname $0)/snapshots || true
-	pushd $(dirname $0)/snapshots
-		md5sum -c portage-$date.tar.bz2.md5sum
-		chattr +i portage-$date.tar.bz2 || true
-	popd
-fi
+catalyst="${BASE_DIR}/catalyst/bin/catalyst.git --log-level debug -c $cataconf"
 
 for combo in $targets; do
 	target=$(cut -d: -f1 <<<$combo)

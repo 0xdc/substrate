@@ -4,3 +4,7 @@
 [submodule "weekly/overlay"]
 	path = weekly/overlay
 	url = https://github.com/0xdc/overlay
+[submodule "catalyst"]
+	path = catalyst
+	url = https://github.com/0xdc/catalyst
+	branch = guilt/master
