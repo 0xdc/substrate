@@ -2,16 +2,14 @@ profile: default/linux/amd64/17.0/systemd
 source_subpath: amd64/systemd/stage3-amd64-systemd-latest
 portage_confdir: @REPO_DIR@/confdirs/base
 
-stage4/use:
-	bindist
-	ipv6
-
 stage4/packages:
 	app-emulation/docker
+	app-admin/ansible
 	app-editors/vim
 	app-shells/bash-completion
 	dev-util/catalyst
 	dev-vcs/git
+	net-libs/nodejs
 	sys-apps/iproute2
 	sys-devel/distcc
 	sys-fs/cryptsetup

@@ -3,10 +3,6 @@ profile: default/linux/arm/17.0/armv7a
 source_subpath: armv7a/hardfp/stage3-armv7a_hardfp-latest
 portage_confdir: @REPO_DIR@/confdirs/vboot
 
-stage4/use:
-	bindist
-	ipv6
-
 stage4/packages:
 	app-editors/vim
 	app-shells/bash-completion

@@ -1,26 +1,20 @@
-version_stamp: @latest@
-profile: default/linux/arm/17.0/armv7a
-source_subpath: armv7a/hardfp/stage3-armv7a_hardfp-latest
+subarch: armv7a_hardfp
+target: stage4
+version_stamp: xorg-@latest@
+rel_type: xorg
+profile: default/linux/arm/13.0/armv7a
+snapshot: @latest@
+source_subpath: armv7a/hardfp/stage4-armv7a_hardfp-latest
+portage_confdir: @REPO_DIR@/portage/xorg
 
 stage4/packages:
-	app-editors/vim
-	app-shells/bash-completion
-	dev-embedded/u-boot-tools
-	dev-vcs/git
-	sys-apps/dtc
-	sys-devel/bc
-	sys-devel/distcc
-	sys-fs/dosfstools
-
-stage4/root_overlay: @REPO_DIR@/root_overlays/ella
-
-stage4/rcadd:
-	busybox-ntpd|default
-	net.eth0|default
-	sshd|default
-
-stage4/unmerge:
-	app-editors/nano
+	net-wireless/iw
+	net-wireless/wpa_supplicant
+	sys-kernel/linux-firmware
+	x11-base/xorg-server
+	x11-misc/dmenu
+	x11-terms/st
+	x11-wm/dwm
 
 stage4/empty:
 	/root/.ccache

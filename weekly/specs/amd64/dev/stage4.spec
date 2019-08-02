@@ -1,26 +1,18 @@
-version_stamp: @latest@
-profile: default/linux/arm/17.0/armv7a
-source_subpath: armv7a/hardfp/stage3-armv7a_hardfp-latest
+subarch: amd64
+target: stage4
+version_stamp: dev-@latest@
+rel_type: dev
+profile: default/linux/amd64/17.0/systemd
+snapshot: @latest@
+source_subpath: amd64/systemd/stage4-amd64-systemd-latest
+portage_confdir: @REPO_DIR@/portage/dev
 
 stage4/packages:
-	app-editors/vim
-	app-shells/bash-completion
-	dev-embedded/u-boot-tools
-	dev-vcs/git
-	sys-apps/dtc
-	sys-devel/bc
-	sys-devel/distcc
-	sys-fs/dosfstools
-
-stage4/root_overlay: @REPO_DIR@/root_overlays/ella
-
-stage4/rcadd:
-	busybox-ntpd|default
-	net.eth0|default
-	sshd|default
-
-stage4/unmerge:
-	app-editors/nano
+	dev-db/postgresql
+	dev-db/redis
+	dev-lang/elixir
+	dev-python/pipenv
+	net-libs/nodejs
 
 stage4/empty:
 	/root/.ccache
