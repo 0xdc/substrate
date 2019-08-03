@@ -7,4 +7,4 @@ test "$OS_CLOUD" = "envvars" || (test -f /etc/openstack/clouds.yaml || test -f ~
 
 pushd $(dirname $0)
 
-openstack object create builds $(find */*/*/ */*/*.txt -type f -name '*stage[34]-*')
+openstack object create bindist $(find */*/*/ */*/*.txt -type f -name '*stage[34]-*')
