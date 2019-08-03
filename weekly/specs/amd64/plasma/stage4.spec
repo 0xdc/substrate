@@ -1,6 +1,6 @@
 profile: default/linux/amd64/17.0/desktop/plasma/systemd
 source_subpath: amd64/systemd/stage4-amd64-systemd-latest
-portage_confdir: @REPO_DIR@/portage/plasma
+portage_confdir: @REPO_DIR@/confdirs/plasma
 
 stage4/use:
 	bindist
@@ -11,7 +11,7 @@ stage4/packages:
 	kde-apps/dolphin
 	kde-apps/konsole
 
-stage4/root_overlay: @REPO_DIR@/overlays/plasma
+stage4/root_overlay: @REPO_DIR@/root_overlays/plasma
 
 stage4/empty:
 	/root/.ccache

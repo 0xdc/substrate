@@ -1,3 +1,10 @@
 [submodule "library"]
 	path = .ansible/library
 	url = https://gist.github.com/theappleman/e7d795ae2b0f4bf2b0e0c44f5a193c78
+[submodule "weekly/overlay"]
+	path = weekly/overlay
+	url = https://github.com/0xdc/overlay
+[submodule "catalyst"]
+	path = catalyst
+	url = https://github.com/0xdc/catalyst
+	branch = guilt/master

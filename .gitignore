@@ -1,6 +1,8 @@
-builds/*/*tar.bz2*
+builds/*/*/*tar.bz2*
+builds/*/*/*/
+builds/*/*/*.txt
 kerncache/
 packages/
 snapshot_cache/
-snapshots/
+snapshots
 tmp/

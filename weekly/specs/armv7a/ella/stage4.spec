@@ -16,7 +16,7 @@ stage4/packages:
 	sys-devel/distcc
 	sys-fs/dosfstools
 
-stage4/root_overlay: @REPO_DIR@/overlays/ella
+stage4/root_overlay: @REPO_DIR@/root_overlays/ella
 
 stage4/rcadd:
 	busybox-ntpd|default

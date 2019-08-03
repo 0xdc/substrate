@@ -1,0 +1,27 @@
+arch="armv7a"
+
+chost="${arch}-unknown-linux-gnueabihf"
+cflags="-O2 -mfloat-abi=hard -mfpu=vfpv3-d16"
+case "$(hostname)" in
+spring|snow)
+	cflags="$cflags -march=armv7ve -pipe"
+	;;
+ella-*)
+	cflags="$cflags -march=armv7-a -mcpu=cortex-a9 --param ggc-min-expand=0 --param ggc-min-heapsize=4096 -fno-inline"
+	;;
+*)
+	cflags="$cflags -march=armv7-a -mcpu=cortex-a9 -pipe"
+	;;
+esac
+
+targets=(
+	hardfp:stage1
+	hardfp:stage2
+	hardfp:stage3
+	ella:stage4
+	hardfp:stage4
+)
+
+upstream="${arch}"
+subarch="_hardfp"
+sharedir="/usr/lib/catalyst"
