@@ -1,2 +1,4 @@
 # www-client/chromium
 media-libs/harfbuzz icu
+# www-client/firefox
+media-libs/libvpx postproc
