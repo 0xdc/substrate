@@ -1,0 +1,13 @@
+www-client/chromium ~amd64
+www-client/firefox ~amd64
+www-client/google-chrome-beta ~amd64
+www-client/google-chrome-unstable ~amd64
+
+# www-client/firefox
+=dev-libs/nspr-4.21 ~amd64
+=dev-util/cbindgen-0.9.0 ~amd64
+# networkmanager
+=dev-libs/nss-3.45 ~amd64
+=media-libs/harfbuzz-2.5.3 ~amd64
+# www-client/chromium
+=dev-util/gn-0.1463 ~amd64
