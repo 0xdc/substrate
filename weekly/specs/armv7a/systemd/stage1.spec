@@ -6,6 +6,6 @@ update_seed: yes
 update_seed_command: --rage-clean sys-fs/eudev virtual/udev
 ## end comments
 
-cflags: -O2 -mfpu=vfpv3-d16 -mfloat-abi=hard -mcpu=cortex-a9
+common_flags: -O2 -mfpu=vfpv3-d16 -mfloat-abi=hard -mcpu=cortex-a9
 profile: 0xdc:arm
 portage_overlay: @REPO_DIR@/overlay
