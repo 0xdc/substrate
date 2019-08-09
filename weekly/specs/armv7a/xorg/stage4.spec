@@ -1,4 +1,4 @@
-profile: default/linux/arm/13.0/armv7a
+profile: default/linux/arm/17.0/armv7a
 source_subpath: armv7a/hardfp/stage4-armv7a_hardfp-latest
 portage_confdir: @REPO_DIR@/confdirs/xorg
 
