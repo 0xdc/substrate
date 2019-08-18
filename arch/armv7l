@@ -7,10 +7,10 @@ spring|snow)
 	cflags="$cflags -march=armv7ve -pipe"
 	;;
 ella-*)
-	cflags="$cflags -march=armv7-a -mcpu=cortex-a9 --param ggc-min-expand=0 --param ggc-min-heapsize=4096 -fno-inline"
+	cflags="$cflags -mcpu=cortex-a9 --param ggc-min-expand=0 --param ggc-min-heapsize=4096 -fno-inline"
 	;;
 *)
-	cflags="$cflags -march=armv7-a -mcpu=cortex-a9 -pipe"
+	cflags="$cflags -march=armv7-a -pipe"
 	;;
 esac
 
