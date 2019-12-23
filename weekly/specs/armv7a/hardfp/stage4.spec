@@ -14,7 +14,6 @@ stage4/packages:
 	dev-util/catalyst
 	dev-vcs/git
 	sys-apps/dtc
-	sys-boot/vboot-utils
 	sys-devel/bc
 	sys-devel/distcc
 	sys-fs/cryptsetup
