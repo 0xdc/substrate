@@ -1,4 +1,4 @@
-profile: default/linux/amd64/17.0/desktop/plasma/systemd
+profile: default/linux/amd64/17.1/desktop/plasma/systemd
 portage_confdir: @REPO_DIR@/confdirs/plasma
 source_subpath: amd64/plasma/stage3-amd64-plasma-latest
 
