@@ -31,9 +31,9 @@ stage4/empty:
 	/usr/src
 	/var/cache/edb/dep
 	/var/cache/genkernel
-	/var/cache/portage/distfiles
+	/var/cache/distfiles
 	/var/empty
-	/var/gentoo/repos
+	/var/db/repos
 	/var/run
 	/var/state
 	/var/tmp
