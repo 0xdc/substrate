@@ -9,6 +9,7 @@ stage4/packages:
 	dev-util/catalyst
 	dev-vcs/git
 	sys-apps/iproute2
+	sys-devel/bc
 	sys-devel/distcc
 	sys-kernel/dracut
 	sys-process/htop
