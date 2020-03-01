@@ -11,6 +11,7 @@ stage4/packages:
 	dev-vcs/git
 	net-libs/nodejs
 	sys-apps/iproute2
+	sys-devel/bc
 	sys-devel/distcc
 	sys-kernel/dracut
 	sys-process/htop
