@@ -4,7 +4,7 @@ chost="${arch}-unknown-linux-gnueabihf"
 cflags="-O2 -mfloat-abi=hard -mfpu=vfpv3-d16"
 case "$(hostname)" in
 spring|snow)
-	cflags="$cflags -march=armv7ve -pipe"
+	cflags="$cflags -march=armv7-a -mtune=armv7ve -pipe"
 	;;
 ella-*)
 	cflags="$cflags -mcpu=cortex-a9 --param ggc-min-expand=0 --param ggc-min-heapsize=4096 -fno-inline"

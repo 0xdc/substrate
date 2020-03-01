@@ -34,13 +34,8 @@ case $catalyst_version in
 	fi
 	;;
 *)
-	if ! tar tvvf $(dirname $0)/snapshots/portage-$date.tar.bz2 >/dev/null; then
-		rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/portage-$date.tar.bz2* $(dirname $0)/snapshots || true
-		pushd $(dirname $0)/snapshots
-			md5sum -c portage-$date.tar.bz2.md5sum
-			chattr +i portage-$date.tar.bz2 || true
-		popd
-	fi
+	echo "substrate only supports catalyst 3" >&1
+	exit 1
 	;;
 esac
 
@@ -55,7 +50,7 @@ tee -a $cataconf <<<"envscript=\"${envscript}\""
 tee -a $cataconf <<<"storedir=\"$BASE_DIR\""
 tee -a $cataconf <<<"repo_name=\"${repo_name:-portage}\""
 
-catalyst="${BASE_DIR}/catalyst/bin/catalyst.git --log-level debug -c $cataconf"
+catalyst="${BASE_DIR}/catalyst/bin/catalyst.git --log-level info -c $cataconf"
 
 for combo in $targets; do
 	target=$(cut -d: -f1 <<<$combo)

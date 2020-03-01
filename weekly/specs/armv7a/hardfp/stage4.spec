@@ -14,7 +14,6 @@ stage4/packages:
 	dev-util/catalyst
 	dev-vcs/git
 	sys-apps/dtc
-	sys-boot/vboot-utils
 	sys-devel/bc
 	sys-devel/distcc
 	sys-fs/cryptsetup
@@ -32,9 +31,9 @@ stage4/empty:
 	/usr/src
 	/var/cache/edb/dep
 	/var/cache/genkernel
-	/var/cache/portage/distfiles
+	/var/cache/distfiles
 	/var/empty
-	/var/gentoo/repos
+	/var/db/repos
 	/var/run
 	/var/state
 	/var/tmp

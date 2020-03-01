@@ -1,1 +1,2 @@
+sys-auth/pambase pam_krb5
 sys-auth/pam_yubico ldap
