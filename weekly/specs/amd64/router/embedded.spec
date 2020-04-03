@@ -10,7 +10,7 @@ embedded/packages:
 	net-dialup/ppp
 	net-dialup/rp-pppoe
 	net-dns/dnsmasq
-	net-firewall/iptables
+	net-firewall/nftables
 	sys-apps/coreutils
 	sys-apps/iproute2
 	sys-apps/systemd
