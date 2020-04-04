@@ -6,11 +6,9 @@ stage4/packages:
 	app-editors/vim
 	app-eselect/eselect-repository
 	app-shells/bash-completion
-	dev-util/catalyst
 	dev-vcs/git
-	sys-apps/iproute2
+	net-firewall/nftables
 	sys-devel/bc
-	sys-devel/distcc
 	sys-kernel/dracut
 	sys-process/htop
 
