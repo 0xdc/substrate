@@ -64,7 +64,7 @@ for combo in $targets; do
 	test -f $BUILDS_DIR/$target/Makefile && make -C $BUILDS_DIR/$target
 
 
-	sed "s:@REPO_DIR@:$REPO_DIR:;s/@latest@/$date/" \
+	sed "s:@BASE_DIR@:$BASE_DIR:;s:@REPO_DIR@:$REPO_DIR:;s/@latest@/$date/" \
 		$REPO_DIR/specs/$upstream/$target/$stage.spec | \
 		tee $tempstage
 
