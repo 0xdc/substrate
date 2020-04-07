@@ -68,6 +68,8 @@ for combo in $targets; do
 		$REPO_DIR/specs/$upstream/$target/$stage.spec | \
 		tee $tempstage
 
+	# Enable single shared package cache
+	tee -a $tempstage <<<"pkgcache_path: ${BASE_DIR}/packages/${upstream}"
 	# add subarch and target
 	tee -a $tempstage <<<"subarch: $upstream$subarch"
 	tee -a $tempstage <<<"target: $stage"
