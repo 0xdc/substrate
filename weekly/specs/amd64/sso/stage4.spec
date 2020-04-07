@@ -1,7 +1,6 @@
 profile: default/linux/amd64/17.1/systemd
 source_subpath: amd64/systemd/stage4-amd64-systemd-latest
 portage_confdir: @REPO_DIR@/confdirs/sso
-pkgcache_path: @BASE_DIR@/packages/amd64/multi
 
 stage4/packages:
 	sys-auth/nss-pam-ldapd
