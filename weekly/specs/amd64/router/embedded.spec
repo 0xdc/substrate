@@ -2,7 +2,6 @@ profile: default/linux/amd64/17.1/systemd
 source_subpath: amd64/systemd/stage3-amd64-systemd-latest
 
 embedded/packages:
-	app-shells/bash
 	dev-vcs/git
 	net-analyzer/nmap
 	net-analyzer/tcpdump
@@ -13,7 +12,5 @@ embedded/packages:
 	net-firewall/nftables
 	sys-apps/coreutils
 	sys-apps/iproute2
-	sys-apps/systemd
 	sys-apps/util-linux
-	sys-libs/glibc
 	www-servers/nginx
