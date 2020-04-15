@@ -11,16 +11,7 @@ if ! machinectl --quiet show-image ${name}; then
 fi
 
 tee /etc/systemd/nspawn/${name}.nspawn <<EOF
-[Files]
-BindReadOnly=/var/db/repos/gentoo
-
-## Allow containers to make new binpkgs and fetch distfiles
-## Needs PrivateUsers=no
-Bind=/var/cache/binpkgs
-Bind=/var/cache/distfiles
 [Exec]
-PrivateUsers=no
-
 ## Workarounds
 # systemd-networkd
 Capability=CAP_NET_ADMIN
@@ -39,6 +30,16 @@ if test "$(machinectl show-image -p ReadOnly --value $name)" = "yes"; then
 fi
 
 if test -d /var/lib/machines/${name}/etc/portage; then
+	tee -a /etc/systemd/nspawn/${name}.nspawn <<-EOF
+	PrivateUsers=no
+	[Files]
+	BindReadOnly=/var/db/repos/gentoo
+	## Allow containers to make new binpkgs and fetch distfiles
+	## Needs Exec.PrivateUsers=no
+	Bind=/var/cache/binpkgs
+	Bind=/var/cache/distfiles
+	EOF
+
 	tee /var/lib/machines/${name}/etc/portage/make.conf <<-EOF
 	COMMON_FLAGS="-O2 -pipe"
 	CFLAGS="\${COMMON_FLAGS}"
