@@ -45,6 +45,7 @@ cat $BASE_DIR/.config > $cataconf
 tee $envscript <<<"export MAKEOPTS=\"-j$(nproc)\""
 tee -a $cataconf <<<"envscript=\"${envscript}\""
 tee -a $cataconf <<<"storedir=\"$BASE_DIR\""
+tee -a $cataconf <<<"snapshot_cache=\"$BASE_DIR/tmp/snapcache\""
 
 catalyst="${BASE_DIR}/catalyst/bin/catalyst.git --log-level info -c $cataconf"
 
