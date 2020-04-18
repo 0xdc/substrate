@@ -21,9 +21,6 @@ targets="${TARGETS:-${targets[*]}}"
 catalyst_version=$( (${BASE_DIR}/catalyst/bin/catalyst.git -V || true) | awk 'NR==1{print$NF}')
 case $catalyst_version in
 3.*)
-	sharedir="/usr/share/catalyst"
-	repo_name="gentoo"
-
 	# use squashfs snapshots
 	if ! test -f ${BASE_DIR}/snapshots/gentoo-$date.squashfs; then
 		rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/squashfs/{gentoo-$date.xz.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
@@ -48,7 +45,6 @@ cat $BASE_DIR/.config > $cataconf
 tee $envscript <<<"export MAKEOPTS=\"-j$(nproc)\""
 tee -a $cataconf <<<"envscript=\"${envscript}\""
 tee -a $cataconf <<<"storedir=\"$BASE_DIR\""
-tee -a $cataconf <<<"repo_name=\"${repo_name:-portage}\""
 
 catalyst="${BASE_DIR}/catalyst/bin/catalyst.git --log-level info -c $cataconf"
 
