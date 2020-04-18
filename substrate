@@ -69,10 +69,22 @@ for combo in $targets; do
 	tee -a $tempstage <<<"pkgcache_path: ${BASE_DIR}/packages/${upstream}"
 	# add subarch and target
 	tee -a $tempstage <<<"subarch: $upstream$subarch"
-	tee -a $tempstage <<<"target: $stage"
-	# append rel_type, version_stamp and snapshot
+	if grep -q "target:" $tempstage; then
+		# specfile already has target:
+		# so we want to add something to the version_stamp
+		grep -q version_stamp: $tempstage || {
+			rel="-$stage"
+			tee -a $tempstage <<<"version_stamp: $stage-$date"
+		}
+		stage=$(awk '/^target:/{print$2}' $tempstage)
+		# redo the build check since the stage is now different
+		test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.bz2 && continue
+	else
+		tee -a $tempstage <<<"target: $stage"
+		grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
+	fi
+	# append rel_type and snapshot
 	tee -a $tempstage <<<"rel_type: $upstream/$target/$date"
-	grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
 	tee -a $tempstage <<<"snapshot: $date"
 	# append CHOST/CFLAGS to stage spec if set
 	case "$stage" in
