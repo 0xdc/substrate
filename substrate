@@ -21,9 +21,6 @@ targets="${TARGETS:-${targets[*]}}"
 catalyst_version=$( (${BASE_DIR}/catalyst/bin/catalyst.git -V || true) | awk 'NR==1{print$NF}')
 case $catalyst_version in
 3.*)
-	sharedir="/usr/share/catalyst"
-	repo_name="gentoo"
-
 	# use squashfs snapshots
 	if ! test -f ${BASE_DIR}/snapshots/gentoo-$date.squashfs; then
 		rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/squashfs/{gentoo-$date.xz.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
@@ -48,7 +45,7 @@ cat $BASE_DIR/.config > $cataconf
 tee $envscript <<<"export MAKEOPTS=\"-j$(nproc)\""
 tee -a $cataconf <<<"envscript=\"${envscript}\""
 tee -a $cataconf <<<"storedir=\"$BASE_DIR\""
-tee -a $cataconf <<<"repo_name=\"${repo_name:-portage}\""
+tee -a $cataconf <<<"snapshot_cache=\"$BASE_DIR/tmp/snapcache\""
 
 catalyst="${BASE_DIR}/catalyst/bin/catalyst.git --log-level info -c $cataconf"
 
@@ -68,12 +65,26 @@ for combo in $targets; do
 		$REPO_DIR/specs/$upstream/$target/$stage.spec | \
 		tee $tempstage
 
+	# Enable single shared package cache
+	tee -a $tempstage <<<"pkgcache_path: ${BASE_DIR}/packages/${upstream}"
 	# add subarch and target
 	tee -a $tempstage <<<"subarch: $upstream$subarch"
-	tee -a $tempstage <<<"target: $stage"
-	# append rel_type, version_stamp and snapshot
+	if grep -q "target:" $tempstage; then
+		# specfile already has target:
+		# so we want to add something to the version_stamp
+		grep -q version_stamp: $tempstage || {
+			rel="-$stage"
+			tee -a $tempstage <<<"version_stamp: $stage-$date"
+		}
+		stage=$(awk '/^target:/{print$2}' $tempstage)
+		# redo the build check since the stage is now different
+		test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.bz2 && continue
+	else
+		tee -a $tempstage <<<"target: $stage"
+		grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
+	fi
+	# append rel_type and snapshot
 	tee -a $tempstage <<<"rel_type: $upstream/$target/$date"
-	grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
 	tee -a $tempstage <<<"snapshot: $date"
 	# append CHOST/CFLAGS to stage spec if set
 	case "$stage" in
@@ -84,7 +95,7 @@ for combo in $targets; do
 	(test -n "$cflags" && ! grep -q common_flags: $tempstage) && tee -a $tempstage <<<"common_flags: $cflags"
 
 	test -d "$BASE_DIR/logs/$target" || mkdir -p "$BASE_DIR/logs/$target"
-	$catalyst -f $tempstage | tee $BASE_DIR/logs/$target/$stage-$upstream$rel-$date.log
+	$catalyst -f $tempstage |& tee $BASE_DIR/logs/$target/$stage-$upstream$rel-$date.log
 
 	rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.bz2
 	(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream$rel-$date.tar.bz2 $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.bz2)
