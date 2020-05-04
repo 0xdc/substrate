@@ -22,11 +22,10 @@ catalyst_version=$( (${BASE_DIR}/catalyst/bin/catalyst.git -V || true) | awk 'NR
 case $catalyst_version in
 3.*)
 	# use squashfs snapshots
-	if ! test -f ${BASE_DIR}/snapshots/gentoo-$date.squashfs; then
-		rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/squashfs/{gentoo-$date.xz.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
+	if ! test -f ${BASE_DIR}/snapshots/gentoo-$date.lzo.sqfs; then
+		rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/squashfs/{gentoo-$date.lzo.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
 		pushd ${BASE_DIR}/snapshots
-			grep ${date}.xz sha512sum.txt | sha512sum -c
-			mv -v gentoo-$date.xz.sqfs gentoo-$date.squashfs
+			grep ${date}.lzo sha512sum.txt | sha512sum -c
 		popd
 	fi
 	;;
@@ -85,7 +84,7 @@ for combo in $targets; do
 	fi
 	# append rel_type and snapshot
 	tee -a $tempstage <<<"rel_type: $upstream/$target/$date"
-	tee -a $tempstage <<<"snapshot: $date"
+	tee -a $tempstage <<<"snapshot_treeish: $date.lzo"
 	# append CHOST/CFLAGS to stage spec if set
 	case "$stage" in
 	stage[12])
