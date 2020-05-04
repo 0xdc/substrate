@@ -11,7 +11,6 @@ stage4/packages:
 	app-editors/vim
 	app-shells/bash-completion
 	dev-embedded/u-boot-tools
-	dev-util/catalyst
 	dev-vcs/git
 	sys-apps/dtc
 	sys-devel/bc
