@@ -7,10 +7,9 @@ base=$(basename $1)
 name=${base%.tar.bz2}
 
 if ! machinectl --quiet show-image ${name}; then
-	machinectl --quiet import-tar $SRCF ${base%.tar.bz2} &
+	echo unpacking...
+	machinectl --quiet import-tar $SRCF ${base%.tar.bz2}
 fi
-
-wait
 
 excluded=(
 	virtual/*
