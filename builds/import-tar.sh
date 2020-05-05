@@ -66,7 +66,6 @@ if test -d /var/lib/machines/${name}/etc/portage; then
 	EOF
 fi
 
-systemd-nspawn --quiet -M${name} systemctl --quiet enable systemd-networkd
-systemd-nspawn --quiet -M${name} systemctl --quiet enable systemd-resolved
+systemd-nspawn --quiet -M${name} systemctl --quiet preset-all
 
 machinectl --quiet read-only ${name} true
