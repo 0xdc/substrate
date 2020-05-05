@@ -10,13 +10,6 @@ if ! machinectl --quiet show-image ${name}; then
 	machinectl --quiet import-tar $SRCF ${base%.tar.bz2} &
 fi
 
-tee /etc/systemd/nspawn/${name}.nspawn <<EOF
-[Exec]
-## Workarounds
-# systemd-networkd
-Capability=CAP_NET_ADMIN
-EOF
-
 wait
 
 excluded=(
@@ -30,7 +23,9 @@ if test "$(machinectl show-image -p ReadOnly --value $name)" = "yes"; then
 fi
 
 if test -d /var/lib/machines/${name}/etc/portage; then
+	test -d /etc/systemd/nspawn || mkdir -p /etc/systemd/nspawn
 	tee -a /etc/systemd/nspawn/${name}.nspawn <<-EOF
+	[Exec]
 	PrivateUsers=no
 	[Files]
 	BindReadOnly=/var/db/repos/gentoo
