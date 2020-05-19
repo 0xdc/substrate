@@ -5,10 +5,10 @@ portage_confdir: @REPO_DIR@/confdirs/openstack
 portage_overlay: @REPO_DIR@/overlay
 
 embedded/root_overlay: @REPO_DIR@/root_overlays/openstack
-embedded/use:
-	-uwsgi_plugins_*
 
-# These packages are enough to install the basic OpenStack services
+# These packages are C modules that are needed to install the basic OpenStack services
+# We are not shipping a compiler in this stage
+# Everything else can be installed by pip
 embedded/packages:
 	dev-python/netifaces
 	dev-python/psutil
@@ -16,4 +16,5 @@ embedded/packages:
 	dev-python/scrypt
 	dev-python/setproctitle
 	dev-python/yappi
-	www-servers/uwsgi[python]
+	dev-vcs/git
+	www-servers/uwsgi
