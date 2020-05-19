@@ -4,6 +4,7 @@ target: embedded
 portage_confdir: @REPO_DIR@/confdirs/openstack
 portage_overlay: @REPO_DIR@/overlay
 
+embedded/root_overlay: @REPO_DIR@/root_overlays/openstack
 embedded/use:
 	-uwsgi_plugins_*
 
