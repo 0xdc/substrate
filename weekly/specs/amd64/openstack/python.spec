@@ -15,3 +15,43 @@ embedded/packages:
 	dev-vcs/git
 	sys-kernel/linux-headers
 	www-servers/uwsgi
+
+# Install mask takes wildcards
+install_mask:
+        /etc/c*
+        /etc/f*
+        /etc/g*
+        /etc/h*
+        /etc/i*
+        /etc/l*
+        /etc/m*
+        /etc/n*
+        /etc/passwd*
+        /etc/r*
+        /etc/sh*
+        /etc/ssl/*.cnf
+        /etc/sys*
+        /etc/x*
+
+# rm must be exact
+embedded/rm:
+        /etc/X11
+        /etc/binfmt.d
+        /etc/dbus-1
+        /etc/env.d
+        /etc/kernel
+        /etc/sandbox.d
+        /etc/services
+        /etc/skel
+        /etc/ssl/misc
+        /etc/ssl/private
+        /etc/tmpfiles.d
+        /etc/udev
+        /usr/lib/tmpfiles.d/portables.conf
+        /usr/share/bash-completion
+        /usr/share/doc
+        /usr/share/info
+        /usr/share/man
+        /usr/share/terminfo
+        /usr/share/zsh
+        /var
