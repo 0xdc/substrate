@@ -7,13 +7,15 @@ portage_confdir: @REPO_DIR@/confdirs/openstack
 # liberasurecode: required for swift
 # git: download horizon source, or bleeding edge pips
 # linux-headers: headers for tcc builds
-# uwsgi: (dev) web server for keystone
+# nginx: production reverse proxy
+# uwsgi: (dev) web server for api services
 #        pulls in python
 embedded/packages:
 	dev-lang/tcc
 	dev-libs/liberasurecode
 	dev-vcs/git
 	sys-kernel/linux-headers
+	www-servers/nginx
 	www-servers/uwsgi
 
 # Install mask takes wildcards
