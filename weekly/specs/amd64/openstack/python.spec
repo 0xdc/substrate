@@ -3,6 +3,8 @@ profile: default/linux/amd64/17.1/systemd
 source_subpath: amd64/systemd/stage3-amd64-systemd-latest
 target: embedded
 
+embedded/root_overlay: @REPO_DIR@/root_overlays/openstack
+
 # tcc: to build python C extensions from pip
 # liberasurecode: required for swift
 # git: download horizon source, or bleeding edge pips
