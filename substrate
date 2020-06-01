@@ -22,11 +22,10 @@ catalyst_version=$( (${BASE_DIR}/catalyst/bin/catalyst.git -V || true) | awk 'NR
 case $catalyst_version in
 3.*)
 	# use squashfs snapshots
-	if ! test -f ${BASE_DIR}/snapshots/gentoo-$date.squashfs; then
-		rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/squashfs/{gentoo-$date.xz.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
+	if ! test -f ${BASE_DIR}/snapshots/gentoo-$date.lzo.sqfs; then
+		rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/squashfs/{gentoo-$date.lzo.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
 		pushd ${BASE_DIR}/snapshots
-			grep ${date}.xz sha512sum.txt | sha512sum -c
-			mv -v gentoo-$date.xz.sqfs gentoo-$date.squashfs
+			grep ${date}.lzo sha512sum.txt | sha512sum -c
 		popd
 	fi
 	;;
@@ -45,7 +44,6 @@ cat $BASE_DIR/.config > $cataconf
 tee $envscript <<<"export MAKEOPTS=\"-j$(nproc)\""
 tee -a $cataconf <<<"envscript=\"${envscript}\""
 tee -a $cataconf <<<"storedir=\"$BASE_DIR\""
-tee -a $cataconf <<<"snapshot_cache=\"$BASE_DIR/tmp/snapcache\""
 
 catalyst="${BASE_DIR}/catalyst/bin/catalyst.git --log-level info -c $cataconf"
 
@@ -55,7 +53,7 @@ for combo in $targets; do
 	stage=$( cut -d: -f2 <<<$combo)
 
 	# Skip a build if it already exists
-	test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.bz2 && continue
+	test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.xz && continue
 
 	# If a Makefile exists for the target, run the default target
 	test -f $BUILDS_DIR/$target/Makefile && make -C $BUILDS_DIR/$target
@@ -78,14 +76,14 @@ for combo in $targets; do
 		}
 		stage=$(awk '/^target:/{print$2}' $tempstage)
 		# redo the build check since the stage is now different
-		test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.bz2 && continue
+		test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.xz && continue
 	else
 		tee -a $tempstage <<<"target: $stage"
 		grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
 	fi
 	# append rel_type and snapshot
 	tee -a $tempstage <<<"rel_type: $upstream/$target/$date"
-	tee -a $tempstage <<<"snapshot: $date"
+	tee -a $tempstage <<<"snapshot_treeish: $date.lzo"
 	# append CHOST/CFLAGS to stage spec if set
 	case "$stage" in
 	stage[12])
@@ -97,7 +95,8 @@ for combo in $targets; do
 	test -d "$BASE_DIR/logs/$target" || mkdir -p "$BASE_DIR/logs/$target"
 	$catalyst -f $tempstage |& tee $BASE_DIR/logs/$target/$stage-$upstream$rel-$date.log
 
-	rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.bz2
-	(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream$rel-$date.tar.bz2 $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.bz2)
-	tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$stage-$upstream$rel-$date.tar.bz2"
+	rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.*
+	(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream$rel-$date.tar.xz $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.xz)
+	echo -n "$BUILDS_DIR/$target/"
+	tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$stage-$upstream$rel-$date.tar.xz"
 done
