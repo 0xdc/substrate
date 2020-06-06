@@ -84,12 +84,6 @@ for combo in $targets; do
 	# append rel_type and snapshot
 	tee -a $tempstage <<<"rel_type: $upstream/$target/$date"
 	tee -a $tempstage <<<"snapshot_treeish: $date.lzo"
-	# append CHOST/CFLAGS to stage spec if set
-	case "$stage" in
-	stage[12])
-		test -n "$chost" && tee -a $tempstage <<<"chost: $chost"
-		;;
-	esac
 	(test -n "$cflags" && ! grep -q common_flags: $tempstage) && tee -a $tempstage <<<"common_flags: $cflags"
 
 	test -d "$BASE_DIR/logs/$target" || mkdir -p "$BASE_DIR/logs/$target"
