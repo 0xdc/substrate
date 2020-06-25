@@ -1,0 +1,6 @@
+#!/bin/bash -x
+
+sed -i '/^root:/s/:\*:/::/' /etc/shadow
+echo ttyS0 >> /etc/securetty
+
+exit 0
