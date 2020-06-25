@@ -9,3 +9,5 @@ livecd/packages:
 	sys-boot/grub
 	sys-boot/syslinux
 	sys-fs/btrfs-progs
+	sys-fs/dosfstools
+	sys-fs/squashfs-tools

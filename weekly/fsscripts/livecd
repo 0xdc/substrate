@@ -2,5 +2,6 @@
 
 sed -i '/^root:/s/:\*:/::/' /etc/shadow
 echo ttyS0 >> /etc/securetty
+systemctl preset-all
 
 exit 0

@@ -6,9 +6,10 @@ boot/kernel: gentoo
 boot/kernel/gentoo/sources: gentoo-sources
 boot/kernel/gentoo/config: @REPO_DIR@/kconfig.amd64
 
-livecd/fsscript: $@REPO_DIR@/fsscripts/livecd
+livecd/bootargs: docache dokeymap
+livecd/fsscript: @REPO_DIR@/fsscripts/livecd
 livecd/fstype: squashfs
-livecd/iso: roflmaOS-@latest@.iso
 livecd/gk_mainargs: --all-ramdisk-modules
-livecd/volid: roflmaOS amd64 @latest@
+livecd/iso: roflmaOS-@latest@.iso
 livecd/root_overlay: @REPO_DIR@/root_overlays/livecd
+livecd/volid: roflmaOS amd64 @latest@
