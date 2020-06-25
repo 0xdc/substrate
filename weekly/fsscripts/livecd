@@ -3,5 +3,6 @@
 sed -i '/^root:/s/:\*:/::/' /etc/shadow
 echo ttyS0 >> /etc/securetty
 systemctl preset-all
+systemctl enable lvm2-lvmetad.socket
 
 exit 0
