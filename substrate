@@ -18,22 +18,13 @@ REPO_DIR=$BASE_DIR/weekly
 source "${BASE_DIR}/arch/$arch"
 targets="${TARGETS:-${targets[*]}}"
 
-catalyst_version=$( (${BASE_DIR}/catalyst/bin/catalyst.git -V || true) | awk 'NR==1{print$NF}')
-case $catalyst_version in
-3.*)
-	# use squashfs snapshots
-	if ! test -f ${BASE_DIR}/snapshots/gentoo-$date.lzo.sqfs; then
-		rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/squashfs/{gentoo-$date.lzo.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
-		pushd ${BASE_DIR}/snapshots
-			grep ${date}.lzo sha512sum.txt | sha512sum -c
-		popd
-	fi
-	;;
-*)
-	echo "substrate only supports catalyst 3" >&1
-	exit 1
-	;;
-esac
+# use squashfs snapshots
+if ! test -f ${BASE_DIR}/snapshots/gentoo-$date.lzo.sqfs; then
+	rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/squashfs/{gentoo-$date.lzo.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
+	pushd ${BASE_DIR}/snapshots
+		grep ${date}.lzo sha512sum.txt | sha512sum -c
+	popd
+fi
 
 BUILDS_DIR=$BASE_DIR/builds/$upstream
 tempstage=$(mktemp)

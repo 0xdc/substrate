@@ -17,14 +17,8 @@ Instead of creating our own portage snapshots with `catalyst -s`, we can downloa
 *  the Gentoo [distfiles squashfs archive /snapshots/squashfs](http://distfiles.gentoo.org/snapshots/squashfs)
    * contain the last 30 days of the gentoo portage tree, plus
    * one squashfs archive of each month since April 2016.
-   * available in lzo and xz compression (squashfs-tool by default only works with xz)
+   * available in lzo and xz compression (squashfs-tools by default only works with xz)
    * portage snapshots for the previous day are taken around 01:45 UTC on the following day
-   * default source when using catalyst 3
-*  the Gentoo [distfiles mirror /snapshots](http://distfiles.gentoo.org/snapshots)
-   * these are recent tar.bz2 snapshots (i.e. made in the past week), used by webrsync
-   * older snapshots are rotated out
-   * portage snapshots for the previous day are taken around 00:45 UTC on the following day
-   * used if running catalyst 2
 
 Of course, these scripts do not prevent you from creating our own portage snapshots and building against them.
 
