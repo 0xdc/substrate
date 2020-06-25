@@ -1,6 +1,5 @@
 arch="armv7a"
 
-chost="${arch}-unknown-linux-gnueabihf"
 cflags="-O2 -mfloat-abi=hard -mfpu=vfpv3-d16"
 case "$(hostname)" in
 spring|snow)
