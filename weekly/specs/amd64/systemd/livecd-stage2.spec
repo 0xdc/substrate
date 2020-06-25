@@ -16,5 +16,4 @@ livecd/volid: roflmaOS amd64 @latest@
 
 livecd/unmerge:
 	sys-apps/memtest86+
-	sys-boot/grub
 	sys-boot/syslinux

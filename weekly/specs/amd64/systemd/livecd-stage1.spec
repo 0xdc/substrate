@@ -5,7 +5,6 @@ portage_confdir: @REPO_DIR@/confdirs/livecd
 livecd/packages:
 	sys-apps/gptfdisk
 	sys-apps/memtest86+
-	sys-boot/grub
 	sys-boot/syslinux
 	sys-firmware/intel-microcode
 	sys-fs/btrfs-progs
