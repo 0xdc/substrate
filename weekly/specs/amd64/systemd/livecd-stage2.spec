@@ -16,7 +16,11 @@ livecd/volid: roflmaOS amd64 @latest@
 
 livecd/unmerge:
 	sys-apps/memtest86+
+	sys-boot/shim
 	sys-boot/syslinux
+
+livecd/rm:
+	/etc/machine-id
 
 livecd/empty:
 	/usr/src
