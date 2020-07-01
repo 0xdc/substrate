@@ -18,22 +18,13 @@ REPO_DIR=$BASE_DIR/weekly
 source "${BASE_DIR}/arch/$arch"
 targets="${TARGETS:-${targets[*]}}"
 
-catalyst_version=$( (${BASE_DIR}/catalyst/bin/catalyst.git -V || true) | awk 'NR==1{print$NF}')
-case $catalyst_version in
-3.*)
-	# use squashfs snapshots
-	if ! test -f ${BASE_DIR}/snapshots/gentoo-$date.lzo.sqfs; then
-		rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/squashfs/{gentoo-$date.lzo.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
-		pushd ${BASE_DIR}/snapshots
-			grep ${date}.lzo sha512sum.txt | sha512sum -c
-		popd
-	fi
-	;;
-*)
-	echo "substrate only supports catalyst 3" >&1
-	exit 1
-	;;
-esac
+# use squashfs snapshots
+if ! test -f ${BASE_DIR}/snapshots/gentoo-$date.lzo.sqfs; then
+	rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/squashfs/{gentoo-$date.lzo.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
+	pushd ${BASE_DIR}/snapshots
+		grep ${date}.lzo sha512sum.txt | sha512sum -c
+	popd
+fi
 
 BUILDS_DIR=$BASE_DIR/builds/$upstream
 tempstage=$(mktemp)
@@ -80,23 +71,26 @@ for combo in $targets; do
 	else
 		tee -a $tempstage <<<"target: $stage"
 		grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
+		if test "$stage" = "livecd-stage2"; then
+			iso=$(awk '/^livecd\/iso:/{print$2}' $tempstage)
+			test -f $BUILDS_DIR/$target/$date/$iso && continue
+		fi
 	fi
 	# append rel_type and snapshot
 	tee -a $tempstage <<<"rel_type: $upstream/$target/$date"
 	tee -a $tempstage <<<"snapshot_treeish: $date.lzo"
-	# append CHOST/CFLAGS to stage spec if set
-	case "$stage" in
-	stage[12])
-		test -n "$chost" && tee -a $tempstage <<<"chost: $chost"
-		;;
-	esac
 	(test -n "$cflags" && ! grep -q common_flags: $tempstage) && tee -a $tempstage <<<"common_flags: $cflags"
 
 	test -d "$BASE_DIR/logs/$target" || mkdir -p "$BASE_DIR/logs/$target"
 	$catalyst -f $tempstage |& tee $BASE_DIR/logs/$target/$stage-$upstream$rel-$date.log
 
 	rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.*
-	(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream$rel-$date.tar.xz $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.xz)
 	echo -n "$BUILDS_DIR/$target/"
-	tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$stage-$upstream$rel-$date.tar.xz"
+	if test "$stage" = "livecd-stage2"; then
+		# XXX: do we need a symlink to these isos? probably not
+		tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$iso"
+	else
+		(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream$rel-$date.tar.xz $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.xz)
+		tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$stage-$upstream$rel-$date.tar.xz"
+	fi
 done
