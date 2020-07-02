@@ -4,6 +4,7 @@ targets=(
 	systemd:stage2
 	systemd:stage3
 
+	openstack:python
 	minimal:nginx
 	router:stage1
 	systemd:stage4
