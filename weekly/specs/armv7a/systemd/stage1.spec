@@ -9,3 +9,4 @@ update_seed_command: --rage-clean sys-fs/eudev virtual/udev
 common_flags: -O2 -mfpu=vfpv3-d16 -mfloat-abi=hard -mcpu=cortex-a9
 profile: 0xdc:arm
 portage_overlay: @REPO_DIR@/overlay
+portage_confdir: @REPO_DIR@/confdirs/python
