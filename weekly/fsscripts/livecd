@@ -5,4 +5,7 @@ echo ttyS0 >> /etc/securetty
 systemctl preset-all
 systemctl enable lvm2-lvmetad.socket
 
+rm -v /etc/resolv.conf
+ln -sv /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
 exit 0
