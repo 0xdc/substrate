@@ -1,1 +1,1 @@
-sys-apps/systemd gnuefi policykit cryptsetup
+sys-apps/systemd gnuefi policykit cryptsetup importd curl lzma
