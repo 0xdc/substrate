@@ -17,4 +17,6 @@ test -d /home || mkdir /home
 umask 0077
 test -d /root || mkdir /root
 
+rm -f /etc/startx
+
 exit 0
