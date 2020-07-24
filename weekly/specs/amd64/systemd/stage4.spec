@@ -8,12 +8,14 @@ stage4/packages:
 	app-eselect/eselect-repository
 	app-shells/bash-completion
 	dev-vcs/git
+	gui-wm/sway
 	net-libs/nodejs
 	sys-apps/iproute2
 	net-firewall/nftables
 	sys-devel/bc
 	sys-kernel/dracut
 	sys-process/htop
+	x11-terms/alacritty
 
 stage4/root_overlay: @REPO_DIR@/root_overlays/base
 
