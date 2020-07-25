@@ -10,7 +10,7 @@ boot/kernel/gentoo/console: ttyS0
 livecd/bootargs: dokeymap overlayfs
 livecd/fsscript: @REPO_DIR@/fsscripts/livecd
 livecd/fstype: squashfs
-livecd/gk_mainargs: --all-ramdisk-modules --symlink
+livecd/gk_mainargs: --all-ramdisk-modules --symlink --microcode
 livecd/iso: roflmaOS-@latest@.iso
 livecd/root_overlay: @REPO_DIR@/root_overlays/livecd
 livecd/volid: roflmaOS amd64 @latest@
