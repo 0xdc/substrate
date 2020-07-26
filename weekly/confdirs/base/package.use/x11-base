@@ -1,1 +1,2 @@
 >=x11-base/xorg-server-1.20.8-r1 wayland
+x11-base/xorg-drivers VIDEO_CARDS: qxl
