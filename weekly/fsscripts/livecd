@@ -19,4 +19,6 @@ test -d /root || mkdir /root
 
 rm -f /etc/startx
 
+chmod a+s /usr/bin/sway
+
 exit 0
