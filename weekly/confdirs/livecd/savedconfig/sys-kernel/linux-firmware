@@ -1,3 +1,7 @@
+amdgpu/tahiti_ce.bin
 amdgpu/tahiti_mc.bin
+amdgpu/tahiti_me.bin
 amdgpu/tahiti_pfp.bin
+amdgpu/tahiti_rlc.bin
+amdgpu/tahiti_smc.bin
 rtl_nic/rtl8168e-3.fw
