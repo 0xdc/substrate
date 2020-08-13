@@ -8,9 +8,11 @@ livecd/packages:
 	gui-wm/sway
 	sys-apps/usbutils
 	sys-boot/efibootmgr
+	media-video/obs-studio
 	sys-firmware/intel-microcode
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
 	sys-kernel/linux-firmware
+	www-client/firefox
 	x11-libs/libXtst
 	x11-terms/alacritty
