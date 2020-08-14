@@ -6,5 +6,4 @@ livecd/packages:
 	sys-firmware/intel-microcode
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
-	sys-fs/squashfs-tools
 	sys-kernel/linux-firmware
