@@ -8,6 +8,7 @@ livecd/use:
 
 livecd/packages:
 	dev-util/cmake
+	dev-util/meson
 	dev-util/ninja
 	gui-wm/sway
 	sys-apps/usbutils
@@ -18,5 +19,6 @@ livecd/packages:
 	sys-fs/dosfstools
 	sys-kernel/linux-firmware
 	www-client/firefox
+	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	x11-terms/alacritty
