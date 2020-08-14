@@ -1,3 +1,5 @@
 www-client/firefox
 www-client/chromium
+=media-libs/harfbuzz-2.7.0
+=media-libs/libvpx-1.9.0
 media-video/obs-studio
