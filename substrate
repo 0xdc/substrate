@@ -44,7 +44,7 @@ for combo in $targets; do
 	stage=$( cut -d: -f2 <<<$combo)
 
 	# Skip a build if it already exists
-	test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.xz && continue
+	test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.bz2 && continue
 
 	# If a Makefile exists for the target, run the default target
 	test -f $BUILDS_DIR/$target/Makefile && make -C $BUILDS_DIR/$target
@@ -67,7 +67,7 @@ for combo in $targets; do
 		}
 		stage=$(awk '/^target:/{print$2}' $tempstage)
 		# redo the build check since the stage is now different
-		test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.xz && continue
+		test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date.tar.bz2 && continue
 	else
 		tee -a $tempstage <<<"target: $stage"
 		grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
@@ -90,7 +90,7 @@ for combo in $targets; do
 		# XXX: do we need a symlink to these isos? probably not
 		tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$iso"
 	else
-		(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream$rel-$date.tar.xz $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.xz)
-		tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$stage-$upstream$rel-$date.tar.xz"
+		(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream$rel-$date.tar.bz2 $BUILDS_DIR/$target/$stage-$upstream$rel-latest.tar.bz2)
+		tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$stage-$upstream$rel-$date.tar.bz2"
 	fi
 done
