@@ -15,9 +15,7 @@ livecd/root_overlay: @REPO_DIR@/root_overlays/livecd
 livecd/volid: roflmaOS amd64 @latest@
 
 livecd/unmerge:
-	sys-apps/memtest86+
-	sys-boot/shim
-	sys-boot/syslinux
+	sys-firmware/intel-microcode
 
 livecd/rm:
 	/etc/machine-id
