@@ -7,3 +7,4 @@ livecd/packages:
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
 	sys-fs/squashfs-tools
+	sys-kernel/linux-firmware
