@@ -3,7 +3,5 @@ source_subpath: amd64/systemd/stage4-amd64-systemd-latest
 portage_confdir: @REPO_DIR@/confdirs/livecd
 
 livecd/packages:
-	sys-firmware/intel-microcode
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
-	sys-kernel/linux-firmware
