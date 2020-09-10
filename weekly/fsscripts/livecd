@@ -1,5 +1,7 @@
 #!/bin/bash -x
 
+test "${clst_livecd_unmerge}" || emerge --depclean --with-bdeps=n
+
 sed -i '/^root:/s/:\*:/::/' /etc/shadow
 echo ttyS0 >> /etc/securetty
 systemctl preset-all
