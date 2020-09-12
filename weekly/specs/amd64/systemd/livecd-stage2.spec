@@ -13,6 +13,7 @@ livecd/fstype: squashfs
 livecd/gk_mainargs: --all-ramdisk-modules --symlink
 livecd/iso: roflmaOS-@latest@.iso
 livecd/root_overlay: @REPO_DIR@/root_overlays/livecd
+livecd/verify: yes
 livecd/volid: roflmaOS amd64 @latest@
 
 livecd/rm:
