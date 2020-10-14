@@ -4,10 +4,11 @@ www-client/google-chrome-beta ~amd64
 www-client/google-chrome-unstable ~amd64
 
 # www-client/firefox
-=dev-libs/nspr-4.21 ~amd64
+=dev-libs/nspr-4.29 ~amd64
 =dev-util/cbindgen-0.9.0 ~amd64
 # networkmanager
-=dev-libs/nss-3.45 ~amd64
-=media-libs/harfbuzz-2.5.3 ~amd64
+=dev-libs/nss-3.57 ~amd64
+=media-libs/harfbuzz-2.7.2 ~amd64
 # www-client/chromium
 =dev-util/gn-0.1463 ~amd64
+=media-libs/libvpx-1.9.0 ~amd64
