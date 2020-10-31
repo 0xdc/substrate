@@ -8,7 +8,7 @@ boot/kernel/gentoo/console: ttyS0
 livecd/bootargs: dokeymap overlayfs verify
 livecd/cdtar: @REPO_DIR@/../builds/amd64/systemd/@latest@/livecd-stage2-amd64-systemd-@latest@.tar.bz2
 livecd/fstype: squashfs
-livecd/fsops: -comp xz
+livecd/fsops: -comp xz -Xbcj x86
 livecd/iso: roflmaOS-@latest@.iso
 livecd/verify: yes
 livecd/volid: roflmaOS amd64 @latest@
