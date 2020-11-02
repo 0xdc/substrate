@@ -6,19 +6,5 @@ compression_mode: lbzip2
 boot/kernel: gentoo
 boot/kernel/gentoo/sources: gentoo-sources
 boot/kernel/gentoo/config: @REPO_DIR@/kconfig.amd64
-boot/kernel/gentoo/console: ttyS0
 
-livecd/bootargs: dokeymap overlayfs
-livecd/fsscript: @REPO_DIR@/fsscripts/livecd
-livecd/fstype: squashfs
-livecd/gk_mainargs: --all-ramdisk-modules --symlink
-livecd/iso: roflmaOS-@latest@.iso
-livecd/root_overlay: @REPO_DIR@/root_overlays/livecd
-livecd/verify: yes
-livecd/volid: roflmaOS amd64 @latest@
-
-livecd/rm:
-	/etc/machine-id
-
-livecd/empty:
-	/usr/src
+livecd/gk_mainargs: --all-ramdisk-modules --symlink --b2sum

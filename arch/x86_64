@@ -11,6 +11,7 @@ targets=(
 
 	systemd:livecd-stage1
 	systemd:livecd-stage2
+	systemd:livecd-stage3
 
 	#https://bugs.gentoo.org/688330
 	sso:stage4
