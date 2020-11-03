@@ -74,7 +74,7 @@ for combo in $targets; do
 	else
 		tee -a $tempstage <<<"target: $stage"
 		grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
-		if test "$stage" = "livecd-stage2"; then
+		if test "$stage" = "livecd-stage3"; then
 			iso=$(awk '/^livecd\/iso:/{print$2}' $tempstage)
 			test -f $BUILDS_DIR/$target/$date/$iso && continue
 		fi
@@ -89,7 +89,7 @@ for combo in $targets; do
 
 	rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest*
 	echo -n "$BUILDS_DIR/$target/"
-	if test "$stage" = "livecd-stage2"; then
+	if test "$stage" = "livecd-stage3"; then
 		# XXX: do we need a symlink to these isos? probably not
 		tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$iso"
 	else
