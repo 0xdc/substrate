@@ -59,6 +59,7 @@ for combo in $targets; do
 
 	# Enable single shared package cache
 	tee -a $tempstage <<<"pkgcache_path: ${BASE_DIR}/packages/${upstream}"
+	tee -a $tempstage <<<"kerncache_path: ${BASE_DIR}/kerncache/${upstream}"
 	# add subarch and target
 	tee -a $tempstage <<<"subarch: $upstream$subarch"
 	if grep -q "target:" $tempstage; then
