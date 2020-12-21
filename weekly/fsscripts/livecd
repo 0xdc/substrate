@@ -13,6 +13,7 @@ ln -sv /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 mkdir /etc/portage/repos.conf
 echo > /etc/machine-id
 
+test -d /home || mkdir /home
 umask 0077
 test -d /root || mkdir /root
 
