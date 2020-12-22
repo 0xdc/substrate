@@ -3,12 +3,14 @@ source_subpath: amd64/systemd/stage3-amd64-systemd-latest
 
 embedded/packages:
 	app-arch/tar
-	app-crypt/gnupg
+	app-crypt/gnupg[usb]
 	net-misc/casync[-fuse]
 	net-misc/rsync
 	net-wireless/wpa_supplicant
-	sys-apps/systemd[cryptsetup,gnuefi,repart]
 	sys-apps/shadow
+	sys-apps/smartmontools
+	sys-apps/systemd[cryptsetup,gnuefi,repart]
 	sys-apps/util-linux
+	sys-devel/gcc
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
