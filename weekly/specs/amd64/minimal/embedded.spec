@@ -5,6 +5,7 @@ embedded/packages:
 	app-arch/tar
 	app-crypt/gnupg[usb]
 	net-misc/casync[-fuse]
+	net-misc/openssh[security-key]
 	net-misc/rsync
 	net-wireless/wpa_supplicant
 	sys-apps/shadow

@@ -3,9 +3,7 @@ profile: not-necessary
 
 
 boot/kernel: gentoo
-boot/kernel/gentoo/console: ttyS0
 
-livecd/bootargs: dokeymap overlayfs verify
 livecd/cdtar: @REPO_DIR@/../builds/amd64/minimal/@latest@/livecd-stage2-amd64-minimal-@latest@.tar.bz2
 livecd/fsscript: @REPO_DIR@/fsscripts/livecd
 livecd/fstype: squashfs
