@@ -28,4 +28,10 @@ targets=(
 	dev:stage4
 )
 
+case "$date" in
+*01)
+	targets+=( browsers:stage4 )
+	;;
+esac
+
 upstream="$arch"
