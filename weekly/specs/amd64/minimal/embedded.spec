@@ -4,6 +4,7 @@ source_subpath: amd64/systemd/stage3-amd64-systemd-latest
 embedded/packages:
 	app-arch/tar
 	app-crypt/gnupg[usb]
+	app-editors/vim
 	net-misc/casync[-fuse]
 	net-misc/openssh[security-key]
 	net-misc/rsync
