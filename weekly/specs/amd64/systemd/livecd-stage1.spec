@@ -7,13 +7,15 @@ livecd/use:
 	video_cards_i965
 
 livecd/packages:
+	app-emulation/libvirt
 	dev-util/cmake
 	dev-util/meson
 	dev-util/ninja
 	gui-wm/sway
+	media-video/obs-studio
+	sys-apps/smartmontools
 	sys-apps/usbutils
 	sys-boot/efibootmgr
-	media-video/obs-studio
 	sys-firmware/intel-microcode
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
