@@ -19,18 +19,21 @@ targets=(
 	minimal:embedded
 	minimal:livecd-stage2
 	minimal:livecd-stage3
-
-	plasma:stage2
-	plasma:stage3
-	plasma:stage4
-
-	plasma-sso:stage4
-	dev:stage4
 )
 
 case "$date" in
 *01)
-	targets+=( browsers:stage4 )
+	targets+=(
+		dev:stage4
+
+		plasma:stage2
+		plasma:stage3
+		plasma:stage4
+
+		plasma-sso:stage4
+
+		browsers:stage4
+	)
 	;;
 esac
 
