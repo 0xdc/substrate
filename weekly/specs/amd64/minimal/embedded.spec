@@ -10,7 +10,7 @@ embedded/packages:
 	net-misc/rsync
 	net-wireless/wpa_supplicant
 	sys-apps/shadow
-	sys-apps/smartmontools
+	sys-apps/smartmontools[-daemon]
 	sys-apps/systemd[cryptsetup,gnuefi,repart]
 	sys-apps/util-linux
 	sys-boot/efibootmgr
