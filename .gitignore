@@ -1,4 +1,4 @@
-builds/*/*/*tar.bz2*
+builds/*/*/*.tar.*
 builds/*/*/*/
 builds/*/*/*.txt
 kerncache/
