@@ -4,7 +4,6 @@ targets=(
 	systemd:stage2
 	systemd:stage3
 
-	openstack:python
 	minimal:nginx
 	router:stage1
 	systemd:stage4
@@ -21,7 +20,7 @@ targets=(
 	minimal:livecd-stage3
 )
 
-case "$date" in
+case "${date}" in
 *01)
 	targets+=(
 		dev:stage4
@@ -34,6 +33,8 @@ case "$date" in
 
 		browsers:stage4
 	)
+*)
+	targets+=( openstack:controller )
 	;;
 esac
 
