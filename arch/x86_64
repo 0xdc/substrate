@@ -4,7 +4,6 @@ targets=(
 	systemd:stage2
 	systemd:stage3
 
-	openstack:controller
 	minimal:nginx
 	router:stage1
 	systemd:stage4
@@ -12,5 +11,13 @@ targets=(
 	#https://bugs.gentoo.org/688330
 	sso:stage4
 )
+
+case "${date}" in
+*01)
+	;;
+*)
+	targets+=( openstack:controller )
+	;;
+esac
 
 upstream="$arch"
