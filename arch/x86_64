@@ -33,6 +33,7 @@ case "${date}" in
 
 		browsers:stage4
 	)
+	;;
 *)
 	targets+=( openstack:controller )
 	;;
