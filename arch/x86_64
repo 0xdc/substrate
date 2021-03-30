@@ -4,6 +4,8 @@ targets=(
 	systemd:stage2
 	systemd:stage3
 
+	minimal:embedded
+
 	minimal:nginx
 	router:stage1
 	systemd:stage4
