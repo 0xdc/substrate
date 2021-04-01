@@ -4,7 +4,8 @@ targets=(
 	systemd:stage2
 	systemd:stage3
 
-	openstack:python
+	minimal:embedded
+
 	minimal:nginx
 	router:stage1
 	systemd:stage4
@@ -13,4 +14,19 @@ targets=(
 	sso:stage4
 )
 
+case "${date}" in
+*01)
+	;;
+*)
+	targets+=( openstack:controller )
+	;;
+esac
+
 upstream="$arch"
+
+case "$(hostname)" in
+pulsar)
+	test -d ${BASE_DIR}/tmp || mkdir ${BASE_DIR}/tmp
+	mountpoint -q ${BASE_DIR}/tmp || mount -t tmpfs -o size=95% tmpfs ${BASE_DIR}/tmp
+	;;
+esac
