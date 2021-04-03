@@ -4,7 +4,7 @@ targets=(
 	systemd:stage2
 	systemd:stage3
 
-	minimal:embedded
+	openstack:controller
 
 	minimal:nginx
 	router:stage1
@@ -35,9 +35,6 @@ case "${date}" in
 
 		browsers:stage4
 	)
-	;;
-*)
-	targets+=( openstack:controller )
 	;;
 esac
 
