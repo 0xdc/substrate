@@ -10,6 +10,8 @@ embedded/packages:
 	net-misc/openssh
 	net-misc/rsync
 	net-wireless/wpa_supplicant
+	sys-apps/findutils
+	sys-apps/kexec-tools
 	sys-apps/shadow
 	sys-apps/smartmontools
 	sys-apps/systemd
@@ -18,3 +20,4 @@ embedded/packages:
 	sys-devel/gcc
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
+	sys-kernel/dracut
