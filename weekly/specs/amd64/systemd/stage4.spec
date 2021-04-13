@@ -9,8 +9,8 @@ stage4/packages:
 	app-shells/bash-completion
 	dev-vcs/git
 	net-libs/nodejs
-	sys-apps/iproute2
 	net-firewall/nftables
+	sys-apps/iproute2
 	sys-devel/bc
 	sys-kernel/dracut
 	sys-process/htop
