@@ -10,15 +10,14 @@ coproc dracut -f /tmp/initramfs-$(uname -r).img
 systemd-repart --empty=allow --definitions $(dirname $0) "$@"
 
 cmdline=(
-	rw
-	quiet
-
 	# since we kexec, we cannot use discoverable partitions
 	# cannot use encrypted root unless we discover the UUID
-	root=LABEL=root-x86-64
+	root=PARTLABEL=root-x86-64
 
 	# save the console tty
 	$(egrep -o 'console=[^ ]*' /proc/cmdline)
+
+	systemd.volatile=overlay
 )
 
 kexec_args=(
