@@ -1,0 +1,19 @@
+pkg_preinst() {
+	# modify the systemd pre_inst function
+	# to match baselayout's merged-usr
+	if ! use split-usr; then
+		local dir
+		for dir in bin sbin usr/sbin; do
+			if [[ ! ${EROOT}/${dir} -ef ${EROOT}/usr/bin ]]; then
+				eerror "\"${EROOT}/${dir}\" and \"${EROOT}/usr/bin\" are not merged."
+				eerror "One of them should be a symbolic link to the other one."
+				FAIL=1
+			fi
+		done
+		if [[ ${FAIL} ]]; then
+			eerror "Migration to system layout with merged directories must be performed before"
+			eerror "rebuilding ${CATEGORY}/${PN} with USE=\"-split-usr\" to avoid run-time breakage."
+			die "System layout with split directories still used"
+		fi
+	fi
+}

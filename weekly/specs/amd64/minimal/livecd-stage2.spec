@@ -8,5 +8,5 @@ boot/kernel/gentoo/sources: gentoo-sources
 boot/kernel/gentoo/config: @REPO_DIR@/kconfig.amd64
 boot/kernel/gentoo/console: ttyS0
 
-livecd/bootargs: dokeymap verify
+livecd/bootargs: dokeymap verify real_root=/usr/lib/systemd/systemd
 livecd/gk_mainargs: --all-ramdisk-modules --symlink --b2sum
