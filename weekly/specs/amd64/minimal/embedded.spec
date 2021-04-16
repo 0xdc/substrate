@@ -14,7 +14,6 @@ embedded/packages:
 	sys-apps/kexec-tools
 	sys-apps/shadow
 	sys-apps/smartmontools
-	sys-apps/systemd
 	sys-apps/util-linux
 	sys-boot/efibootmgr
 	sys-devel/gcc

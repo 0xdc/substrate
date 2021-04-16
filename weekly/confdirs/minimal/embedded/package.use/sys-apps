@@ -1,2 +1,2 @@
 sys-apps/smartmontools -daemon
-sys-apps/systemd cryptsetup gnuefi repart
+sys-apps/systemd cryptsetup curl gnuefi homed importd lzma repart
