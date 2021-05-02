@@ -12,6 +12,10 @@ targets=(
 
 	#https://bugs.gentoo.org/688330
 	sso:stage4
+
+	mergeusr:stage1
+	mergeusr:stage2
+	mergeusr:stage3
 )
 
 upstream="$arch"
