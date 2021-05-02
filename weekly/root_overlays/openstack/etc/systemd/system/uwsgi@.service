@@ -8,6 +8,7 @@ KillSignal=SIGTERM
 StateDirectory=%I
 User=%I
 WorkingDirectory=/etc/%I
+Environment="WRAPT_DISABLE_EXTENSIONS=1"
 
 [Install]
 WantedBy=multi-user.target
