@@ -2,7 +2,7 @@ builds/*/*/*.tar.*
 builds/*/*/*/
 builds/*/*/*.txt
 kerncache/
-packages/
+packages
 snapshot_cache/
 snapshots
 tmp/
