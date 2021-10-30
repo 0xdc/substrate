@@ -6,6 +6,6 @@ account  sufficient pam_unix.so
 account  sufficient pam_systemd_home.so
 account  required   pam_deny.so
 
-password required   pam_passwdqc.so
+password required   pam_passwdqc.so config=/etc/security/passwdqc.conf
 password sufficient pam_unix.so try_first_pass use_authtok sha512 shadow
 password required   pam_deny.so
