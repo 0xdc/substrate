@@ -1,3 +1,4 @@
+sys-apps/smartmontools -daemon
 sys-apps/systemd gnuefi policykit cryptsetup importd curl lzma
 >=sys-apps/systemd-245 homed pkcs11 repart
 >=sys-apps/systemd-248 tpm
