@@ -35,6 +35,10 @@ case "${date}" in
 		plasma:stage3
 		plasma:stage4
 
+		plasma:livecd-stage1
+		plasma:livecd-stage2
+		plasma:livecd-stage3
+
 		plasma-sso:stage4
 
 		browsers:stage4
