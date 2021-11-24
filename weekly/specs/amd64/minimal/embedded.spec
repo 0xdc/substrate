@@ -12,7 +12,6 @@ embedded/packages:
 	net-wireless/wpa_supplicant
 	sys-apps/findutils
 	sys-apps/kexec-tools
-	sys-apps/shadow
 	sys-apps/smartmontools
 	sys-apps/util-linux
 	sys-boot/efibootmgr
