@@ -15,7 +15,6 @@ embedded/packages:
 	sys-apps/smartmontools
 	sys-apps/util-linux
 	sys-boot/efibootmgr
-	sys-devel/gcc
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
 	sys-kernel/dracut
