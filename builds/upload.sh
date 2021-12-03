@@ -2,8 +2,18 @@
 
 set -e
 
-which openstack
-test "$OS_CLOUD" = "envvars" || (test -f /etc/openstack/clouds.yaml || test -f ~/.config/openstack/clouds.yaml )
+if test "$1" == "-s"; then
+	which swift
+	test "$ST_AUTH"
+	test "$ST_USER"
+	test "$ST_KEY"
+	uploader="swift upload"
+	# to make it public: swift post -r '.r:*' $container
+else
+	which openstack
+	test "$OS_CLOUD" = "envvars" || (test -f /etc/openstack/clouds.yaml || test -f ~/.config/openstack/clouds.yaml )
+	uploader="openstack object create"
+fi
 
 pushd $(dirname $0)
 
@@ -46,4 +56,4 @@ for dir in */*/*/; do
 	popd
 done
 
-find */*/*/ */*/*.txt "${f[@]}" -o -name 'SHA256SUMS*' | xargs --no-run-if-empty openstack object create builds
+find */*/*/ */*/*.txt "${f[@]}" -o -name 'SHA256SUMS*' | xargs --no-run-if-empty $uploader builds
