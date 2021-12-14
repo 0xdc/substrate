@@ -3,6 +3,7 @@ source_subpath: amd64/plasma/stage4-amd64-plasma-latest
 portage_confdir: @REPO_DIR@/confdirs/livecd
 
 livecd/use:
+	ibus
 	pulseaudio
 
 livecd/packages:
