@@ -12,3 +12,5 @@ livecd/packages:
 	sys-boot/efibootmgr
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
+
+livecd/depclean: yes
