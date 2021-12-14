@@ -85,8 +85,11 @@ for combo in $targets; do
 	tee -a $tempstage <<<"snapshot_treeish: $date.lzo"
 	(test -n "$cflags" && ! grep -q common_flags: $tempstage) && tee -a $tempstage <<<"common_flags: $cflags"
 
+	extraargs=()
+	test "$stage" = "livecd-stage1" && extraargs+=( -C livecd/unmerge= )
+
 	test -d "$BASE_DIR/logs/$target" || mkdir -p "$BASE_DIR/logs/$target"
-	$catalyst -f $tempstage |& tee $BASE_DIR/logs/$target/$stage-$upstream$rel-$date.log
+	$catalyst -f $tempstage ${extraargs[*]} |& tee $BASE_DIR/logs/$target/$stage-$upstream$rel-$date.log
 
 	rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest*
 	echo -n "$BUILDS_DIR/$target/"
