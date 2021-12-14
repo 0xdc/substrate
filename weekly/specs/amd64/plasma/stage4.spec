@@ -5,14 +5,12 @@ source_subpath: amd64/plasma/stage3-amd64-plasma-latest
 stage4/packages:
 	app-admin/ansible
 	app-editors/vim
-	app-emulation/virt-manager
 	app-eselect/eselect-repository
 	app-shells/bash-completion
 	dev-vcs/git
 	kde-plasma/plasma-meta
 	kde-apps/dolphin
 	kde-apps/konsole
-	net-libs/nodejs
 	sys-apps/iproute2
 	sys-kernel/dracut
 	sys-process/htop

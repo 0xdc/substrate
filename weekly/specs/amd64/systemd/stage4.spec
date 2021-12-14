@@ -8,7 +8,6 @@ stage4/packages:
 	app-eselect/eselect-repository
 	app-shells/bash-completion
 	dev-vcs/git
-	net-libs/nodejs
 	net-firewall/nftables
 	sys-apps/iproute2
 	sys-devel/bc
