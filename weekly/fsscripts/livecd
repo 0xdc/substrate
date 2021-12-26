@@ -1,0 +1,20 @@
+#!/bin/bash -x
+
+test "${clst_livecd_unmerge}" || emerge --depclean --with-bdeps=n
+
+sed -i '/^root:/s/:\*:/::/' /etc/shadow
+echo ttyS0 >> /etc/securetty
+systemctl preset-all
+systemctl enable lvm2-lvmetad.socket
+
+rm -v /etc/resolv.conf
+ln -sv /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
+mkdir /etc/portage/repos.conf
+echo > /etc/machine-id
+
+test -d /home || mkdir /home
+umask 0077
+test -d /root || mkdir /root
+
+exit 0

@@ -1,0 +1,2 @@
+>=sys-auth/pambase-20200304 elogind
+>=sys-auth/polkit-0.116-r1::gentoo elogind
