@@ -19,6 +19,8 @@ targets=(
 	hardfp:stage3
 	ella:stage4
 	hardfp:stage4
+
+	xorg:stage4
 )
 
 upstream="${arch}"
