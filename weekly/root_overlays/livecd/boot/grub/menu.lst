@@ -1,0 +1,7 @@
+default 0
+timeout 0
+
+title roflmaOS
+	root (hd0,0)
+	kernel /kernel console=ttyS0 quiet rw real_root=LABEL=roflmaOS
+	initrd /initramfs

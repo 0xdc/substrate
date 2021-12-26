@@ -25,12 +25,18 @@ f=(
 		! -name '*stage1-amd64-systemd*'
 		-a
 		! -name '*stage1-armv7a_hardfp*'
+		-a
+		! -name 'livecd-stage*'
 	\)
 	-a
 	\(
 		-name '*stage[134]-*'
 		-o
 		-name '*embedded-*'
+		-o
+		-name '*.iso*'
+		-o
+		-name 'latest-livecd-stage3-*.txt'
 	\)
 )
 
@@ -56,4 +62,4 @@ for dir in */*/*/; do
 	popd
 done
 
-find */*/*/ */*/*.txt "${f[@]}" -o -name 'SHA256SUMS*' | xargs --no-run-if-empty $uploader builds
+find */*/*/ */*/*.txt "${f[@]}" -o -name 'SHA256SUMS*' | xargs --no-run-if-empty $uploader bindist

@@ -59,6 +59,7 @@ for combo in $targets; do
 
 	# Enable single shared package cache
 	tee -a $tempstage <<<"pkgcache_path: ${BASE_DIR}/packages/${upstream}"
+	tee -a $tempstage <<<"kerncache_path: ${BASE_DIR}/kerncache/${upstream}"
 	# add subarch and target
 	tee -a $tempstage <<<"subarch: $upstream$subarch"
 	if grep -q "target:" $tempstage; then
@@ -74,7 +75,7 @@ for combo in $targets; do
 	else
 		tee -a $tempstage <<<"target: $stage"
 		grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
-		if test "$stage" = "livecd-stage2"; then
+		if test "$stage" = "livecd-stage3"; then
 			iso=$(awk '/^livecd\/iso:/{print$2}' $tempstage)
 			test -f $BUILDS_DIR/$target/$date/$iso && continue
 		fi
@@ -84,12 +85,15 @@ for combo in $targets; do
 	tee -a $tempstage <<<"snapshot_treeish: $date.lzo"
 	(test -n "$cflags" && ! grep -q common_flags: $tempstage) && tee -a $tempstage <<<"common_flags: $cflags"
 
+	extraargs=()
+	test "$stage" = "livecd-stage1" && extraargs+=( -C livecd/unmerge= )
+
 	test -d "$BASE_DIR/logs/$target" || mkdir -p "$BASE_DIR/logs/$target"
-	$catalyst -f $tempstage |& tee $BASE_DIR/logs/$target/$stage-$upstream$rel-$date.log
+	$catalyst -f $tempstage ${extraargs[*]} |& tee $BASE_DIR/logs/$target/$stage-$upstream$rel-$date.log
 
 	rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest*
 	echo -n "$BUILDS_DIR/$target/"
-	if test "$stage" = "livecd-stage2"; then
+	if test "$stage" = "livecd-stage3"; then
 		# XXX: do we need a symlink to these isos? probably not
 		tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$iso"
 	else
