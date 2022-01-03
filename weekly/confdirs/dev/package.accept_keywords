@@ -1,0 +1,18 @@
+# required by dev-python/pipenv (argument)
+=dev-python/pipenv-2021.11.9::gentoo ~amd64
+# required by dev-python/pew-1.1.1::gentoo
+# required by dev-python/pipenv-9.0.0-r2::gentoo
+# required by dev-python/pipenv (argument)
+=dev-python/pythonz-bd-1.11.4 ~amd64
+# required by dev-python/pythonz-bd-1.11.4::gentoo[-python_targets_python3_4,python_targets_python3_6,-python_targets_python3_5]
+# required by dev-python/pew-1.1.1::gentoo
+# required by dev-python/pipenv-9.0.0-r2::gentoo
+# required by dev-python/pipenv (argument)
+=dev-python/resumable-urlretrieve-0.1.5 ~amd64
+# required by dev-python/pew-1.1.1::gentoo
+# required by dev-python/pipenv-9.0.0-r2::gentoo
+# required by dev-python/pipenv (argument)
+=dev-python/shutilwhich-1.1.0 ~amd64
+# required by dev-python/pipenv-9.0.0-r2::gentoo
+# required by dev-python/pipenv (argument)
+=dev-python/pew-1.1.1 ~amd64

@@ -1,0 +1,25 @@
+if [ "${EUID-}" != "0" ] && [ "${USER-}" != "root" ] ; then
+	# Only regular users please
+
+	if test -z "${SSH_AUTH_SOCK}"; then
+		# no ssh forwarding
+		# are we in ssh?
+		if test -z "${SSH_CLIENT}"; then
+			# nope, probably local machine, use gpg-agent
+			socketdir=$(gpgconf --list-dir socketdir)
+			if test -S ${socketdir}/S.gpg-agent.ssh; then
+				export SSH_AUTH_SOCK=${socketdir}/S.gpg-agent.ssh
+			else
+				eval $(gpg-agent --enable-ssh-support --daemon)
+			fi
+
+			ssh() {
+				GPG_TTY=$(tty) export GPG_TTY
+
+				echo UPDATESTARTUPTTY | gpg-connect-agent >/dev/null
+
+				$(which ssh) $@
+			}
+		fi
+	fi
+fi
