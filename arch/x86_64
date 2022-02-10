@@ -4,15 +4,7 @@ targets=(
 	systemd:stage2
 	systemd:stage3
 
-	openstack:controller
-
-	minimal:nginx
 	router:stage1
-	systemd:stage4
-
-	systemd:livecd-stage1
-	systemd:livecd-stage2
-	systemd:livecd-stage3
 
 	mergeusr:stage1
 	mergeusr:stage2
@@ -21,21 +13,6 @@ targets=(
 	minimal:embedded
 	minimal:livecd-stage2
 	minimal:livecd-stage3
-
-	plasma:stage2
-	plasma:stage3
-	plasma:stage4
-
-	plasma:livecd-stage1
-	plasma:livecd-stage2
-	plasma:livecd-stage3
-
-	#https://bugs.gentoo.org/688330
-	sso:stage4
-
-	dev:stage4
-
-	plasma-sso:stage4
 )
 
 upstream="$arch"
