@@ -5,6 +5,7 @@ targets=(
 	systemd:stage3
 
 	router:stage1
+	systemd:stage4
 
 	mergeusr:stage1
 	mergeusr:stage2
