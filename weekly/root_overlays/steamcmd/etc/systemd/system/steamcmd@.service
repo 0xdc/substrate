@@ -1,0 +1,14 @@
+[Unit]
+Description=Run a tool via SteamCMD
+Documentation=https://developer.valvesoftware.com/wiki/SteamCMD
+
+[Service]
+User=steamcmd
+Group=steamcmd
+WorkingDirectory=/opt/steamcmd
+TimeoutSec=3600
+ExecStartPre=/opt/steamcmd/steamcmd.sh +force_install_dir %I +login anonymous +app_update %I validate +quit
+#Add the tool exec line in an override
+
+[Install]
+WantedBy=multi-user.target

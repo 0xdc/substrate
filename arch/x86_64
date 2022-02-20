@@ -7,6 +7,7 @@ targets=(
 	openstack:controller
 
 	minimal:nginx
+	minimal:steamcmd
 	router:stage1
 	systemd:stage4
 
