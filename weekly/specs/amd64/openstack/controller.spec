@@ -5,17 +5,17 @@ target: embedded
 
 embedded/root_overlay: @REPO_DIR@/root_overlays/openstack
 
-# tcc: to build python C extensions from pip
+# gcc: to build python C extensions from pip
 # liberasurecode: required for swift
 # git: download horizon source, or bleeding edge pips
-# linux-headers: headers for tcc builds
+# linux-headers: headers for gcc builds
 # rabbit: message queue
 # uwsgi: (dev) web server for api services
 #        pulls in python
 embedded/packages:
-	dev-lang/tcc
 	dev-libs/liberasurecode
 	dev-vcs/git
+	sys-devel/gcc
 	sys-kernel/linux-headers
 	>=net-misc/rabbitmq-server-3.7.24
 	www-servers/uwsgi
