@@ -5,9 +5,12 @@ target: embedded
 
 embedded/root_overlay: @REPO_DIR@/root_overlays/openstack
 
-# gcc: to build python C extensions from pip
 # liberasurecode: required for swift
 # git: download horizon source, or bleeding edge pips
+# coreutils: useful utils (e.g. mkdir, ls)
+# sed: used by rabbitctl
+# binutils: allows gcc to link binaries
+# gcc: to build python C extensions from pip
 # linux-headers: headers for gcc builds
 # rabbit: message queue
 # uwsgi: (dev) web server for api services
@@ -15,6 +18,10 @@ embedded/root_overlay: @REPO_DIR@/root_overlays/openstack
 embedded/packages:
 	dev-libs/liberasurecode
 	dev-vcs/git
+	sys-apps/coreutils
+	sys-apps/iproute2
+	sys-apps/sed
+	sys-devel/binutils
 	sys-devel/gcc
 	sys-kernel/linux-headers
 	>=net-misc/rabbitmq-server-3.7.24
