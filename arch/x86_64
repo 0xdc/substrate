@@ -22,21 +22,26 @@ targets=(
 	minimal:livecd-stage2
 	minimal:livecd-stage3
 
-	plasma:stage2
-	plasma:stage3
-	plasma:stage4
-
-	plasma:livecd-stage1
-	plasma:livecd-stage2
-	plasma:livecd-stage3
-
 	#https://bugs.gentoo.org/688330
 	sso:stage4
 
 	dev:stage4
-
-	plasma-sso:stage4
 )
+
+case "${date}" in
+*01)
+	targets+=(
+		plasma:stage2
+		plasma:stage3
+		plasma:stage4
+
+		plasma:livecd-stage1
+		plasma:livecd-stage2
+		plasma:livecd-stage3
+
+		plasma-sso:stage4
+	)
+esac
 
 upstream="$arch"
 
