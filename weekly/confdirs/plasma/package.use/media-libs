@@ -1,2 +1,4 @@
 # www-client/firefox
 media-libs/libvpx postproc
+
+>=media-libs/libsndfile-1.1.0-r1 minimal
