@@ -1,4 +1,4 @@
-profile: default/linux/amd64/17.1/systemd
+profile: default/linux/amd64/17.1/no-multilib/systemd
 source_subpath: amd64/systemd/stage4-amd64-systemd-latest
 portage_confdir: @REPO_DIR@/confdirs/livecd
 
