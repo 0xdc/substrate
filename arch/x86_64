@@ -4,10 +4,6 @@ targets=(
 	systemd:stage2
 	systemd:stage3
 
-	openstack:controller
-
-	minimal:nginx
-	router:stage1
 	systemd:stage4
 
 	systemd:livecd-stage1
@@ -26,6 +22,10 @@ targets=(
 	minimal:livecd-stage2
 	minimal:livecd-stage3
 
+	openstack:controller
+	router:stage1
+
+	minimal:nginx
 	minimal:murmur
 
 	#https://bugs.gentoo.org/688330
