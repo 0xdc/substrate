@@ -14,6 +14,10 @@ targets=(
 	systemd:livecd-stage2
 	systemd:livecd-stage3
 
+	no-multilib:stage1
+	no-multilib:stage2
+	no-multilib:stage3
+
 	mergeusr:stage1
 	mergeusr:stage2
 	mergeusr:stage3
