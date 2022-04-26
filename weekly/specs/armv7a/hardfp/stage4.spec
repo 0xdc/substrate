@@ -8,6 +8,7 @@ stage4/packages:
 	app-shells/bash-completion
 	dev-embedded/u-boot-tools
 	dev-vcs/git
+	sys-apps/busybox
 	sys-apps/dtc
 	sys-boot/vboot-utils
 	sys-devel/bc
