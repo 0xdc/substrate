@@ -40,8 +40,13 @@ catalyst="${BASE_DIR}/catalyst/bin/catalyst.git --log-level info -c $cataconf"
 
 for combo in $targets; do
 	target=$(cut -d: -f1 <<<$combo)
-	rel=${subarch:--$target}
 	stage=$( cut -d: -f2 <<<$combo)
+	case "${upstream}${target}" in
+	amd64default) ;;
+	armv7ahardfp) rel="${subarch}" ;;
+	armv7a*) rel="${subarch}-${target}" ;;
+	*) rel=${subarch:--$target} ;;
+	esac
 
 	compression_mode=$(awk '/^compression_mode:/{print$2}' $REPO_DIR/specs/$upstream/$target/$stage.spec)
 	ext=$($BASE_DIR/compress_ext.py $compression_mode)
