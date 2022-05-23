@@ -1,10 +1,6 @@
 #!/bin/bash -x
 
-if which systemd-firstboot; then
-	systemd-firstboot --root=${clst_root_path:-/} --delete-root-password
-else
-	sed -i '/^root:/s/:\*:/::/' ${clst_root_path}/etc/shadow
-fi
+sed -i '/^root:/s/:\*:/::/' ${clst_root_path}/etc/shadow
 
 echo ttyS0 >> ${clst_root_path}/etc/securetty
 systemctl --root=${clst_root_path:-/} preset-all
