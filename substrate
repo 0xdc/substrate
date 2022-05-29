@@ -51,16 +51,21 @@ for combo in $targets; do
 	compression_mode=$(awk '/^compression_mode:/{print$2}' $REPO_DIR/specs/$upstream/$target/$stage.spec)
 	ext=$($BASE_DIR/compress_ext.py $compression_mode)
 
+	sed "s:@REPO_DIR@:$REPO_DIR:;s/@latest@/$date/g" \
+		$REPO_DIR/specs/$upstream/$target/$stage.spec | \
+		tee $tempstage
+
 	# Skip a build if it already exists
-	test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date$ext && continue
+	if grep -q /iso: $tempstage; then
+		iso=$(awk '$1~/\/iso:/{print$2}' $tempstage)
+		test -f $BUILDS_DIR/$target/$date/$iso && continue
+	else
+		test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date$ext && continue
+	fi
 
 	# If a Makefile exists for the target, run the default target
 	test -f $BUILDS_DIR/$target/Makefile && make -C $BUILDS_DIR/$target
 
-
-	sed "s:@REPO_DIR@:$REPO_DIR:;s/@latest@/$date/g" \
-		$REPO_DIR/specs/$upstream/$target/$stage.spec | \
-		tee $tempstage
 
 	# Enable single shared package cache
 	tee -a $tempstage <<<"pkgcache_path: ${BASE_DIR}/packages/${upstream}"
@@ -80,10 +85,6 @@ for combo in $targets; do
 	else
 		tee -a $tempstage <<<"target: $stage"
 		grep -q version_stamp: $tempstage || tee -a $tempstage <<<"version_stamp: $target-$date"
-	fi
-	if grep -q /iso: $tempstage; then
-		iso=$(awk '$1~/\/iso:/{print$2}' $tempstage)
-		test -f $BUILDS_DIR/$target/$date/$iso && continue
 	fi
 	# append rel_type and snapshot
 	tee -a $tempstage <<<"rel_type: $upstream/$target/$date"
