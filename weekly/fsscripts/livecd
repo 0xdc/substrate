@@ -1,20 +1,27 @@
 #!/bin/bash -x
 
-test "${clst_livecd_unmerge}" || emerge --depclean --with-bdeps=n
+sed -i '/^root:/s/:\*:/::/' ${clst_root_path}/etc/shadow
 
-sed -i '/^root:/s/:\*:/::/' /etc/shadow
-echo ttyS0 >> /etc/securetty
-systemctl preset-all
-systemctl enable lvm2-lvmetad.socket
+echo ttyS0 >> ${clst_root_path}/etc/securetty
+systemctl --root=${clst_root_path:-/} preset-all
+systemctl --root=${clst_root_path:-/} enable lvm2-lvmetad.socket
+systemctl --root=${clst_root_path:-/} disable systemd-repart.service
 
-rm -v /etc/resolv.conf
-ln -sv /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+rm -v ${clst_root_path}/etc/resolv.conf
+ln -sv /run/systemd/resolve/stub-resolv.conf ${clst_root_path}/etc/resolv.conf
 
-mkdir /etc/portage/repos.conf
-echo > /etc/machine-id
+if test -d ${clst_root_path}/etc/portage; then
+	# This should really be created in app-eselect/eselect-repository
+	test -d ${clst_root_path}/etc/portage/repos.conf || mkdir ${clst_root_path}/etc/portage/repos.conf
+fi
 
-test -d /home || mkdir /home
+echo > ${clst_root_path}/etc/machine-id
+
+# dracut uses /proc as a rootfs indicator for squashfs live images
+test -d ${clst_root_path}/proc || mkdir ${clst_root_path}/proc
+
+test -d ${clst_root_path}/home || mkdir ${clst_root_path}/home
 umask 0077
-test -d /root || mkdir /root
+test -d ${clst_root_path}/root || mkdir ${clst_root_path}/root
 
 exit 0
