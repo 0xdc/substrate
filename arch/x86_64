@@ -18,6 +18,8 @@ targets=(
 	mergeusr:stage2
 	mergeusr:stage3
 
+	mergeusr:users
+
 	minimal:embedded
 	minimal:livecd-stage2
 	minimal:livecd-stage3

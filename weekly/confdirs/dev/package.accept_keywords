@@ -1,5 +1,5 @@
 # required by dev-python/pipenv (argument)
-=dev-python/pipenv-2022.5.2-r1::gentoo ~amd64
+=dev-python/pipenv-2022.6.7::gentoo ~amd64
 # required by dev-python/pew-1.1.1::gentoo
 # required by dev-python/pipenv-9.0.0-r2::gentoo
 # required by dev-python/pipenv (argument)
