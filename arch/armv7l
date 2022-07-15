@@ -17,6 +17,7 @@ targets=(
 	systemd:stage1
 	systemd:stage2
 	systemd:stage3
+	systemd:stage4
 
 	hardfp:stage1
 	hardfp:stage2
