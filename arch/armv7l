@@ -16,6 +16,7 @@ esac
 targets=(
 	systemd:stage1
 	systemd:stage2
+	systemd:stage3
 
 	hardfp:stage1
 	hardfp:stage2
