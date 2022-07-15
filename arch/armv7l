@@ -20,6 +20,7 @@ targets=(
 	systemd:stage4
 
 	ella:systemd
+	xorg:systemd
 
 	hardfp:stage1
 	hardfp:stage2
