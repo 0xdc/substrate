@@ -6,12 +6,10 @@ source_subpath: armv7a/systemd/stage3-armv7a_hardfp-systemd-latest
 
 stage4/packages:
 	app-editors/vim
+	app-eselect/eselect-repository
 	app-shells/bash-completion
-	dev-embedded/u-boot-tools
 	dev-vcs/git
 	sys-apps/busybox
-	sys-apps/dtc
-	sys-devel/bc
 	sys-devel/distcc
 	sys-fs/dosfstools
 

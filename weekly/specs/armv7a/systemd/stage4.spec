@@ -5,13 +5,9 @@ portage_confdir: @REPO_DIR@/confdirs/vboot
 
 stage4/packages:
 	app-editors/vim
+	app-eselect/eselect-repository
 	app-shells/bash-completion
-	dev-embedded/u-boot-tools
 	dev-vcs/git
-	sys-apps/busybox
-	sys-apps/dtc
-	sys-boot/vboot-utils
-	sys-devel/bc
 	sys-devel/distcc
 	sys-fs/cryptsetup
 	sys-fs/dosfstools
