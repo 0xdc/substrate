@@ -12,4 +12,4 @@ stage4/packages:
 	sys-fs/dosfstools
 
 stage4/root_overlay: @REPO_DIR@/root_overlays/base
-stage4/fsscript: @REPO_DIR@/fsscripts/livecd
+stage4/fsscript: @REPO_DIR@/fsscripts/stage4
