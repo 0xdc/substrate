@@ -1,0 +1,27 @@
+#!/bin/bash -x
+
+sed -i '/^root:/s/:\*:/::/' ${clst_root_path}/etc/shadow
+
+echo ttyS0 >> ${clst_root_path}/etc/securetty
+systemctl --root=${clst_root_path:-/} preset-all
+systemctl --root=${clst_root_path:-/} enable lvm2-lvmetad.socket
+systemctl --root=${clst_root_path:-/} disable systemd-repart.service
+
+#rm -v ${clst_root_path}/etc/resolv.conf
+#ln -sv /run/systemd/resolve/stub-resolv.conf ${clst_root_path}/etc/resolv.conf
+
+if test -d ${clst_root_path}/etc/portage; then
+	# This should really be created in app-eselect/eselect-repository
+	test -d ${clst_root_path}/etc/portage/repos.conf || mkdir ${clst_root_path}/etc/portage/repos.conf
+fi
+
+echo > ${clst_root_path}/etc/machine-id
+
+# dracut uses /proc as a rootfs indicator for squashfs live images
+test -d ${clst_root_path}/proc || mkdir ${clst_root_path}/proc
+
+test -d ${clst_root_path}/home || mkdir ${clst_root_path}/home
+umask 0077
+test -d ${clst_root_path}/root || mkdir ${clst_root_path}/root
+
+exit 0
