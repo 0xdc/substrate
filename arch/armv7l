@@ -14,6 +14,14 @@ ella-*)
 esac
 
 targets=(
+	systemd:stage1
+	systemd:stage2
+	systemd:stage3
+	systemd:stage4
+
+	ella:systemd
+	xorg:systemd
+
 	hardfp:stage1
 	hardfp:stage2
 	hardfp:stage3

@@ -4,7 +4,7 @@
 # required by dev-python/pipenv-9.0.0-r2::gentoo
 # required by dev-python/pipenv (argument)
 =dev-python/pythonz-bd-1.11.4 ~amd64
-# required by dev-python/pythonz-bd-1.11.4::gentoo[-python_targets_python3_4,python_targets_python3_6,-python_targets_python3_5]
+# required by dev-python/pythonz-bd-1.11.4::gentoo
 # required by dev-python/pew-1.1.1::gentoo
 # required by dev-python/pipenv-9.0.0-r2::gentoo
 # required by dev-python/pipenv (argument)
