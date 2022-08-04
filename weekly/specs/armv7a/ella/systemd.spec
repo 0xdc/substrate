@@ -1,5 +1,5 @@
 version_stamp: @latest@
-target:stage4
+target: stage4
 profile: 0xdc:arm
 repos: @REPO_DIR@/overlay
 source_subpath: armv7a/systemd/stage3-armv7a_hardfp-systemd-latest
