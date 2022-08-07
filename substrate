@@ -43,8 +43,8 @@ for combo in $targets; do
 	stage=$( cut -d: -f2 <<<$combo)
 	case "${upstream}${target}" in
 	amd64default) ;;
-	armv7asystemd) rel="${subarch}-${target}" ;;
-	armv7a*) rel="${subarch}" ;;
+	armv7ahardfp) rel="${subarch}" ;;
+	armv7a*) rel="${subarch}-${target}" ;;
 	*) rel=${subarch:--$target} ;;
 	esac
 
