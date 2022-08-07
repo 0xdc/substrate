@@ -1,4 +1,3 @@
-version_stamp: @latest@
 target: stage4
 profile: 0xdc:arm
 repos: @REPO_DIR@/overlay
