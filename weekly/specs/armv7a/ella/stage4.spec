@@ -3,7 +3,6 @@ source_subpath: armv7a/hardfp/stage3-armv7a_hardfp-latest
 
 stage4/packages:
 	app-editors/vim
-	app-eselect/eselect-repository
 	app-shells/bash-completion
 	dev-vcs/git
 	sys-apps/busybox

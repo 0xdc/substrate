@@ -5,7 +5,6 @@ portage_confdir: @REPO_DIR@/confdirs/vboot
 
 stage4/packages:
 	app-editors/vim
-	app-eselect/eselect-repository
 	dev-vcs/git
 	sys-devel/distcc
 	sys-fs/cryptsetup
