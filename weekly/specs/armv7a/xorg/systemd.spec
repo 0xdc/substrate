@@ -1,7 +1,7 @@
 profile: 0xdc:arm/desktop/chromebook
 repos: @REPO_DIR@/overlay
 source_subpath: armv7a/systemd/stage4-armv7a_hardfp-systemd-latest
-portage_confdir: @REPO_DIR@/confdirs/xorg
+portage_confdir: @REPO_DIR@/confdirs/armv7a/systemd/xorg
 target: stage4
 
 stage4/packages:
