@@ -3,9 +3,11 @@
 set -eo pipefail
 
 if which lsns 2>/dev/null >&2; then
-	if test -z "$(lsns | awk "/$$/&&/mnt/")"; then
-		echo re-executing in our own mount namespace
-		exec unshare -m $0 $@
+	if test "${SUBSTRATE_TIMEOUT:-0}" -lt 2; then
+		if test -z "$(lsns | awk "/$$/&&/mnt/")"; then
+			echo re-executing in our own mount namespace
+			exec env SUBSTRATE_TIMEOUT=$(( $SUBSTRATE_TIMEOUT + 1)) unshare -m $0 $@
+		fi
 	fi
 fi
 
