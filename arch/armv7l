@@ -1,4 +1,5 @@
 arch="armv7a"
+cross="arm"
 
 cflags="-O2 -mfloat-abi=hard -mfpu=vfpv3-d16"
 case "$(hostname)" in
