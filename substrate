@@ -91,7 +91,12 @@ for combo in $targets; do
 		# specfile already has target:
 		# so we want to add something to the version_stamp
 		grep -q version_stamp: $tempstage || {
-			rel="-$stage"
+			case "${upstream}${stage}" in
+			amd64default) ;;
+			armv7ahardfp) rel="${subarch}" ;;
+			armv7a*) rel="${subarch}-${stage}" ;;
+			*) rel=${subarch:--$stage} ;;
+			esac
 			tee -a $tempstage <<<"version_stamp: $stage-$date"
 		}
 		stage=$(awk '/^target:/{print$2}' $tempstage)
