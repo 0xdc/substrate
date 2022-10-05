@@ -55,6 +55,5 @@ pulsar)
 	nproc=$(nproc --ignore=4)
 	test -d ${BASE_DIR}/tmp || mkdir ${BASE_DIR}/tmp
 	mountpoint -q ${BASE_DIR}/tmp || mount -t tmpfs -o size=95% tmpfs ${BASE_DIR}/tmp
-	systemctl start run-media-cephfs.mount
 	;;
 esac
