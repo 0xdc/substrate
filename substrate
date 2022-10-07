@@ -47,7 +47,9 @@ for combo in $targets; do
 	if test "${bhost}"; then
 		angry=y
 		. "${BASE_DIR}/arch/${bhost}"
-		test -x "/usr/bin/qemu-${cross}" || continue
+		for interpreter in /usr/bin/qemu-$cross; do
+			test -x "${interpreter}" || continue
+		done
 		BUILDS_DIR=$BASE_DIR/builds/$upstream
 	else
 		angry=""
