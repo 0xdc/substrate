@@ -6,16 +6,16 @@ targets=(
 
 	systemd:stage4
 
-	systemd:livecd-stage1
-	systemd:livecd-stage2
-	systemd:livecd-stage3
-
 	mergeusr:stage1
 	mergeusr:stage2
 	mergeusr:stage3
 
 	mergeusr:stage4
 	mergeusr:users
+
+	mergeusr:livecd-stage1
+	mergeusr:livecd-stage2
+	mergeusr:livecd-stage3
 
 	minimal:embedded
 	minimal:livecd-stage2
