@@ -1,5 +1,5 @@
 mach="armv7a"
-cross="arm /usr/local/bin/qemu-wrapper"
+cross="arm /usr/bin/qemu-wrapper"
 
 cflags="-O2 -mfloat-abi=hard -mfpu=vfpv3-d16"
 case "$(hostname)" in
