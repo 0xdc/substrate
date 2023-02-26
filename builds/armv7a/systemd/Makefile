@@ -8,6 +8,6 @@ latest:
 stage3-$(ARCH)_$(SUBA)-systemd-latest.tar.%:
 	getpath=$$(wget -q -O- http://distfiles.gentoo.org/releases/arm/autobuilds/latest-stage3-$(ARCH)_$(SUBA)-systemd.txt | awk 'NR==3{print$$1}') && \
 	grep -q $* <<<$$getpath && \
-	rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/releases/arm/autobuilds/$${getpath}* . && \
+	rsync --no-motd --progress mirror.rackspace.com::gentoo/releases/arm/autobuilds/$${getpath}* . && \
 	sed -n '/SHA512/{N;p}' $$(basename $${getpath}.DIGESTS) | sha512sum -c && \
 	ln -s $$(basename $$getpath) $@

@@ -23,7 +23,7 @@ targets="${TARGETS:-${targets[*]}}"
 
 # use squashfs snapshots
 if ! test -f ${BASE_DIR}/snapshots/gentoo-$date.lzo.sqfs; then
-	rsync --no-motd --progress mirror.bytemark.co.uk::gentoo/snapshots/squashfs/{gentoo-$date.lzo.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
+	rsync --no-motd --progress mirror.rackspace.com::gentoo/snapshots/squashfs/{gentoo-$date.lzo.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
 	pushd ${BASE_DIR}/snapshots
 		grep ${date}.lzo sha512sum.txt | sha512sum -c
 	popd
