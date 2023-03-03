@@ -11,7 +11,7 @@ if which lsns 2>/dev/null >&2; then
 	fi
 fi
 
-date=${1:-$(date --date=yesterday +%Y%m%d)}
+date=${1:-$(date --date="2 days ago" +%Y%m%d)}
 arch=${ARCH:-$(uname -m)}
 
 BASE_DIR="$(dirname $(readlink -f $0))"
