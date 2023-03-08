@@ -1,6 +1,0 @@
->=app-alternatives/awk-4::gentoo gawk
->=app-alternatives/lex-0-r1::gentoo flex
->=app-alternatives/yacc-1-r2::gentoo bison
->=app-alternatives/tar-0::gentoo libarchive
->=app-alternatives/gzip-0::gentoo pigz
->=app-alternatives/bzip2-1::gentoo lbzip2
