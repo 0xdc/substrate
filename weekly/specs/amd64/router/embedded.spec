@@ -1,5 +1,5 @@
-profile: default/linux/amd64/17.1/systemd
-source_subpath: amd64/systemd/stage3-amd64-systemd-latest
+profile: default/linux/amd64/17.1/systemd/merged-usr
+source_subpath: amd64/mergeusr/stage3-amd64-mergeusr-latest
 
 # gnupg[-ssl] avoids pulling in gnutls
 # git[-perl] avoids having perl and gcc

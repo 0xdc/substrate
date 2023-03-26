@@ -1,4 +1,4 @@
-profile: default/linux/amd64/17.1/systemd
+profile: default/linux/amd64/17.1/systemd/merged-usr
 source_subpath: amd64/mergeusr/livecd-stage1-amd64-mergeusr-latest
 portage_confdir: @REPO_DIR@/confdirs/livecd
 
