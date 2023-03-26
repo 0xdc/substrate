@@ -56,4 +56,22 @@ pulsar)
 	test -d ${BASE_DIR}/tmp || mkdir ${BASE_DIR}/tmp
 	mountpoint -q ${BASE_DIR}/tmp || mount -t tmpfs -o size=95% tmpfs ${BASE_DIR}/tmp
 	;;
+maple)
+	targets+=(
+		hardfp:stage1:armv7l
+		hardfp:stage2:armv7l
+		hardfp:stage3:armv7l
+		hardfp:stage4:armv7l
+		ella:systemd:armv7l
+		ella:stage4:armv7l
+
+		systemd:stage1:armv7l
+		systemd:stage2:armv7l
+		systemd:stage3:armv7l
+		systemd:stage4:armv7l
+
+		xorg:stage4:armv7l
+		xorg:systemd:armv7l
+	 )
+	 ;;
 esac
