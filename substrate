@@ -11,7 +11,7 @@ if which lsns 2>/dev/null >&2; then
 	fi
 fi
 
-date=${1:-$(date --date="2 days ago" +%Y%m%d)}
+date=${1:-$(date --date="1 day ago" +%Y%m%d)}
 arch=${ARCH:-$(uname -m)}
 
 BASE_DIR="$(dirname $(readlink -f $0))"
@@ -23,7 +23,7 @@ targets="${TARGETS:-${targets[*]}}"
 
 # use squashfs snapshots
 if ! test -f ${BASE_DIR}/snapshots/gentoo-$date.lzo.sqfs; then
-	rsync --no-motd --progress mirror.rackspace.com::gentoo/snapshots/squashfs/{gentoo-$date.lzo.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
+	rsync --no-motd --progress rsync.mirrorservice.org::distfiles.gentoo.org/snapshots/squashfs/{gentoo-$date.lzo.sqfs,sha512sum.txt} ${BASE_DIR}/snapshots/
 	pushd ${BASE_DIR}/snapshots
 		grep ${date}.lzo sha512sum.txt | sha512sum -c
 	popd
