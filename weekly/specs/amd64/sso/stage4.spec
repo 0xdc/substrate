@@ -1,5 +1,5 @@
 profile: default/linux/amd64/17.1/systemd/merged-usr
-source_subpath: amd64/mergeusr/stage4-amd64-mergeusr-latest
+source_subpath: amd64/systemd/stage4-amd64-systemd-latest
 portage_confdir: @REPO_DIR@/confdirs/sso
 
 stage4/packages:

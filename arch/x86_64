@@ -1,15 +1,15 @@
 mach=amd64
 targets=(
-	mergeusr:stage1
-	mergeusr:stage2
-	mergeusr:stage3
+	systemd:stage1
+	systemd:stage2
+	systemd:stage3
 
-	mergeusr:stage4
-	mergeusr:users
+	systemd:stage4
+	systemd:users
 
-	mergeusr:livecd-stage1
-	mergeusr:livecd-stage2
-	mergeusr:livecd-stage3
+	systemd:livecd-stage1
+	systemd:livecd-stage2
+	systemd:livecd-stage3
 
 	minimal:embedded
 	minimal:livecd-stage2
