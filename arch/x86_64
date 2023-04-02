@@ -30,6 +30,7 @@ targets=(
 case "${date}" in
 *01)
 	targets+=(
+		plasma:stage1
 		plasma:stage2
 		plasma:stage3
 		plasma:stage4
