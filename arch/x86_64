@@ -1,21 +1,15 @@
-arch=amd64
+mach=amd64
 targets=(
 	systemd:stage1
 	systemd:stage2
 	systemd:stage3
 
 	systemd:stage4
+	systemd:users
 
 	systemd:livecd-stage1
 	systemd:livecd-stage2
 	systemd:livecd-stage3
-
-	mergeusr:stage1
-	mergeusr:stage2
-	mergeusr:stage3
-
-	mergeusr:stage4
-	mergeusr:users
 
 	minimal:embedded
 	minimal:livecd-stage2
@@ -36,6 +30,7 @@ targets=(
 case "${date}" in
 *01)
 	targets+=(
+		plasma:stage1
 		plasma:stage2
 		plasma:stage3
 		plasma:stage4
@@ -48,12 +43,30 @@ case "${date}" in
 	)
 esac
 
-upstream="$arch"
+upstream="$mach"
 
 case "$(hostname)" in
 pulsar)
+	nproc=$(nproc --ignore=4)
 	test -d ${BASE_DIR}/tmp || mkdir ${BASE_DIR}/tmp
 	mountpoint -q ${BASE_DIR}/tmp || mount -t tmpfs -o size=95% tmpfs ${BASE_DIR}/tmp
-	systemctl start run-media-cephfs.mount
 	;;
+maple)
+	targets+=(
+		hardfp:stage1:armv7l
+		hardfp:stage2:armv7l
+		hardfp:stage3:armv7l
+		hardfp:stage4:armv7l
+		ella:stage4:armv7l
+
+		systemd:stage1:armv7l
+		systemd:stage2:armv7l
+		systemd:stage3:armv7l
+		systemd:stage4:armv7l
+		ella:systemd:armv7l
+
+		xorg:stage4:armv7l
+		xorg:systemd:armv7l
+	 )
+	 ;;
 esac

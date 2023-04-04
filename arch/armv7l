@@ -1,4 +1,5 @@
-arch="armv7a"
+mach="armv7a"
+cross="arm /usr/bin/qemu-wrapper"
 
 cflags="-O2 -mfloat-abi=hard -mfpu=vfpv3-d16"
 case "$(hostname)" in
@@ -31,6 +32,6 @@ targets=(
 	xorg:stage4
 )
 
-upstream="${arch}"
+upstream="${mach}"
 subarch="_hardfp"
 sharedir="/usr/lib/catalyst"

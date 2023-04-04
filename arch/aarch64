@@ -1,8 +1,8 @@
-arch=arm64
+mach=arm64
 targets=(
 	systemd:stage1
 	default:stage1
 )
 
-upstream="$arch"
+upstream="$mach"
 sharedir="/usr/lib64/catalyst"
