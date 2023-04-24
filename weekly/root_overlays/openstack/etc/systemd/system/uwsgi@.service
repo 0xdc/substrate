@@ -2,7 +2,7 @@
 Description=OpenStack %I API Service
 
 [Service]
-ExecStart=/usr/bin/uwsgi_python39 --die-on-term --enable-threads --master --thunder-lock /etc/uwsgi.d/%I.ini
+ExecStart=/usr/bin/uwsgi_python310 --die-on-term --enable-threads --master --thunder-lock /etc/uwsgi.d/%I.ini
 Group=%I
 KillSignal=SIGTERM
 StateDirectory=%I
