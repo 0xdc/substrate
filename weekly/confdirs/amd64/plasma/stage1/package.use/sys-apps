@@ -1,1 +1,1 @@
-=sys-apps/systemd-252.7 pam
+>=sys-apps/systemd-252.7 pam
