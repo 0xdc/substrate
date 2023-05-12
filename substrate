@@ -45,11 +45,12 @@ for combo in $targets; do
 	stage=$( cut -d: -f2 <<<$combo)
 	bhost=$( cut -d: -f3 <<<$combo)
 	if test "${bhost}"; then
-		angry=y
 		. "${BASE_DIR}/arch/${bhost}"
-		for interpreter in /usr/bin/qemu-$cross; do
-			test -x "${interpreter}" || continue
-		done
+		if test "$cross"; then
+			for interpreter in /usr/bin/qemu-$cross; do
+				test -x "${interpreter}" || continue
+			done
+		fi
 		BUILDS_DIR=$BASE_DIR/builds/$upstream
 	else
 		angry=""
@@ -70,7 +71,7 @@ for combo in $targets; do
 		$REPO_DIR/specs/$upstream/$target/$stage.spec | \
 		tee $tempstage
 
-	if test "$angry" = y; then
+	if test "$angry" = y && test "$cross"; then
 		tee -a $tempstage <<<"interpreter: /usr/bin/qemu-${cross}"
 	fi
 	# Skip a build if it already exists
