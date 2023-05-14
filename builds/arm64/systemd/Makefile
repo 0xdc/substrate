@@ -1,6 +1,12 @@
-stage3-arm64-systemd-latest.tar.bz2: stage3-arm64-systemd-20190428.tar.bz2
-	ln -s $< $@
+ARCH=arm64
 
-stage3-arm64-systemd-20190428.tar.bz2:
-	rsync --no-motd --progress rsync.mirrorservice.org::distfiles.gentoo.org/experimental/arm64/$@* .
-	sed -n '/SHA512/{N;s/2008.0/20190428/;p}' $@.DIGESTS | sha512sum -c -
+.PHONY: latest
+latest:
+	test -f stage3-$(ARCH)-systemd-latest.tar.* || make stage3-$(ARCH)-systemd-latest.tar.xz || make stage3-$(ARCH)-systemd-latest.tar.bz2
+
+stage3-$(ARCH)-systemd-latest.tar.%:
+	getpath=$$(wget -q -O- http://www.mirrorservice.org/sites/distfiles.gentoo.org/releases/$(ARCH)/autobuilds/latest-stage3-$(ARCH)-systemd-mergedusr.txt | awk 'NR==3{print$$1}') && \
+	grep -q $* <<<$$getpath && \
+	rsync --no-motd --progress rsync.mirrorservice.org::distfiles.gentoo.org/releases/$(ARCH)/autobuilds/$${getpath}* . && \
+	sed -n '/SHA512/{N;p}' $$(basename $${getpath}.DIGESTS) | sha512sum -c && \
+	ln -s $$(basename $$getpath) $@
