@@ -4,7 +4,7 @@ import sys
 from DeComp.definitions import COMPRESS_DEFINITIONS
 
 try:
-    d = COMPRESS_DEFINITIONS.get(sys.argv[1] or "lbzip2", None)
+    d = COMPRESS_DEFINITIONS.get(sys.argv[1] or "pixz", None)
 except:
     d = None
 
@@ -14,4 +14,4 @@ if d:
     except:
         pass
 else:
-    print(".tar.bz2")
+    print(".tar.xz")
