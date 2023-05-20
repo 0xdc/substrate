@@ -13,7 +13,9 @@ livecd/packages:
 	app-crypt/sbsigntools
 	app-crypt/tpm2-totp
 	app-crypt/tpm2-tss-engine
+	app-office/abiword
 	dev-libs/intel-compute-runtime
+	dev-texlive/texlive-latexextra
 	kde-apps/ffmpegthumbs
 	mail-client/thunderbird
 	media-gfx/zbar
