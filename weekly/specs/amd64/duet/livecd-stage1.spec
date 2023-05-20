@@ -36,6 +36,7 @@ livecd/packages:
 	sys-firmware/intel-microcode
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
+	sys-fs/fuse-exfat
 	sys-kernel/linux-firmware
 	x11-drivers/xf86-video-intel
 	x11-misc/zim
