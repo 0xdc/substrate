@@ -1,0 +1,3 @@
+media-libs/libva-intel-media-driver no-source-code
+sys-firmware/intel-microcode intel-ucode
+sys-kernel/linux-firmware linux-fw-redistributable no-source-code
