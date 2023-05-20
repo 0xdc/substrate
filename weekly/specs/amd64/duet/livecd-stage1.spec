@@ -9,6 +9,7 @@ livecd/use:
 
 livecd/packages:
 	app-admin/pass-otp
+	app-admin/sysstat
 	app-crypt/efitools
 	app-crypt/sbsigntools
 	app-crypt/tpm2-totp
@@ -22,6 +23,7 @@ livecd/packages:
 	media-libs/libva-intel-media-driver
 	media-libs/vulkan-loader
 	media-video/mpv
+	net-analyzer/vnstat
 	net-dialup/xl2tpd
 	net-im/dino
 	net-im/signal-desktop-bin
