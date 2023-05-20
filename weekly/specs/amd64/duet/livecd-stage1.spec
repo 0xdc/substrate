@@ -14,12 +14,15 @@ livecd/packages:
 	app-crypt/tpm2-totp
 	app-crypt/tpm2-tss-engine
 	dev-libs/intel-compute-runtime
+	kde-apps/ffmpegthumbs
+	mail-client/thunderbird
 	media-gfx/zbar
 	media-libs/libva-intel-media-driver
 	media-libs/vulkan-loader
 	media-video/mpv
 	net-dialup/xl2tpd
 	net-im/dino
+	net-im/signal-desktop-bin
 	net-irc/quassel
 	net-misc/yt-dlp
 	net-voip/mumble
