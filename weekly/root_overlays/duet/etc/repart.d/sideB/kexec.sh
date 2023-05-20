@@ -28,6 +28,7 @@ cmdline=(
 	root=PARTLABEL=sideB
 
 	systemd.volatile=overlay
+	fbcon=rotate:1
 )
 
 kexec_args=(

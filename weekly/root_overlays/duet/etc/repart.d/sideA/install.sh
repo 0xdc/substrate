@@ -36,6 +36,12 @@ cmdline=(
 	$(egrep -o 'console=[^ ]*' /proc/cmdline || true)
 	$(egrep -o 'systemd.firstboot=[^ ]*' /proc/cmdline || true)
 	systemd.volatile=yes
+	fbcon=rotate:1
+	systemd.wants=NetworkManager.service
+	systemd.wants=bluetooth.service
+	systemd.wants=sddm.service
+	systemd.wants=sysstat-collect.timer
+	systemd.wants=vnstatd.service
 )
 
 test -d /etc/kernel || mkdir -p /etc/kernel
