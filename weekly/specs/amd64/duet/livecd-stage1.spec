@@ -33,6 +33,7 @@ livecd/packages:
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
 	sys-kernel/linux-firmware
+	x11-drivers/xf86-video-intel
 	x11-misc/zim
 
 livecd/depclean: yes
