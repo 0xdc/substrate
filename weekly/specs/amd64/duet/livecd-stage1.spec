@@ -25,7 +25,7 @@ livecd/packages:
 	media-video/mpv
 	net-analyzer/vnstat
 	net-dialup/xl2tpd
-	net-im/dino
+	net-im/gajim
 	net-im/signal-desktop-bin
 	net-irc/quassel
 	net-misc/yt-dlp
