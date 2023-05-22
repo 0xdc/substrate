@@ -23,11 +23,15 @@ livecd/packages:
 	media-libs/libva-intel-media-driver
 	media-libs/vulkan-loader
 	media-video/mpv
+	net-analyzer/nmap
+	net-analyzer/traceroute
 	net-analyzer/vnstat
 	net-dialup/xl2tpd
 	net-im/gajim
 	net-im/signal-desktop-bin
 	net-irc/quassel
+	net-misc/mosh
+	net-misc/wol
 	net-misc/yt-dlp
 	net-voip/mumble
 	sys-apps/kexec-tools
@@ -37,6 +41,7 @@ livecd/packages:
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
 	sys-fs/fuse-exfat
+	sys-libs/freeipmi
 	sys-kernel/linux-firmware
 	x11-drivers/xf86-video-intel
 	x11-misc/zim

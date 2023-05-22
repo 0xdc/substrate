@@ -1,1 +1,2 @@
+net-misc/mosh -server
 net-misc/networkmanager nftables ofono
