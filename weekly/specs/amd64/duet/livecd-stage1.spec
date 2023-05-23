@@ -30,6 +30,7 @@ livecd/packages:
 	net-im/gajim
 	net-im/signal-desktop-bin
 	net-irc/quassel
+	net-misc/aria2
 	net-misc/mosh
 	net-misc/wol
 	net-misc/yt-dlp
