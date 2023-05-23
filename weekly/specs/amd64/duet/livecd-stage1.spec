@@ -17,6 +17,7 @@ livecd/packages:
 	app-office/abiword
 	dev-libs/intel-compute-runtime
 	dev-texlive/texlive-latexextra
+	dev-util/intel-graphics-compiler
 	kde-apps/ffmpegthumbs
 	mail-client/thunderbird
 	media-gfx/zbar

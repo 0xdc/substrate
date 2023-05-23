@@ -1,5 +1,5 @@
 # for mumble
 =media-libs/libsndfile-1.2.0::gentoo -minimal
 
-# for wayland
-=media-libs/libsdl2-2.26.2::gentoo gles2
+# for opencl accelerated read-ahead
+media-libs/x264 opencl
