@@ -4,7 +4,6 @@ portage_confdir: @REPO_DIR@/confdirs/amd64/plasma/duet
 
 livecd/use:
 	ibus
-	pulseaudio
 	vaapi
 
 livecd/packages:

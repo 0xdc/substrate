@@ -4,7 +4,6 @@ portage_confdir: @REPO_DIR@/confdirs/livecd
 
 livecd/use:
 	ibus
-	pulseaudio
 
 livecd/packages:
 	sys-apps/kexec-tools
