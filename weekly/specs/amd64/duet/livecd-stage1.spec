@@ -13,6 +13,7 @@ livecd/packages:
 	app-crypt/sbsigntools
 	app-crypt/tpm2-totp
 	app-crypt/tpm2-tss-engine
+	app-crypt/yubikey-manager
 	app-office/abiword
 	dev-libs/intel-compute-runtime
 	dev-texlive/texlive-latexextra
@@ -37,6 +38,7 @@ livecd/packages:
 	net-voip/mumble
 	sys-apps/kexec-tools
 	sys-apps/usbutils
+	sys-auth/pam_u2f
 	sys-boot/efibootmgr
 	sys-firmware/intel-microcode
 	sys-fs/btrfs-progs
