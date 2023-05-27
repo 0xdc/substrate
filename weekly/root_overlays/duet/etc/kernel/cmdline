@@ -6,6 +6,7 @@ quiet
 rd.emergency=poweroff
 rd.shell=0
 rd.timeout=90
+splash
 systemd.wants=NetworkManager.service
 systemd.wants=bluetooth.service
 systemd.wants=sddm.service
