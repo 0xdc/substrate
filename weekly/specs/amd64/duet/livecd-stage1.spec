@@ -16,6 +16,8 @@ livecd/packages:
 	app-crypt/yubikey-manager
 	app-office/abiword
 	dev-libs/intel-compute-runtime
+	dev-python/dbus-python
+	dev-python/pyroute2
 	dev-texlive/texlive-latexextra
 	dev-util/intel-graphics-compiler
 	kde-apps/ffmpegthumbs
@@ -47,6 +49,9 @@ livecd/packages:
 	sys-fs/fuse-exfat
 	sys-libs/freeipmi
 	sys-kernel/linux-firmware
+	sys-power/intel-undervolt
+	sys-power/powertop
+	sys-power/thermald
 	x11-drivers/xf86-video-intel
 	x11-misc/zim
 
