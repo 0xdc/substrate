@@ -49,6 +49,7 @@ livecd/packages:
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
 	sys-fs/fuse-exfat
+	sys-fs/zfs[kernel-builtin]
 	sys-kernel/linux-firmware
 	sys-power/powertop
 	sys-power/thermald
