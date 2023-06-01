@@ -20,6 +20,7 @@ livecd/packages:
 	dev-python/pyroute2
 	dev-texlive/texlive-latexextra
 	dev-util/intel-graphics-compiler
+	gui-libs/libhandy
 	kde-apps/ffmpegthumbs
 	mail-client/thunderbird
 	media-gfx/zbar
