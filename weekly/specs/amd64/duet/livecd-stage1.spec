@@ -26,7 +26,6 @@ livecd/packages:
 	mail-client/thunderbird
 	media-gfx/zbar
 	media-libs/libva-intel-media-driver
-	media-libs/vulkan-loader
 	media-tv/v4l-utils
 	media-video/mpv
 	net-analyzer/nmap
