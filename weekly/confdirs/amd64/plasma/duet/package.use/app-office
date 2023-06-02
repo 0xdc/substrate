@@ -1,1 +1,2 @@
 app-office/abiword collab
+>=app-office/sc-im-0.8.3-r1::gentoo xls xlsx

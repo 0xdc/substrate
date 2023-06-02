@@ -15,6 +15,7 @@ livecd/packages:
 	app-crypt/tpm2-tss-engine
 	app-crypt/yubikey-manager
 	app-office/abiword
+	app-office/sc-im
 	dev-libs/intel-compute-runtime
 	dev-python/dbus-python
 	dev-python/pyroute2
