@@ -4,7 +4,6 @@ source_subpath: amd64/plasma/stage3-amd64-plasma-latest
 
 stage4/use:
 	ibus
-	pulseaudio
 
 stage4/packages:
 	app-admin/ansible
@@ -18,6 +17,7 @@ stage4/packages:
 	kde-apps/dolphin
 	kde-apps/konsole
 	media-fonts/droid
+	net-firewall/nftables
 	sys-apps/iproute2
 	sys-kernel/dracut
 	sys-process/htop

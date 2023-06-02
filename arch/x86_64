@@ -40,6 +40,10 @@ case "${date}" in
 		plasma:livecd-stage3
 
 		plasma-sso:stage4
+
+		duet:livecd-stage1
+		duet:livecd-stage2
+		duet:livecd-stage3
 	)
 esac
 

@@ -4,11 +4,11 @@ set -e
 
 SRCF=${1?Need tarball filename or existing image name}
 base=$(basename $1)
-name=${base%.tar.bz2}
+name=${base%.tar.xz}
 
 if ! machinectl --quiet show-image ${name}; then
 	echo unpacking...
-	machinectl --quiet import-tar $SRCF ${base%.tar.bz2}
+	machinectl --quiet import-tar $SRCF ${name}
 fi
 
 excluded=(

@@ -4,8 +4,6 @@ sed -i '/^root:/s/:\*:/::/' ${clst_root_path}/etc/shadow
 
 echo ttyS0 >> ${clst_root_path}/etc/securetty
 systemctl --root=${clst_root_path:-/} preset-all
-systemctl --root=${clst_root_path:-/} enable lvm2-lvmetad.socket
-systemctl --root=${clst_root_path:-/} disable systemd-repart.service
 
 #rm -v ${clst_root_path}/etc/resolv.conf
 #ln -sv /run/systemd/resolve/stub-resolv.conf ${clst_root_path}/etc/resolv.conf

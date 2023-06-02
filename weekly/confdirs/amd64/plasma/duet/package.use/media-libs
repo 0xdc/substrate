@@ -1,0 +1,5 @@
+# for mumble
+=media-libs/libsndfile-1.2.0::gentoo -minimal
+
+# for opencl accelerated read-ahead
+media-libs/x264 opencl

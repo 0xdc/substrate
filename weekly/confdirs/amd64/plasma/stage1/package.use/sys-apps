@@ -1,1 +1,2 @@
-=sys-apps/systemd-252.7 pam
+>=sys-apps/systemd-252.7 pam
+>=sys-apps/systemd-253.3-r1::gentoo cryptsetup homed openssl
