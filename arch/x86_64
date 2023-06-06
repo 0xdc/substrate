@@ -5,7 +5,6 @@ targets=(
 	systemd:stage3
 
 	systemd:stage4
-	systemd:users
 
 	systemd:livecd-stage1
 	systemd:livecd-stage2
@@ -19,7 +18,6 @@ targets=(
 	router:stage1
 
 	minimal:nginx
-	minimal:murmur
 
 	#https://bugs.gentoo.org/688330
 	sso:stage4
