@@ -1,6 +1,4 @@
 source_subpath: amd64/minimal/embedded-amd64-minimal-latest
-profile: not-necessary
-
 
 boot/kernel: gentoo
 

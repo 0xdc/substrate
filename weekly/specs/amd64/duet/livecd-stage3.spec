@@ -1,6 +1,4 @@
 source_subpath: amd64/duet/livecd-stage1-amd64-duet-latest
-profile: not-necessary
-
 
 boot/kernel: gentoo
 

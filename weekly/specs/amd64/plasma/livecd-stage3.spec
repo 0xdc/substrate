@@ -1,6 +1,4 @@
 source_subpath: amd64/plasma/livecd-stage1-amd64-plasma-latest
-profile: not-necessary
-
 
 boot/kernel: gentoo
 
