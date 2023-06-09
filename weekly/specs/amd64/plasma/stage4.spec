@@ -14,6 +14,7 @@ stage4/packages:
 	app-shells/bash-completion
 	dev-vcs/git
 	kde-plasma/plasma-meta
+	kde-apps/ark
 	kde-apps/dolphin
 	kde-apps/konsole
 	media-fonts/droid
