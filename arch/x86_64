@@ -25,50 +25,55 @@ targets=(
 	dev:stage4
 )
 
-case "${date}" in
-*01)
-	targets+=(
-		plasma:stage1
-		plasma:stage2
-		plasma:stage3
-		plasma:stage4
+plasma=(
+	plasma:stage1
+	plasma:stage2
+	plasma:stage3
+	plasma:stage4
 
-		plasma:livecd-stage1
-		plasma:livecd-stage2
-		plasma:livecd-stage3
+	plasma:livecd-stage1
+	plasma:livecd-stage2
+	plasma:livecd-stage3
 
-		plasma-sso:stage4
+	plasma-sso:stage4
 
-		duet:livecd-stage1
-		duet:livecd-stage2
-		duet:livecd-stage3
-	)
-esac
+	duet:livecd-stage1
+	duet:livecd-stage2
+	duet:livecd-stage3
+)
+
+armv7a=(
+	hardfp:stage1:armv7l
+	hardfp:stage2:armv7l
+	hardfp:stage3:armv7l
+	hardfp:stage4:armv7l
+	ella:stage4:armv7l
+
+	systemd:stage1:armv7l
+	systemd:stage2:armv7l
+	systemd:stage3:armv7l
+	#systemd:stage4:armv7l
+	ella:systemd:armv7l
+
+	xorg:stage4:armv7l
+	#xorg:systemd:armv7l
+)
 
 upstream="$mach"
 
 case "$(hostname)" in
 pulsar)
-	nproc=$(nproc --ignore=4)
 	test -d ${BASE_DIR}/tmp || mkdir ${BASE_DIR}/tmp
 	mountpoint -q ${BASE_DIR}/tmp || mount -t tmpfs -o size=95% tmpfs ${BASE_DIR}/tmp
+	targets+=( ${plasma[*]} ${armv7a[*]} )
 	;;
 maple)
-	targets+=(
-		hardfp:stage1:armv7l
-		hardfp:stage2:armv7l
-		hardfp:stage3:armv7l
-		hardfp:stage4:armv7l
-		ella:stage4:armv7l
+	targets+=( ${armv7a[*]} )
+	;;
+esac
 
-		systemd:stage1:armv7l
-		systemd:stage2:armv7l
-		systemd:stage3:armv7l
-		#systemd:stage4:armv7l
-		ella:systemd:armv7l
-
-		xorg:stage4:armv7l
-		#xorg:systemd:armv7l
-	 )
-	 ;;
+case "${date}" in
+*01)
+	targets+=( ${plasma[*]} )
+	;;
 esac
