@@ -3,3 +3,6 @@
 
 # for opencl accelerated read-ahead
 media-libs/x264 opencl
+
+# for thunderbird
+=media-libs/libvpx-1.12.0-r1 postproc
