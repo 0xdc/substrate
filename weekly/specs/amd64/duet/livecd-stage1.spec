@@ -40,6 +40,7 @@ livecd/packages:
 	net-misc/wol
 	net-misc/yt-dlp
 	net-voip/mumble
+	sys-apps/ipmitool
 	sys-apps/kexec-tools
 	sys-apps/usbutils
 	sys-auth/pam_u2f
@@ -48,7 +49,6 @@ livecd/packages:
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
 	sys-fs/fuse-exfat
-	sys-libs/freeipmi
 	sys-kernel/linux-firmware
 	sys-power/intel-undervolt
 	sys-power/powertop
