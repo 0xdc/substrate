@@ -65,7 +65,7 @@ case "$(hostname)" in
 pulsar)
 	test -d ${BASE_DIR}/tmp || mkdir ${BASE_DIR}/tmp
 	mountpoint -q ${BASE_DIR}/tmp || mount -t tmpfs -o size=95% tmpfs ${BASE_DIR}/tmp
-	targets+=( ${plasma[*]} ${armv7a[*]} )
+	targets+=( ${plasma[*]} )
 	;;
 maple)
 	targets+=( ${armv7a[*]} )
