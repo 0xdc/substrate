@@ -14,10 +14,13 @@ targets=(
 	minimal:livecd-stage2
 	minimal:livecd-stage3
 
+	minimal:systemd
+
 	openstack:controller
 	router:stage1
 
 	minimal:nginx
+	minimal:jenkins
 
 	#https://bugs.gentoo.org/688330
 	sso:stage4
