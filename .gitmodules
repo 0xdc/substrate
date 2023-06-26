@@ -7,4 +7,4 @@
 [submodule "catalyst"]
 	path = catalyst
 	url = https://github.com/0xdc/catalyst
-	branch = guilt/master
+	branch = develop
