@@ -8,5 +8,5 @@ boot/kernel/gentoo/sources: gentoo-sources
 boot/kernel/gentoo/config: @REPO_DIR@/kconfig.amd64
 boot/kernel/gentoo/packages: --usepkg=n acpi_call
 
-livecd/bootargs: verify setkmap=uk fbcon=rotate:1 consoleblank=3600 systemd.wants=NetworkManager.service systemd.wants=sddm.service systemd.wants=sysstat-collect.timer systemd.wants=vnstatd.service i915.enable_fbc=1 systemd.mask=systemd-repart.service iwlwifi.power_level=5 iwlwifi.power_save=1
+livecd/bootargs: verify setkmap=uk fbcon=rotate:1 consoleblank=3600 systemd.wants=NetworkManager.service systemd.wants=sddm.service systemd.wants=sysstat-collect.timer systemd.wants=vnstatd.service i915.enable_fbc=1 systemd.mask=systemd-repart.service iwlwifi.power_level=5 iwlwifi.power_save=1 systemd.wants=thermald.service
 livecd/gk_mainargs: --symlink --b2sum
