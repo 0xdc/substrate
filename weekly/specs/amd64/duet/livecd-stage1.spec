@@ -50,7 +50,6 @@ livecd/packages:
 	sys-fs/dosfstools
 	sys-fs/fuse-exfat
 	sys-kernel/linux-firmware
-	sys-power/intel-undervolt
 	sys-power/powertop
 	sys-power/thermald
 	x11-drivers/xf86-video-intel
