@@ -1,0 +1,25 @@
+polkit.addRule(function(action, subject) {
+  if (subject.isInGroup("wheel")) {
+    if (action.id == "org.freedesktop.NetworkManager.settings.modify.own"
+     || action.id == "org.freedesktop.NetworkManager.enable-disable-statistics"
+     || action.id == "org.freedesktop.NetworkManager.enable-disable-wifi"
+     || action.id == "org.freedesktop.NetworkManager.network-control"
+     || action.id == "org.freedesktop.NetworkManager.wifi.scan"
+     || action.id == "org.freedesktop.login1.suspend"
+     || action.id == "org.freedesktop.login1.suspend-multiple-sessions"
+     || action.id == "org.freedesktop.machine1.shell"
+     || action.id == "org.kde.powerdevil.backlighthelper.brightness"
+     || action.id == "org.kde.powerdevil.backlighthelper.brightnessmax"
+     || action.id == "org.kde.powerdevil.backlighthelper.setbrightness"
+     || action.id == "org.kde.powerdevil.backlighthelper.syspath"
+     || action.id == "org.kde.powerdevil.chargethresholdhelper.getthreshold"
+     || action.id == "org.kde.powerdevil.discretegpuhelper.hasdualgpu"
+        ) {
+      return polkit.Result.YES;
+    } else {
+      return polkit.Result.AUTH_SELF;
+    }
+  } else {
+    return polkit.Result.AUTH_ADMIN;
+  }
+});

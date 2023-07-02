@@ -1,0 +1,61 @@
+<?xml version="1.0"?> 
+<ThermalConfiguration> 
+<Platform>
+  <Name> Manually customised </Name>
+  <ProductName>82HK</ProductName>
+  <Preference>PERFORMANCE</Preference>
+  <ThermalZones>
+    <ThermalZone>
+      <Type>duet</Type>
+      <TripPoints>
+        <TripPoint>
+          <SensorType>x86_pkg_temp</SensorType>
+          <Temperature>30000</Temperature>
+          <Type>active</Type>
+          <ControlType>PARALLEL</ControlType>
+          <CoolingDevice>
+            <Type>Fan</Type>
+            <Influence>100</Influence>
+            <SamplingPeriod>5</SamplingPeriod>
+            <TargetState>1</TargetState>
+          </CoolingDevice>
+          <CoolingDevice>
+            <Type>Processor</Type>
+            <Influence>50</Influence>
+            <TargetState>5</TargetState>
+          </CoolingDevice>
+          <CoolingDevice>
+            <Type>intel_powerclamp</Type>
+            <TargetState>50</TargetState>
+          </CoolingDevice>
+        </TripPoint>
+        <TripPoint>
+          <SensorType>acpitz</SensorType>
+          <Temperature>35000</Temperature>
+          <Type>max</Type>
+          <CoolingDevice>
+            <Type>Processor</Type>
+            <Influence>100</Influence>
+            <TargetState>10</TargetState>
+          </CoolingDevice>
+          <CoolingDevice>
+            <Type>intel_powerclamp</Type>
+            <Influence>50</Influence>
+            <TargetState>100</TargetState>
+          </CoolingDevice>
+        </TripPoint>
+      </TripPoints>
+    </ThermalZone>
+  </ThermalZones>
+  <CoolingDevice>
+    <Type>Fan</Type>
+    <MinState>1</MinState>
+    <MaxState>1</MaxState>
+  </CoolingDevice>
+  <CoolingDevice>
+    <Type>Processor</Type>
+    <MinState>5</MinState>
+    <MaxState>10</MaxState>
+  </CoolingDevice>
+</Platform>
+</ThermalConfiguration>

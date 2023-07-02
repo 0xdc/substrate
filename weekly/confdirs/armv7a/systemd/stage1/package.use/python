@@ -1,4 +1,0 @@
-*/* PYTHON_SINGLE_TARGET: -* python3_10
-*/* PYTHON_TARGETS: -* python3_10
-
-=dev-lang/python-2.7.18 ncurses ssl sqlite xml

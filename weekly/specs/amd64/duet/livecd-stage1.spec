@@ -15,6 +15,7 @@ livecd/packages:
 	app-crypt/tpm2-tss-engine
 	app-crypt/yubikey-manager
 	app-office/abiword
+	app-office/sc-im
 	dev-libs/intel-compute-runtime
 	dev-python/dbus-python
 	dev-python/pyroute2
@@ -25,7 +26,6 @@ livecd/packages:
 	mail-client/thunderbird
 	media-gfx/zbar
 	media-libs/libva-intel-media-driver
-	media-libs/vulkan-loader
 	media-tv/v4l-utils
 	media-video/mpv
 	net-analyzer/nmap
@@ -40,6 +40,7 @@ livecd/packages:
 	net-misc/wol
 	net-misc/yt-dlp
 	net-voip/mumble
+	sys-apps/ipmitool
 	sys-apps/kexec-tools
 	sys-apps/usbutils
 	sys-auth/pam_u2f
@@ -48,9 +49,7 @@ livecd/packages:
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
 	sys-fs/fuse-exfat
-	sys-libs/freeipmi
 	sys-kernel/linux-firmware
-	sys-power/intel-undervolt
 	sys-power/powertop
 	sys-power/thermald
 	x11-drivers/xf86-video-intel

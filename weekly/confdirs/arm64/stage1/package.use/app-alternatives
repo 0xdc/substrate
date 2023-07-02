@@ -1,0 +1,6 @@
+app-alternatives/awk gawk
+app-alternatives/bzip2 lbzip2
+app-alternatives/gzip pigz
+app-alternatives/lex flex
+app-alternatives/tar libarchive
+app-alternatives/yacc bison
