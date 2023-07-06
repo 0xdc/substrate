@@ -1,4 +1,4 @@
-=sys-kernel/gentoo-sources-6.3.5::gentoo ~amd64
+=sys-kernel/gentoo-sources-6.3.12::gentoo ~amd64
 =sys-power/intel-undervolt-1.7-r1::gentoo ~amd64
 >=app-crypt/tpm2-totp-0.3.0-r1::gentoo ~amd64
 >=app-crypt/tpm2-tss-engine-1.2.0::gentoo ~amd64
