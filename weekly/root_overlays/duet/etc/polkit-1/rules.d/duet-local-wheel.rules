@@ -8,6 +8,7 @@ polkit.addRule(function(action, subject) {
      || action.id == "org.freedesktop.login1.suspend"
      || action.id == "org.freedesktop.login1.suspend-multiple-sessions"
      || action.id == "org.freedesktop.machine1.shell"
+     || action.id == "org.kde.kded.smart.smartctl"
      || action.id == "org.kde.powerdevil.backlighthelper.brightness"
      || action.id == "org.kde.powerdevil.backlighthelper.brightnessmax"
      || action.id == "org.kde.powerdevil.backlighthelper.setbrightness"
