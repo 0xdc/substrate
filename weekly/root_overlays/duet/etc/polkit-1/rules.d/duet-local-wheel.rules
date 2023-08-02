@@ -14,6 +14,8 @@ polkit.addRule(function(action, subject) {
      || action.id == "org.kde.powerdevil.backlighthelper.syspath"
      || action.id == "org.kde.powerdevil.chargethresholdhelper.getthreshold"
      || action.id == "org.kde.powerdevil.discretegpuhelper.hasdualgpu"
+     || action.id == "org.debian.pcsc-lite.access_pcsc"
+     || action.id == "org.debian.pcsc-lite.access_card"
         ) {
       return polkit.Result.YES;
     } else {

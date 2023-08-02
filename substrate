@@ -44,6 +44,8 @@ for combo in $targets; do
 	target=$(cut -d: -f1 <<<$combo)
 	stage=$( cut -d: -f2 <<<$combo)
 	bhost=$( cut -d: -f3 <<<$combo)
+
+	unset angry cflags subarch
 	if test "${bhost}"; then
 		. "${BASE_DIR}/arch/${bhost}"
 		if test "$cross"; then
@@ -53,7 +55,6 @@ for combo in $targets; do
 		fi
 		BUILDS_DIR=$BASE_DIR/builds/$upstream
 	else
-		angry=""
 		. "${BASE_DIR}/arch/${arch}"
 		BUILDS_DIR=$BASE_DIR/builds/$upstream
 	fi
