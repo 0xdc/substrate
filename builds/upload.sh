@@ -9,11 +9,14 @@ if test "$1" == "-s"; then
 	test "$ST_KEY"
 	uploader="swift upload"
 	# to make it public: swift post -r '.r:*' $container
+	shift
 else
 	which openstack
 	test "$OS_CLOUD" = "envvars" || (test -f /etc/openstack/clouds.yaml || test -f ~/.config/openstack/clouds.yaml )
 	uploader="openstack object create"
 fi
+
+container="${1:-builds}"
 
 pushd $(dirname $0)
 
@@ -27,6 +30,8 @@ f=(
 		! -name '*stage1-armv7a_hardfp*'
 		-a
 		! -name 'livecd-stage*'
+		-a
+		! -name 'latest-livecd-stage1-*'
 	\)
 	-a
 	\(
@@ -55,11 +60,21 @@ for dir in */*/*/; do
 		SHA256SUMS|*.CONTENTS.gz|*.sha256|*.gpg)
 			;;
 		*)
-			test -f ${i}.sha256 || sha256sum $i | gpg --batch --clear-sign -o ${i}.sha256
+			if test -f ${i}.sha256; then
+				:
+			else
+				if test -f $i; then
+					if grep -q -m1 $i SHA256SUMS; then
+						grep -m1 $i SHA256SUMS | gpg --batch --clear-sign -o ${i}.sha256
+					else
+						sha256sum $i | gpg --batch --clear-sign -o ${i}.sha256
+					fi
+				fi
+			fi
 			;;
 		esac
 	done
 	popd
 done
 
-find */*/*/ */*/*.txt "${f[@]}" -o -name 'SHA256SUMS*' | xargs --no-run-if-empty $uploader builds
+find */*/*/ */*/*.txt "${f[@]}" -o -name SHA256SUMS | xargs --no-run-if-empty $uploader $container
