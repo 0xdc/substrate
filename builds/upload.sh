@@ -42,6 +42,10 @@ f=(
 		-name '*.iso*'
 		-o
 		-name 'latest-livecd-stage3-*.txt'
+		-o
+		-name 'latest-systemd-*.txt'
+		-o
+		-name 'systemd-*'
 	\)
 )
 
