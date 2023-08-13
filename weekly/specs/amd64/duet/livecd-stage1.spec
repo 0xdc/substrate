@@ -12,7 +12,6 @@ livecd/packages:
 	app-crypt/efitools
 	app-crypt/sbsigntools
 	app-crypt/tpm2-totp
-	app-crypt/tpm2-tss-engine
 	app-crypt/yubikey-manager
 	app-office/abiword
 	app-office/sc-im
