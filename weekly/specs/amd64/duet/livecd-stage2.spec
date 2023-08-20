@@ -4,7 +4,6 @@ portage_confdir: @REPO_DIR@/confdirs/amd64/plasma/duet
 
 compression_mode: lbzip2
 boot/kernel: gentoo
-boot/kernel/gentoo/sources: gentoo-sources
 boot/kernel/gentoo/config: @REPO_DIR@/kconfig.amd64
 boot/kernel/gentoo/packages: --usepkg=n acpi_call
 
