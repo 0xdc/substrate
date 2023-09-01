@@ -11,7 +11,6 @@ livecd/packages:
 	app-admin/sysstat
 	app-crypt/efitools
 	app-crypt/sbsigntools
-	app-crypt/tpm2-totp
 	app-crypt/yubikey-manager
 	app-office/sc-im
 	dev-libs/intel-compute-runtime
