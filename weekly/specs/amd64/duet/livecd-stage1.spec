@@ -13,10 +13,10 @@ livecd/packages:
 	app-crypt/sbsigntools
 	app-crypt/tpm2-totp
 	app-crypt/yubikey-manager
-	app-office/abiword
 	app-office/sc-im
 	dev-libs/intel-compute-runtime
 	dev-python/dbus-python
+	dev-python/pefile
 	dev-python/pyroute2
 	dev-texlive/texlive-latexextra
 	dev-util/intel-graphics-compiler
