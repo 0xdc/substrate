@@ -1,3 +1,2 @@
-=sys-kernel/gentoo-sources-6.4.7::gentoo ~amd64
->=app-crypt/tpm2-totp-0.3.0-r1::gentoo ~amd64
->=app-crypt/tpm2-tss-engine-1.2.0::gentoo ~amd64
+=sys-kernel/gentoo-kernel-6.4.13::gentoo ~amd64
+=virtual/dist-kernel-6.4.13::gentoo ~amd64

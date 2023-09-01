@@ -71,7 +71,7 @@ pulsar)
 	targets+=( ${plasma[*]} )
 	;;
 maple)
-	targets+=( ${armv7a[*]} )
+	targets+=( ${plasma[*]} ${armv7a[*]} )
 	;;
 esac
 
