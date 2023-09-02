@@ -8,10 +8,11 @@ quiet
 rd.emergency=poweroff
 rd.shell=0
 rd.timeout=90
+rd.vconsole.font=latarcyrheb-sun32
 splash
 systemd.wants=NetworkManager.service
 systemd.wants=bluetooth.service
-systemd.wants=thermald.service
 systemd.wants=sddm.service
 systemd.wants=sysstat-collect.timer
+systemd.wants=thermald.service
 systemd.wants=vnstatd.service
