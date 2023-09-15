@@ -1,2 +1,2 @@
-=sys-kernel/gentoo-kernel-6.4.13::gentoo ~amd64
-=virtual/dist-kernel-6.4.13::gentoo ~amd64
+=sys-kernel/gentoo-kernel-6.4.16::gentoo ~amd64
+=virtual/dist-kernel-6.4.16::gentoo ~amd64
