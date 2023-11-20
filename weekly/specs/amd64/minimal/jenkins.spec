@@ -4,7 +4,7 @@ source_subpath: amd64/systemd/stage3-amd64-systemd-latest
 portage_confdir: @REPO_DIR@/confdirs/minimal/jenkins
 
 boot/kernel: gentoo
-boot/kernel/gentoo/console: ttyS0
+boot/kernel/gentoo/console: ttyS0,115200
 boot/kernel/gentoo/config: @REPO_DIR@/kconfig.amd64
 
 embedded/packages:
