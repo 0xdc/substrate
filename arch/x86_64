@@ -20,7 +20,6 @@ targets=(
 	router:stage1
 
 	minimal:nginx
-	minimal:jenkins
 
 	#https://bugs.gentoo.org/688330
 	sso:stage4
