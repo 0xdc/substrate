@@ -6,10 +6,12 @@ embedded/packages:
 	app-arch/tar
 	app-crypt/gnupg
 	app-editors/vim
+	dev-python/pychroot
 	net-misc/casync
 	net-misc/openssh
 	net-misc/rsync
 	net-wireless/wpa_supplicant
+	sys-apps/arch-chroot
 	sys-apps/findutils
 	sys-apps/kexec-tools
 	sys-apps/smartmontools
