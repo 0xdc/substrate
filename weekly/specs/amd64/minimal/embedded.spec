@@ -13,6 +13,7 @@ embedded/packages:
 	net-wireless/wpa_supplicant
 	sys-apps/arch-chroot
 	sys-apps/findutils
+	sys-apps/gptfdisk
 	sys-apps/kexec-tools
 	sys-apps/smartmontools
 	sys-apps/util-linux
