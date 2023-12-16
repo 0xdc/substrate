@@ -1,1 +1,2 @@
 =sys-devel/gettext-0.21.1::gentoo -openmp
+=sys-devel/gettext-0.22.4::gentoo -openmp
