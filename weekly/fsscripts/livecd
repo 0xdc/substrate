@@ -18,7 +18,10 @@ echo > ${clst_root_path}/etc/machine-id
 [ -x /usr/sbin/env-update ] && /usr/sbin/env-update
 
 # dracut uses /proc as a rootfs indicator for squashfs live images
-test -d ${clst_root_path}/proc || mkdir ${clst_root_path}/proc
+# https://github.com/dracutdevs/dracut/blob/master/modules.d/99base/dracut-lib.sh#L741 usable_root()
+for _i in proc dev sys; do
+	test -d ${clst_root_path}/$_i || mkdir ${clst_root_path}/$_i
+done
 
 test -d ${clst_root_path}/home || mkdir ${clst_root_path}/home
 umask 0077
