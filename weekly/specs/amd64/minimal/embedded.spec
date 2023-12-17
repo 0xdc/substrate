@@ -14,6 +14,7 @@ embedded/packages:
 	sys-apps/arch-chroot
 	sys-apps/findutils
 	sys-apps/gptfdisk
+	sys-apps/kbd
 	sys-apps/kexec-tools
 	sys-apps/smartmontools
 	sys-apps/util-linux
