@@ -4,6 +4,7 @@ rsync_args=(
 	--prune-empty-dirs
 	--recursive
 	--mkpath
+	--links
 
 	--include='*/'
 
@@ -12,6 +13,7 @@ rsync_args=(
 	--include='latest-*.txt'
 	--include='*.iso'
 	--include='*.sh'
+	--include='*.ex'
 	--include='index.html'
 
 	--exclude='*'
