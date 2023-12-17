@@ -7,6 +7,7 @@ rsync_args=(
 
 	--include='*/'
 
+	--exclude="*livecd-stage2*"
 	--include='*.tar.*'
 	--include='latest-*.txt'
 	--include='*.iso'
