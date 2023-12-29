@@ -5,4 +5,3 @@ sys-apps/systemd gnuefi policykit cryptsetup importd curl lzma
 >=sys-apps/systemd-248 tpm
 >=sys-apps/systemd-254 boot -gnuefi
 >=sys-apps/systemd-254.5-r1 boot kernel-install
->=sys-apps/systemd-254.7::gentoo PYTHON_SINGLE_TARGET: -* python3_11
