@@ -6,7 +6,6 @@ embedded/packages:
 	app-arch/tar
 	app-crypt/gnupg
 	app-editors/vim
-	dev-python/pychroot
 	net-misc/casync
 	net-misc/openssh
 	net-misc/rsync

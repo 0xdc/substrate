@@ -24,7 +24,7 @@ while true {
 			if {$LIVE == 5} { send "curl https://$hostname/amd64/router/\$getpath | tar xJ -C /run/media/system/root-x86-64\r" }
 			if {$LIVE == 6} { send "rsync --recursive /lib/modules/ /run/media/system/root-x86-64/lib/modules\r" }
 			if {$LIVE == 7} { send "systemd-firstboot --root /run/media/system/root-x86-64 --setup-machine-id --hostname router\r" }
-			if {$LIVE == 8} { send "pychroot /run/media/system/root-x86-64\r" }
+			if {$LIVE == 8} { send "arch-chroot /run/media/system/root-x86-64\r" }
 
 			if {$LIVE == 21} { send "systemctl reboot\r" }
 			if {$LIVE >= 23} { exit }
