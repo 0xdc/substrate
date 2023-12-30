@@ -21,8 +21,7 @@ targets=(
 
 	minimal:nginx
 
-	#https://bugs.gentoo.org/688330
-	sso:stage4
+	systemd:sso
 
 	dev:stage4
 )
@@ -37,7 +36,7 @@ plasma=(
 	plasma:livecd-stage2
 	plasma:livecd-stage3
 
-	plasma-sso:stage4
+	plasma:sso
 
 	duet:livecd-stage1
 	duet:livecd-stage2
