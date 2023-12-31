@@ -12,7 +12,7 @@ while true {
 		"duet login:" { send "root\r" }
 		"root@duet ~ #" {
 			if {$LIVE == 0} { send "systemd-repart --no-pager /dev/vda --empty=require --dry-run=no\r" }
-			if {$LIVE == 1} { send "/lib/systemd/systemd-cryptsetup attach cryptoroot /dev/vda2\r" }
+			if {$LIVE == 1} { send "/lib/systemd/systemd-cryptsetup attach cryptoroot /dev/vda3\r" }
 			if {$LIVE == 2} { send "systemd-mount /dev/mapper/cryptoroot\r" }
 			if {$LIVE == 3} { send "systemd-mount /dev/vda1 /run/media/system/root-x86-64/efi\r" }
 			if {$LIVE == 4} { send "systemd-machine-id-setup --root /run/media/system/root-x86-64\r" }
