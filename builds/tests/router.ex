@@ -8,13 +8,13 @@ if {[llength $argv] == 1} {
   set hostname "builds.roflmao.space"
 }
 
-spawn virt-install --autoconsole text --os-variant gentoo --location builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso,kernel=boot/gentoo,initrd=boot/gentoo.igz --extra-args "console=ttyS0 cdroot quiet verify" --metadata title=router
+spawn virt-install --autoconsole text --os-variant gentoo --location builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso,kernel=boot/gentoo,initrd=boot/gentoo.igz --extra-args "console=ttyS0 cdroot quiet verify" --metadata title=builds/amd64/router --disk size=10
 
 while true {
 	expect {
 		"roflmaOS login:" { send "root\r" }
 		"router login:" { send "root\r" }
-                "Password:" { send "router\r" }
+		"Password:" { send "router\r" }
 		"root@roflmaOS ~ #" {
 			if {$LIVE == 0} { send "sed -i '/Encrypt/d;/CopyFiles/d' /etc/repart.d/bios/20-root.conf\r" }
 			if {$LIVE == 1} { send "systemd-repart --no-pager /dev/vda --empty=require --dry-run=no --definitions /etc/repart.d/bios\r" }

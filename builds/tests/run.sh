@@ -19,4 +19,4 @@ test -f $iso && timeout 15m expect -f "$TESTDIR"/livecd.ex $iso --memory 1024 --
 
 i=duet
 iso=builds/amd64/$i/latest-livecd-stage3-amd64-$i.iso
-test -f $iso && timeout 15m expect -f "$TESTDIR"/$i.ex $iso --memory 1024 --disk size=10
+test -f $iso && timeout 15m expect -f "$TESTDIR"/$i.ex $iso --memory 2048 --disk size=20
