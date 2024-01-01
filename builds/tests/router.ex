@@ -41,7 +41,7 @@ while true {
 			if {$LIVE == 16} { send "grub-mkconfig -o /boot/grub/grub.cfg\r" }
 			if {$LIVE == 17} { send "echo root:router | chpasswd\r" }
 			if {$LIVE == 18} { send "echo /dev/vda2 / btrfs relatime,compress 1 1 > /etc/fstab\r" }
-			if {$LIVE == 19} { send "echo /dev/vda1 /boot ext2 noatime 1 1 >> /etc/fstab\r" }
+			if {$LIVE == 19} { send "echo /dev/vda1 /boot ext2 noatime 1 2 >> /etc/fstab\r" }
 			if {$LIVE == 20} { send "exit\r" }
 			set LIVE [expr $LIVE + 1]
 		}
