@@ -13,7 +13,10 @@ stage4/packages:
 	app-i18n/imsettings
 	app-shells/bash-completion
 	dev-vcs/git
-	kde-plasma/plasma-meta
+	kde-plasma/plasma-desktop
+	kde-plasma/plasma-nm
+	kde-plasma/plasma-pa
+	kde-plasma/systemsettings
 	kde-apps/ark
 	kde-apps/dolphin
 	kde-apps/konsole
@@ -23,6 +26,7 @@ stage4/packages:
 	sys-kernel/dracut
 	sys-process/htop
 	www-client/firefox
+	x11-misc/sddm
 
 stage4/root_overlay: @REPO_DIR@/root_overlays/plasma
 
