@@ -6,3 +6,6 @@ media-libs/x264 opencl
 
 # for thunderbird
 =media-libs/libvpx-1.12.0-r1 postproc
+
+# drop vlc dep
+>=media-libs/phonon-4.11.1-r2 -vlc gstreamer

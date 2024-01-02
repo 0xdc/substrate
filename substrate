@@ -122,13 +122,14 @@ for combo in $targets; do
 	test -d "$BASE_DIR/logs/$target" || mkdir -p "$BASE_DIR/logs/$target"
 	$catalyst -f $tempstage ${extraargs[*]} |& tee $BASE_DIR/logs/$target/$stage-$upstream$rel-$date.log
 
-	rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest*
 	echo -n "$BUILDS_DIR/$target/"
 	if grep -q /iso $tempstage; then
-		# XXX: do we need a symlink to these isos? probably not
 		tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$iso"
+		rm -f $BUILDS_DIR/$target/latest-$stage-$upstream$rel.iso
+		ln -s $date/$iso $BUILDS_DIR/$target/latest-$stage-$upstream$rel.iso
 	else
-		(cd $BUILDS_DIR/$target && ln -s $date/$stage-$upstream$rel-$date$ext $BUILDS_DIR/$target/$stage-$upstream$rel-latest$ext)
+		rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest*
+		ln -s $date/$stage-$upstream$rel-$date$ext $BUILDS_DIR/$target/$stage-$upstream$rel-latest$ext
 		tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$stage-$upstream$rel-$date$ext"
 	fi
 done

@@ -4,7 +4,7 @@ portage_confdir: @REPO_DIR@/confdirs/minimal/embedded
 
 boot/kernel: gentoo
 boot/kernel/gentoo/config: @REPO_DIR@/kconfig.amd64
-boot/kernel/gentoo/console: ttyS0
+boot/kernel/gentoo/console: ttyS0,115200
 
 embedded/iso: roflmaOS-minimal-systemd-@latest@.iso
 embedded/fstype: btrfs

@@ -4,3 +4,6 @@ pref("gfx.webrender.all",		true);
 pref("media.ffmpeg.vaapi.enabled",	true);
 
 pref("privacy.resistFingerprinting",	true);
+
+/* https://mzl.la/3POXoWi#firefox:linux:fx115 */
+pref("extensions.quarantinedDomains.enabled", false);

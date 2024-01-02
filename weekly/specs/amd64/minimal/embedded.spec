@@ -10,7 +10,10 @@ embedded/packages:
 	net-misc/openssh
 	net-misc/rsync
 	net-wireless/wpa_supplicant
+	sys-apps/arch-chroot
 	sys-apps/findutils
+	sys-apps/gptfdisk
+	sys-apps/kbd
 	sys-apps/kexec-tools
 	sys-apps/smartmontools
 	sys-apps/util-linux

@@ -20,10 +20,8 @@ targets=(
 	router:stage1
 
 	minimal:nginx
-	minimal:jenkins
 
-	#https://bugs.gentoo.org/688330
-	sso:stage4
+	systemd:sso
 
 	dev:stage4
 )
@@ -38,11 +36,18 @@ plasma=(
 	plasma:livecd-stage2
 	plasma:livecd-stage3
 
-	plasma-sso:stage4
+	plasma:sso
 
 	duet:livecd-stage1
 	duet:livecd-stage2
 	duet:livecd-stage3
+)
+
+gnome=(
+	gnome:stage1
+	gnome:stage2
+	gnome:stage3
+	gnome:stage4
 )
 
 armv7a=(
@@ -68,7 +73,7 @@ case "$(hostname)" in
 pulsar)
 	test -d ${BASE_DIR}/tmp || mkdir ${BASE_DIR}/tmp
 	mountpoint -q ${BASE_DIR}/tmp || mount -t tmpfs -o size=95% tmpfs ${BASE_DIR}/tmp
-	targets+=( ${plasma[*]} )
+	targets+=( ${plasma[*]} ${gnome[*]} )
 	;;
 maple)
 	targets+=( ${plasma[*]} ${armv7a[*]} )
@@ -77,6 +82,6 @@ esac
 
 case "${date}" in
 *01)
-	targets+=( ${plasma[*]} )
+	targets+=( ${gnome[*]} )
 	;;
 esac

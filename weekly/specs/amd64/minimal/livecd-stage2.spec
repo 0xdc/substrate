@@ -5,7 +5,7 @@ portage_confdir: @REPO_DIR@/confdirs/livecd
 compression_mode: lbzip2
 boot/kernel: gentoo
 boot/kernel/gentoo/config: @REPO_DIR@/kconfig.amd64
-boot/kernel/gentoo/console: ttyS0
+boot/kernel/gentoo/console: ttyS0,115200
 
 livecd/bootargs: dokeymap verify real_init=/usr/lib/systemd/systemd
 livecd/gk_mainargs: --all-ramdisk-modules --symlink --b2sum

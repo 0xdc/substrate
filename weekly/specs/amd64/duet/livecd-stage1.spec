@@ -17,7 +17,6 @@ livecd/packages:
 	app-office/sc-im
 	dev-libs/intel-compute-runtime
 	dev-python/dbus-python
-	dev-python/pefile
 	dev-python/pyroute2
 	dev-texlive/texlive-latexextra
 	dev-util/intel-graphics-compiler
