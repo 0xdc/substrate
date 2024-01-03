@@ -15,7 +15,7 @@ while true {
 			if {$LIVE == 1} { send "/lib/systemd/systemd-cryptsetup attach cryptoroot /dev/vda3\r" }
 			if {$LIVE == 2} { send "systemd-mount /dev/mapper/cryptoroot\r" }
 			if {$LIVE == 3} { send "systemd-mount /dev/vda1 /run/media/system/root-x86-64/efi\r" }
-			if {$LIVE == 4} { send "rsync -a --info=progress2 /run/rootfsbase/ /run/media/system/root-x86-64\r" }
+			if {$LIVE == 4} { send "rsync --archive /run/rootfsbase/ /run/media/system/root-x86-64\r" }
 			if {$LIVE == 5} { send "systemd-machine-id-setup --root /run/media/system/root-x86-64\r" }
 			if {$LIVE == 6} { send "systemd-nspawn --bind /sys/firmware/efi -D/run/media/system/root-x86-64\r" }
 			if {$LIVE == 11} { send "systemctl reboot\r" }
