@@ -21,7 +21,7 @@ while true {
 			if {$LIVE == 2} { send "sync && sleep 2 && systemd-mount /dev/vda2\r" }
 			if {$LIVE == 3} { send "systemd-mount /dev/vda1 /run/media/system/root-x86-64/boot\r" }
 			if {$LIVE == 4} { send "getpath=\$(curl -s https://$hostname/amd64/router/latest-stage1-amd64-router.txt)\r" }
-			if {$LIVE == 5} { send "curl https://$hostname/amd64/router/\$getpath | tar xJ -C /run/media/system/root-x86-64\r" }
+			if {$LIVE == 5} { send "curl -s https://$hostname/amd64/router/\$getpath | tar xJ -C /run/media/system/root-x86-64\r" }
 			if {$LIVE == 6} { send "rsync --recursive /lib/modules/ /run/media/system/root-x86-64/lib/modules\r" }
 			if {$LIVE == 7} { send "systemd-firstboot --root /run/media/system/root-x86-64 --setup-machine-id --hostname router\r" }
 			if {$LIVE == 8} { send "arch-chroot /run/media/system/root-x86-64\r" }
