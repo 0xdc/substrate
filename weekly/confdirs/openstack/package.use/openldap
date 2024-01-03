@@ -1,0 +1,2 @@
+net-nds/openldap sasl
+>=sys-auth/ssh-ldap-pubkey-1.4.0::gentoo schema

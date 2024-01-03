@@ -16,8 +16,10 @@ targets=(
 
 	minimal:systemd
 
-	openstack:controller
 	router:stage1
+
+	openstack:controller
+	openstack:stage4
 
 	minimal:nginx
 
