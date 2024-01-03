@@ -3,6 +3,7 @@
 set -e
 
 TESTDIR="$(dirname $0)"
+HOSTNAME="${1:-builds.roflmao.space}"
 
 which expect >/dev/null || exit 1
 
@@ -11,7 +12,7 @@ for i in systemd minimal; do
 	test -f $iso && timeout 10m expect -f "$TESTDIR"/livecd.ex $iso
 done
 
-test -f $iso && timeout 5m expect -f "$TESTDIR"/router.ex
+test -f $iso && timeout 5m expect -f "$TESTDIR"/router.ex ${HOSTNAME}
 
 i=plasma
 iso=builds/amd64/$i/latest-livecd-stage3-amd64-$i.iso
