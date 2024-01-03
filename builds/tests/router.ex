@@ -33,7 +33,7 @@ while true {
 		"root@roflmaOS / #" {
 			if {$LIVE == 9} { send "source /etc/profile\r" }
 			if {$LIVE == 10} { send "grub-install /dev/vda\r" }
-			if {$LIVE == 11} { send "echo 'GRUB_CMDLINE_LINUX=\"quiet console=ttyS0,115200n8\"' >> /etc/default/grub\r" }
+			if {$LIVE == 11} { send "echo 'GRUB_CMDLINE_LINUX=\"quiet console=ttyS0,115200n8 mitigations=auto,nosmt\"' >> /etc/default/grub\r" }
 			if {$LIVE == 12} { send "echo 'GRUB_TERMINAL=serial' >> /etc/default/grub\r" }
 			if {$LIVE == 13} { send "echo 'GRUB_SERIAL_COMMAND=\"serial --speed=115200\"' >> /etc/default/grub\r" }
 			if {$LIVE == 14} { send "mv /boot/gentoo /boot/vmlinuz-\$(uname -r)\r" }
