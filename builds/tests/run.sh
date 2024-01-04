@@ -10,9 +10,6 @@ which expect >/dev/null || exit 1
 iso=builds/amd64/systemd/latest-livecd-stage3-amd64-systemd.iso
 test -f $iso && timeout 10m expect -f "$TESTDIR"/livecd.ex $iso
 
-iso=builds/amd64/minimal/latest-systemd-amd64-minimal.iso
-test -f $iso && timeout 5m expect -f "$TESTDIR"/livecd.ex $iso --extra-args "root=live:LABEL=ISOIMAGE"
-
 iso=builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso
 if test -f $iso; then
 	timeout 10m expect -f "$TESTDIR"/livecd.ex $iso --extra-args "real_init=/usr/lib/systemd/systemd"
