@@ -11,6 +11,9 @@ i=systemd
 iso=builds/amd64/$i/latest-livecd-stage3-amd64-$i.iso
 test -f $iso && timeout 10m expect -f "$TESTDIR"/livecd.ex $iso
 
+iso=builds/amd64/minimal/latest-systemd-amd64-minimal.iso
+test -f $iso && timeout 5m expect -f "$TESTDIR"/livecd.ex $iso
+
 i=minimal
 iso=builds/amd64/$i/latest-livecd-stage3-amd64-$i.iso
 if test -f $iso; then
