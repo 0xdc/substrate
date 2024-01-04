@@ -8,6 +8,8 @@ HOSTNAME="${1:-builds.roflmao.space}"
 which expect >/dev/null || exit 1
 which virt-install >/dev/null || exit 2
 
+trap "virsh pool-refresh default" EXIT
+
 iso=builds/amd64/systemd/latest-livecd-stage3-amd64-systemd.iso
 test -f $iso && timeout 10m expect -f "$TESTDIR"/livecd.ex $iso
 
