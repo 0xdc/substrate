@@ -3,7 +3,7 @@
 set LIVE 0
 
 set EXTRA [lassign $argv CD]
-# builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso
+# builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso --extra-args real_init=/usr/lib/systemd/systemd
 # builds/amd64/systemd/latest-livecd-stage3-amd64.iso
 # builds/amd64/plasma/latest-livecd-stage3-amd64-plasma.iso --memory 1024 --disk size=10
 
