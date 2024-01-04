@@ -9,7 +9,7 @@ spawn virt-install --autoconsole text --os-variant gentoo --boot uefi --location
 
 while true {
 	expect {
-		"duet login:" { send "root\r" }
+		"duet login:" { exec virsh pool-refresh default; send "root\r" }
 		"root@duet ~ #" {
 			if {$LIVE == 0} { send "systemd-repart --no-pager /dev/vda --empty=require --dry-run=no\r" }
 			if {$LIVE == 1} { send "/lib/systemd/systemd-cryptsetup attach cryptoroot /dev/vda3\r" }

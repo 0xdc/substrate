@@ -11,7 +11,7 @@ spawn virt-install --autoconsole text --os-variant gentoo --boot uefi --location
 
 while true {
 	expect {
-		"roflmaOS login:" { send "root\r" }
+		"roflmaOS login:" { exec virsh pool-refresh default; send "root\r" }
 		"root@roflmaOS ~ #" {
 			if {$LIVE == 0} { send "systemd-repart --no-pager /dev/vda --empty=require --dry-run=no\r" }
 			if {$LIVE == 1} { send "/lib/systemd/systemd-cryptsetup attach cryptoroot /dev/vda2\r" }
