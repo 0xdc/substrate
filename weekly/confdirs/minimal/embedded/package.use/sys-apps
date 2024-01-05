@@ -5,6 +5,4 @@ sys-apps/systemd gnuefi cryptsetup importd curl lzma
 >=sys-apps/systemd-248 tpm
 >=sys-apps/systemd-254 boot -gnuefi
 >=sys-apps/systemd-254.5-r1 boot kernel-install
-sys-apps/kbd -pam
-sys-apps/shadow -pam
-sys-apps/util-linux -pam -su
+sys-apps/util-linux -su

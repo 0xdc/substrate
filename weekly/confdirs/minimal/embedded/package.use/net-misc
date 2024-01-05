@@ -1,2 +1,2 @@
 net-misc/casync -fuse
-net-misc/openssh security-key -pam
+net-misc/openssh security-key

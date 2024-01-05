@@ -1,0 +1,1 @@
+>=sys-auth/pambase-20210201.1 -systemd elogind
