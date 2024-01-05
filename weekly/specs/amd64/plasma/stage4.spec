@@ -14,7 +14,6 @@ stage4/packages:
 	app-shells/bash-completion
 	dev-vcs/git
 	kde-plasma/plasma-desktop
-	kde-plasma/plasma-nm
 	kde-plasma/plasma-pa
 	kde-plasma/systemsettings
 	kde-apps/ark
