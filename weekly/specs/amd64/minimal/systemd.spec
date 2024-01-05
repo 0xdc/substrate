@@ -21,6 +21,7 @@ embedded/packages:
 	net-misc/rsync
 	net-wireless/wpa_supplicant
 	sys-apps/findutils
+	sys-apps/kbd
 	sys-apps/kexec-tools
 	sys-apps/smartmontools
 	sys-apps/systemd
