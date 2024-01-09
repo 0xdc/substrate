@@ -3,7 +3,7 @@
 set LIVE 0
 
 set EXTRA [lassign $argv CD]
-# builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso
+# builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso --extra-args real_init=/usr/lib/systemd/systemd
 # builds/amd64/systemd/latest-livecd-stage3-amd64.iso
 # builds/amd64/plasma/latest-livecd-stage3-amd64-plasma.iso --memory 1024 --disk size=10
 
@@ -11,7 +11,7 @@ spawn virt-install --autoconsole text --os-variant gentoo --boot uefi --location
 
 while true {
 	expect {
-		"roflmaOS login:" { send "root\r" }
+		"roflmaOS login:" { exec virsh pool-refresh default; send "root\r" }
 		"root@roflmaOS ~ #" {
 			if {$LIVE == 0} { send "systemd-repart --no-pager /dev/vda --empty=require --dry-run=no\r" }
 			if {$LIVE == 1} { send "/lib/systemd/systemd-cryptsetup attach cryptoroot /dev/vda2\r" }

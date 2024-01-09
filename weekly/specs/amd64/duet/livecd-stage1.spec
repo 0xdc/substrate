@@ -22,6 +22,8 @@ livecd/packages:
 	dev-util/intel-graphics-compiler
 	gui-libs/libhandy
 	kde-apps/ffmpegthumbs
+	kde-plasma/plasma-nm
+	kde-plasma/powerdevil
 	mail-client/thunderbird
 	media-gfx/zbar
 	media-libs/libva-intel-media-driver
