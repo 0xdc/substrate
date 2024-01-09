@@ -26,23 +26,22 @@ while true {
 			if {$LIVE == 7} { send "systemd-firstboot --root /run/media/system/root-x86-64 --setup-machine-id --hostname router\r" }
 			if {$LIVE == 8} { send "arch-chroot /run/media/system/root-x86-64\r" }
 
-			if {$LIVE == 21} { send "systemctl reboot\r" }
-			if {$LIVE >= 23} { exit }
+			if {$LIVE == 20} { send "systemctl reboot\r" }
+			if {$LIVE >= 22} { exit }
 			set LIVE [expr $LIVE + 1]
 		}
 		"root@roflmaOS / #" {
-			if {$LIVE == 9} { send "source /etc/profile\r" }
-			if {$LIVE == 10} { send "grub-install /dev/vda\r" }
-			if {$LIVE == 11} { send "echo 'GRUB_CMDLINE_LINUX=\"quiet console=ttyS0,115200n8 mitigations=auto,nosmt\"' >> /etc/default/grub\r" }
-			if {$LIVE == 12} { send "echo 'GRUB_TERMINAL=serial' >> /etc/default/grub\r" }
-			if {$LIVE == 13} { send "echo 'GRUB_SERIAL_COMMAND=\"serial --speed=115200\"' >> /etc/default/grub\r" }
-			if {$LIVE == 14} { send "mv /boot/gentoo /boot/vmlinuz-\$(uname -r)\r" }
-			if {$LIVE == 15} { send "mv /boot/gentoo.igz /boot/initramfs-\$(uname -r).img\r" }
-			if {$LIVE == 16} { send "grub-mkconfig -o /boot/grub/grub.cfg\r" }
-			if {$LIVE == 17} { send "echo root:router | chpasswd\r" }
-			if {$LIVE == 18} { send "echo /dev/vda2 / btrfs relatime,compress 1 1 > /etc/fstab\r" }
-			if {$LIVE == 19} { send "echo /dev/vda1 /boot ext2 noatime 1 2 >> /etc/fstab\r" }
-			if {$LIVE == 20} { send "exit\r" }
+			if {$LIVE == 9} { send "grub-install /dev/vda\r" }
+			if {$LIVE == 10} { send "echo 'GRUB_CMDLINE_LINUX=\"quiet console=ttyS0,115200n8 mitigations=auto,nosmt\"' >> /etc/default/grub\r" }
+			if {$LIVE == 11} { send "echo 'GRUB_TERMINAL=serial' >> /etc/default/grub\r" }
+			if {$LIVE == 12} { send "echo 'GRUB_SERIAL_COMMAND=\"serial --speed=115200\"' >> /etc/default/grub\r" }
+			if {$LIVE == 13} { send "mv /boot/gentoo /boot/vmlinuz-\$(uname -r)\r" }
+			if {$LIVE == 14} { send "mv /boot/gentoo.igz /boot/initramfs-\$(uname -r).img\r" }
+			if {$LIVE == 15} { send "grub-mkconfig -o /boot/grub/grub.cfg\r" }
+			if {$LIVE == 16} { send "echo root:router | chpasswd\r" }
+			if {$LIVE == 17} { send "echo /dev/vda2 / btrfs relatime,compress 1 1 > /etc/fstab\r" }
+			if {$LIVE == 18} { send "echo /dev/vda1 /boot ext2 noatime 1 2 >> /etc/fstab\r" }
+			if {$LIVE == 19} { send "exit\r" }
 			set LIVE [expr $LIVE + 1]
 		}
 		"root@router ~ #" { exit }
