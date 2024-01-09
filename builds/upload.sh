@@ -27,6 +27,10 @@ f=(
 		# need to handle stage1-amd64-default
 		! -name '*stage1-amd64-systemd*'
 		-a
+		! -name '*stage1-amd64-plasma*'
+		-a
+		! -name '*stage1-amd64-gnome*'
+		-a
 		! -name '*stage1-armv7a_hardfp*'
 		-a
 		! -name 'livecd-stage*'
