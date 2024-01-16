@@ -6,7 +6,7 @@ stage4/packages:
 	bash-completion
 	btrfs-progs
 	dev-db/redis
-	dev-util/cmake
+	dev-build/cmake
 	dev-vcs/git
 	dovecot
 	ejabberd
