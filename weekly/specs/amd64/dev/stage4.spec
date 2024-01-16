@@ -5,11 +5,11 @@ portage_confdir: @REPO_DIR@/confdirs/dev
 stage4/packages:
 	dev-db/postgresql
 	dev-db/redis
-	sys-devel/gdb
+	dev-debug/gdb
+	dev-debug/valgrind
 	dev-lang/elixir
 	dev-lang/nasm
 	dev-util/strace
-	dev-util/valgrind
 	net-libs/nodejs
 
 stage4/empty:
