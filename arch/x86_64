@@ -50,6 +50,9 @@ gnome=(
 	gnome:stage2
 	gnome:stage3
 	gnome:stage4
+
+	gnome:livecd-stage2
+	gnome:livecd-stage3
 )
 
 armv7a=(
