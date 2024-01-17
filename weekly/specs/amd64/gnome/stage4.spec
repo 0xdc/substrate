@@ -26,6 +26,3 @@ stage4/packages:
 
 stage4/unmerge:
 	app-editors/nano
-
-stage4/rm:
-	/etc/portage/package.use/libsndfile
