@@ -33,6 +33,8 @@ tempstage=$(mktemp)
 cataconf=$(mktemp)
 envscript=$(mktemp)
 
+trap "rm $tempstage $cataconf $envscript" EXIT
+
 cat $BASE_DIR/.config > $cataconf
 tee $envscript <<<"export MAKEOPTS=\"-j$nproc\""
 tee -a $cataconf <<<"envscript=\"${envscript}\""
