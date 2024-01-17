@@ -16,6 +16,7 @@ targets=(
 
 	minimal:systemd
 
+	router:unbound
 	router:stage1
 
 	openstack:controller
