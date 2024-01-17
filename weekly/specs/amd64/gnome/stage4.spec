@@ -18,7 +18,10 @@ stage4/packages:
 	media-fonts/droid
 	net-firewall/nftables
 	sys-apps/iproute2
+	sys-fs/btrfs-progs
+	sys-fs/dosfstools
 	sys-kernel/dracut
+	sys-kernel/linux-firmware
 	sys-process/htop
 	www-client/firefox
 

@@ -1,0 +1,2 @@
+=sys-kernel/gentoo-kernel-6.6.11::gentoo ~amd64
+=virtual/dist-kernel-6.6.11::gentoo ~amd64
