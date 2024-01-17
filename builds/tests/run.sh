@@ -9,6 +9,7 @@ HOSTNAME="${1:-builds.roflmao.space}"
 which expect >/dev/null || exit 1
 which virt-install >/dev/null || exit 2
 
+{
 trap "virsh pool-refresh default" EXIT
 
 iso=builds/amd64/systemd/latest-livecd-stage3-amd64-systemd.iso
@@ -28,3 +29,5 @@ test -f $iso && timeout $((15 * $MULT))m expect -f "$TESTDIR"/duet.ex $iso --mem
 
 iso=builds/amd64/gnome/latest-livecd-stage3-amd64-gnome.iso
 test -f $iso && timeout $((15 * $MULT))m expect -f "$TESTDIR"/gnome.ex $iso --memory 2048 --disk size=30
+
+} |& less -S +F --exit-follow-on-close
