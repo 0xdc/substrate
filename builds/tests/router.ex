@@ -8,6 +8,8 @@ if {[llength $argv] == 1} {
   set hostname "builds.roflmao.space"
 }
 
+source builds/tests/failures.ex
+
 spawn virt-install --autoconsole text --os-variant gentoo --location builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso,kernel=boot/gentoo,initrd=boot/gentoo.igz --extra-args "console=ttyS0 cdroot quiet verify" --metadata title=builds/amd64/router --disk size=10
 
 while true {
@@ -45,5 +47,6 @@ while true {
 			set LIVE [expr $LIVE + 1]
 		}
 		"root@router ~ #" { exit }
+		-re $failures handle_failures
 	}
 }

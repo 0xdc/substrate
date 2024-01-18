@@ -5,6 +5,8 @@ set LIVE 0
 set EXTRA [lassign $argv CD]
 # builds/amd64/gnome/latest-livecd-stage3-amd64-gnome.iso --memory 1024 --disk size=10
 
+source builds/tests/failures.ex
+
 spawn virt-install --autoconsole text --os-variant gentoo --boot uefi --location $CD,kernel=boot/gentoo,initrd=boot/gentoo.igz --extra-args "console=ttyS0 root=live:LABEL=ISOIMAGE quiet rd.live.dir=/ rd.live.squashimg=image.squashfs" --metadata title=$CD {*}$EXTRA
 
 while true {
@@ -30,5 +32,6 @@ while true {
 		}
 		"Please enter passphrase for disk" { send "\r" }
 		"Last login:" { if {$LIVE >= 11} { exit } }
+		-re $failures handle_failures
 	}
 }

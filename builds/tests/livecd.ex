@@ -7,6 +7,8 @@ set EXTRA [lassign $argv CD]
 # builds/amd64/systemd/latest-livecd-stage3-amd64.iso
 # builds/amd64/plasma/latest-livecd-stage3-amd64-plasma.iso --memory 1024 --disk size=10
 
+source builds/tests/failures.ex
+
 spawn virt-install --autoconsole text --os-variant gentoo --boot uefi --location $CD,kernel=boot/gentoo,initrd=boot/gentoo.igz --extra-args "console=ttyS0 cdroot quiet verify" --metadata title=$CD {*}$EXTRA
 
 while true {
@@ -30,6 +32,7 @@ while true {
 			set LIVE [expr $LIVE + 1]
 		}
 		"Please enter passphrase for disk" { send "\r" }
-                "Last login:" { if {$LIVE >= 10} { exit } }
+		"Last login:" { if {$LIVE >= 10} { exit } }
+		-re $failures handle_failures
 	}
 }
