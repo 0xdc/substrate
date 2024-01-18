@@ -38,7 +38,6 @@ cmdline=(
 	i915.enable_fbc=1
 	i915.enable_guc=2
 	systemd.volatile=yes
-	fbcon=rotate:1
 	systemd.wants=NetworkManager.service
 	systemd.wants=bluetooth.service
 	systemd.wants=thermald.service

@@ -9,4 +9,4 @@ boot/kernel/gentoo/sources: >=sys-kernel/gentoo-kernel-6.3.1::gentoo
 boot/kernel/gentoo/packages: --usepkg=n sys-power/acpi_call
 boot/kernel/gentoo/dracut_args: --xz
 
-livecd/bootargs: consoleblank=3600 systemd.wants=NetworkManager.service systemd.wants=gdm.service quiet splash fbcon=rotate:1
+livecd/bootargs: systemd.wants=NetworkManager.service systemd.wants=gdm.service quiet splash
