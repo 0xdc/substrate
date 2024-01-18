@@ -8,6 +8,7 @@ stage4/use:
 
 stage4/packages:
 	app-admin/ansible
+	app-crypt/tpm2-totp
 	app-editors/vim
 	app-eselect/eselect-repository
 	app-i18n/ibus-anthy
