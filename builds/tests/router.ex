@@ -8,7 +8,7 @@ if {[llength $argv] == 1} {
   set hostname "builds.roflmao.space"
 }
 
-spawn virt-install --autoconsole text --os-variant gentoo --location builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso,kernel=boot/gentoo,initrd=boot/gentoo.igz --extra-args "console=ttyS0 cdroot quiet verify real_init=/usr/lib/systemd/systemd" --metadata title=builds/amd64/router --disk size=10
+spawn virt-install --autoconsole text --os-variant gentoo --location builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso,kernel=boot/gentoo,initrd=boot/gentoo.igz --extra-args "console=ttyS0 cdroot quiet verify" --metadata title=builds/amd64/router --disk size=10
 
 while true {
 	expect {

@@ -1,6 +1,6 @@
 >=sys-apps/coreutils-8.32-r1::gentoo xattr
 sys-apps/smartmontools -daemon
-sys-apps/systemd gnuefi cryptsetup importd curl lzma
+sys-apps/systemd gnuefi cryptsetup importd curl lzma sysv-utils
 >=sys-apps/systemd-245 pkcs11 repart -pam
 >=sys-apps/systemd-248 tpm
 >=sys-apps/systemd-254 boot -gnuefi

@@ -17,7 +17,7 @@ test -f $iso && timeout $((10 * $MULT))m expect -f "$TESTDIR"/livecd.ex $iso
 
 iso=builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso
 if test -f $iso; then
-	timeout $((10 * $MULT))m expect -f "$TESTDIR"/livecd.ex $iso --extra-args "real_init=/usr/lib/systemd/systemd"
+	timeout $((10 * $MULT))m expect -f "$TESTDIR"/livecd.ex $iso
 	timeout $((5 * $MULT))m expect -f "$TESTDIR"/router.ex ${HOSTNAME}
 fi
 
