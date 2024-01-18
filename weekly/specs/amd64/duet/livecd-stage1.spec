@@ -7,7 +7,6 @@ livecd/use:
 	vaapi
 
 livecd/packages:
-	app-admin/pass-otp
 	app-admin/sysstat
 	app-crypt/efitools
 	app-crypt/sbsigntools
