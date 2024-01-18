@@ -1,7 +1,5 @@
 #/usr/bin/expect -f
 
-set LIVE 0
-
 set EXTRA [lassign $argv CD]
 # builds/amd64/duet/latest-livecd-stage3-amd64-duet.iso --memory 1024 --disk size=10
 
@@ -30,6 +28,7 @@ while true {
 			if {$LIVE == 10} { send "exit\r" }
 			set LIVE [expr $LIVE + 1]
 		}
+		"device-mapper: remove ioctl" ioctl
 		"Please enter passphrase for disk" { send "\r" }
 		"Last login:" { if {$LIVE >= 11} { exit } }
 		-re $failures handle_failures

@@ -1,7 +1,5 @@
 #/usr/bin/expect -f
 
-set LIVE 0
-
 set EXTRA [lassign $argv CD]
 # builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso --extra-args real_init=/usr/lib/systemd/systemd
 # builds/amd64/systemd/latest-livecd-stage3-amd64.iso
@@ -31,6 +29,7 @@ while true {
 			if {$LIVE == 9} { send "exit\r" }
 			set LIVE [expr $LIVE + 1]
 		}
+		"device-mapper: remove ioctl" ioctl
 		"Please enter passphrase for disk" { send "\r" }
 		"Last login:" { if {$LIVE >= 10} { exit } }
 		-re $failures handle_failures
