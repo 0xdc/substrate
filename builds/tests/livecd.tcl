@@ -5,7 +5,7 @@ set EXTRA [lassign $argv CD]
 # builds/amd64/systemd/latest-livecd-stage3-amd64.iso
 # builds/amd64/plasma/latest-livecd-stage3-amd64-plasma.iso --memory 1024 --disk size=10
 
-source builds/tests/failures.ex
+source builds/tests/failures.tcl
 
 spawn virt-install --autoconsole text --os-variant gentoo --boot uefi --location $CD,kernel=boot/gentoo,initrd=boot/gentoo.igz --extra-args "console=ttyS0 cdroot quiet verify" --metadata title=$CD {*}$EXTRA
 

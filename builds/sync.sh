@@ -15,7 +15,7 @@ rsync_args=(
 	--include='latest-*.txt'
 	--include='*.iso'
 	--include='*.sh'
-	--include='*.ex'
+	--include='*.tcl'
 	--include='index.html'
 
 	--exclude='*'

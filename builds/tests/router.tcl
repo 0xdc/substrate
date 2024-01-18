@@ -6,7 +6,7 @@ if {[llength $argv] == 1} {
   set hostname "builds.roflmao.space"
 }
 
-source builds/tests/failures.ex
+source builds/tests/failures.tcl
 
 spawn virt-install --autoconsole text --os-variant gentoo --location builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso,kernel=boot/gentoo,initrd=boot/gentoo.igz --extra-args "console=ttyS0 cdroot quiet verify" --metadata title=builds/amd64/router --disk size=10
 

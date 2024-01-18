@@ -1,9 +1,9 @@
 #/usr/bin/expect -f
 
 set EXTRA [lassign $argv CD]
-# builds/amd64/duet/latest-livecd-stage3-amd64-duet.iso --memory 1024 --disk size=10
+# builds/amd64/gnome/latest-livecd-stage3-amd64-gnome.iso --memory 1024 --disk size=10
 
-source builds/tests/failures.ex
+source builds/tests/failures.tcl
 
 spawn virt-install --autoconsole text --os-variant gentoo --boot uefi --location $CD,kernel=boot/gentoo,initrd=boot/gentoo.igz --extra-args "console=ttyS0 root=live:LABEL=ISOIMAGE quiet rd.live.dir=/ rd.live.squashimg=image.squashfs" --metadata title=$CD {*}$EXTRA
 
@@ -24,7 +24,7 @@ while true {
 		"root@root-x86-64 ~ #" {
 			if {$LIVE == 7} { send "bootctl install\r" }
 			if {$LIVE == 8} { send "dracut --uefi --kernel-image=/boot/gentoo\r" }
-			if {$LIVE == 9} { send "systemctl enable sddm.service\r" }
+			if {$LIVE == 9} { send "systemctl enable gdm.service\r" }
 			if {$LIVE == 10} { send "exit\r" }
 			set LIVE [expr $LIVE + 1]
 		}
