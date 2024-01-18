@@ -18,18 +18,17 @@ while true {
 			if {$LIVE == 4} { send "rsync --archive /run/rootfsbase/ /run/media/system/root-x86-64\r" }
 			if {$LIVE == 5} { send "systemd-machine-id-setup --root /run/media/system/root-x86-64\r" }
 			if {$LIVE == 6} { send "systemd-nspawn --bind /sys/firmware/efi -D/run/media/system/root-x86-64\r" }
-			if {$LIVE == 12} { send "systemctl reboot\r" }
+			if {$LIVE == 11} { send "systemctl reboot\r" }
 			set LIVE [expr $LIVE + 1]
 		}
 		"root@root-x86-64 ~ #" {
 			if {$LIVE == 7} { send "bootctl install\r" }
-			if {$LIVE == 8} { send "echo quiet console=ttyS0 > /etc/kernel/cmdline\r" }
-			if {$LIVE == 9} { send "kernel-install add \$(uname -r) /boot/gentoo\r" }
-			if {$LIVE == 10} { send "systemctl enable NetworkManager.service gdm.service\r" }
-			if {$LIVE == 11} { send "exit\r" }
+			if {$LIVE == 8} { send "dracut --uefi --kernel-image=/boot/gentoo\r" }
+			if {$LIVE == 9} { send "systemctl enable gdm.service\r" }
+			if {$LIVE == 10} { send "exit\r" }
 			set LIVE [expr $LIVE + 1]
 		}
 		"Please enter passphrase for disk" { send "\r" }
-		"Last login:" { if {$LIVE >= 12} { exit } }
+		"Last login:" { if {$LIVE >= 11} { exit } }
 	}
 }

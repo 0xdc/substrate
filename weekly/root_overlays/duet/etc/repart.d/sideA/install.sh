@@ -42,7 +42,6 @@ cmdline=(
 	systemd.wants=NetworkManager.service
 	systemd.wants=bluetooth.service
 	systemd.wants=thermald.service
-	systemd.wants=sddm.service
 	systemd.wants=sysstat-collect.timer
 	systemd.wants=vnstatd.service
 )
