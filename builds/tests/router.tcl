@@ -18,7 +18,13 @@ while true {
 		"root@roflmaOS ~ #" {
 			if {$LIVE == 0} { send "sed -i '/Encrypt/d;/CopyFiles/d' /etc/repart.d/bios/20-root.conf\r" }
 			if {$LIVE == 1} { send "systemd-repart --no-pager /dev/vda --empty=require --dry-run=no --definitions /etc/repart.d/bios\r" }
-			if {$LIVE == 2} { send "systemd-mount /dev/vda2\r" }
+			if {$LIVE == 2} {
+				send "systemd-mount /dev/vda2\r"
+				expect {
+				"Started unit" { continue }
+				"does not contain a known file system" { set LIVE [expr $LIVE - 1] }
+				}
+			}
 			if {$LIVE == 3} { send "systemd-mount /dev/vda1 /run/media/system/root-x86-64/boot\r" }
 			if {$LIVE == 4} { send "getpath=\$(curl -s https://$hostname/amd64/router/latest-stage1-amd64-router.txt)\r" }
 			if {$LIVE == 5} { send "curl -s https://$hostname/amd64/router/\$getpath | tar xJ -C /run/media/system/root-x86-64\r" }
