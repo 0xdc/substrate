@@ -14,6 +14,7 @@ if test -d ${clst_root_path}/etc/portage; then
 fi
 
 echo > ${clst_root_path}/etc/machine-id
+touch ${clst_root_path}/usr/lib/os-release
 
 # dracut uses /proc as a rootfs indicator for squashfs live images
 test -d ${clst_root_path}/proc || mkdir ${clst_root_path}/proc
