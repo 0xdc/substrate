@@ -23,7 +23,7 @@ while true {
 		}
 		"root@root-x86-64 ~ #" {
 			if {$LIVE == 7} { send "bootctl install\r" }
-			if {$LIVE == 8} { send "dracut --uefi --kernel-image=/boot/gentoo\r" }
+			if {$LIVE == 8} { send "dracut --uefi --kernel-image=/boot/gentoo --kernel-cmdline=console=ttyS0\r" }
 			if {$LIVE == 9} { send "systemctl enable gdm.service\r" }
 			if {$LIVE == 10} { send "exit\r" }
 			set LIVE [expr $LIVE + 1]
