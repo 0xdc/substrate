@@ -1,5 +1,2 @@
-=app-crypt/tpm2-openssl-1.1.1-r1::gentoo ~amd64
 =app-crypt/tpm2-openssl-1.2.0::gentoo ~amd64
 =app-crypt/tpm2-totp-0.3.0-r1::gentoo ~amd64
-=sys-kernel/gentoo-kernel-6.6.11::gentoo ~amd64
-=virtual/dist-kernel-6.6.11::gentoo ~amd64
