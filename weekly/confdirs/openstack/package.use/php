@@ -1,0 +1,2 @@
+>=app-eselect/eselect-php-0.9.8::gentoo fpm
+>=dev-lang/php-8.1.16::gentoo curl fpm mysql pdo postgres

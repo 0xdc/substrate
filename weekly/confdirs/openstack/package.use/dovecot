@@ -1,1 +1,1 @@
-net-mail/dovecot mysql sieve
+net-mail/dovecot ldap mysql postgres sieve

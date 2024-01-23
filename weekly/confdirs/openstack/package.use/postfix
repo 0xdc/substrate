@@ -1,1 +1,1 @@
-mail-mta/postfix dovecot-sasl mysql sasl
+mail-mta/postfix dovecot-sasl ldap mysql postgres sasl
