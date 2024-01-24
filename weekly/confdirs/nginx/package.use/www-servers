@@ -1,1 +1,1 @@
-www-servers/nginx rtmp vim-syntax
+www-servers/nginx rtmp vim-syntax NGINX_MODULES_HTTP: auth_request javascript

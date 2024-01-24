@@ -1,2 +1,2 @@
-www-servers/nginx rtmp NGINX_MODULES_HTTP: slice stub_status
+www-servers/nginx rtmp NGINX_MODULES_HTTP: slice stub_status javascript auth_request
 >=app-misc/mime-types-2.1.53::gentoo nginx
