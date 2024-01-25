@@ -50,7 +50,12 @@ while true {
 			if {$LIVE == 19} { send "exit\r" }
 			set LIVE [expr $LIVE + 1]
 		}
-		"root@router ~ #" { exit }
+		"root@router ~ #" {
+			if {$LIVE <= 25} { send "\r"}
+			if {$LIVE == 26} { send "nft list ruleset\r" }
+			if {$LIVE == 27} { exit }
+			set LIVE [expr $LIVE + 1]
+		}
 		"device-mapper: remove ioctl" ioctl
 		-re $failures handle_failures
 	}

@@ -24,6 +24,7 @@ set fail_messages "
 	No such file or directory
 	efusing
 	Kernel panic
+	netlink: Error: cache initialization failed: Invalid argument
 "
 set reasons [join [lmap reason [split $fail_messages \n] {
 	set reason [string trim $reason]
