@@ -16,6 +16,7 @@ stage4/packages:
 	dev-vcs/git
 	kde-apps/ark
 	kde-apps/dolphin
+	kde-apps/kmail
 	kde-apps/konsole
 	kde-plasma/breeze-gtk
 	kde-plasma/kscreen
