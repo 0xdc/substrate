@@ -19,14 +19,13 @@ while true {
 			if {$LIVE == 3} { send "systemd-mount -o uid=0,gid=0,fmask=0077,dmask=0077 /dev/vda1 /run/media/system/root-x86-64/efi\r" }
 			if {$LIVE == 4} { send "systemd-machine-id-setup --root /run/media/system/root-x86-64\r" }
 			if {$LIVE == 5} { send "systemd-nspawn --bind /sys/firmware/efi -D/run/media/system/root-x86-64\r" }
-			if {$LIVE == 10} { send "systemctl reboot\r" }
+			if {$LIVE == 9} { send "systemctl reboot\r" }
 			set LIVE [expr $LIVE + 1]
 		}
 		"root@root-x86-64 ~ #" {
 			if {$LIVE == 6} { send "bootctl install\r" }
-			if {$LIVE == 7} { send "echo quiet console=ttyS0 > /etc/kernel/cmdline\r" }
-			if {$LIVE == 8} { send "kernel-install add \$(uname -r) /boot/gentoo\r" }
-			if {$LIVE == 9} { send "exit\r" }
+			if {$LIVE == 7} { send "if grep -q ID= /etc/os-release && which objcopy; then dracut --kernel-cmdline='quiet console=ttyS0' --uefi --kernel-image=/boot/gentoo; else echo quiet console=ttyS0 > /etc/kernel/cmdline; kernel-install add \$(uname -r) /boot/gentoo; fi\r" }
+			if {$LIVE == 8} { send "exit\r" }
 			set LIVE [expr $LIVE + 1]
 		}
 		"device-mapper: remove ioctl" ioctl
