@@ -12,7 +12,8 @@ spawn virt-install --autoconsole text --os-variant gentoo --location builds/amd6
 
 while true {
 	expect {
-		"roflmaOS login:" { exec virsh pool-refresh default; send "root\r" }
+		"Connected to domain" { exec virsh pool-refresh default }
+		"roflmaOS login:" { send "root\r" }
 		"router login:" { send "root\r" }
 		"Password:" { send "router\r" }
 		"root@roflmaOS ~ #" {
