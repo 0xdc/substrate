@@ -25,8 +25,6 @@ targets=(
 	minimal:nginx
 
 	systemd:sso
-
-	dev:stage4
 )
 
 plasma=(
@@ -44,6 +42,8 @@ plasma=(
 	duet:livecd-stage1
 	duet:livecd-stage2
 	duet:livecd-stage3
+
+	dev:stage4
 )
 
 gnome=(
