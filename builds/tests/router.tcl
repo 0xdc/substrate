@@ -23,7 +23,8 @@ while true {
 				expect {
 				"Started unit" { continue }
 				"A dependency job" {
-					send "systemctl reset-failed run-media-system-root\\x2dx86\\x2d64.mount\r"
+					expect "# "
+					send "systemctl stop run-media-system-root\\x2dx86\\x2d64.mount\r"
 					set LIVE [expr $LIVE - 1]
 				}
 				"does not contain a known file system" { set LIVE [expr $LIVE - 1] }
