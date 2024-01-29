@@ -3,6 +3,7 @@ source_subpath: amd64/systemd/stage4-amd64-systemd-latest
 portage_confdir: @REPO_DIR@/confdirs/openstack
 
 stage4/packages:
+	app-admin/sshguard
 	app-admin/sysstat
 	app-containers/docker-registry
 	bash-completion
