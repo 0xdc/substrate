@@ -7,10 +7,10 @@ stage4/packages:
 	dev-db/postgresql
 	dev-db/redis
 	dev-debug/gdb
+	dev-debug/strace
 	dev-debug/valgrind
 	dev-lang/elixir
 	dev-lang/nasm
-	dev-util/strace
 	net-libs/nodejs
 
 stage4/empty:
