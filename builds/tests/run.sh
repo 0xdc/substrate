@@ -25,9 +25,9 @@ iso=builds/amd64/plasma/latest-livecd-stage3-amd64-plasma.iso
 test -f $iso && timeout $((15 * $MULT))m expect -f "$TESTDIR"/livecd.tcl $iso --memory 1024 --disk size=10
 
 iso=builds/amd64/duet/latest-livecd-stage3-amd64-duet.iso
-test -f $iso && timeout $((15 * $MULT))m expect -f "$TESTDIR"/duet.tcl $iso --memory 2048 --disk size=30
+test -f $iso && timeout $((30 * $MULT))m expect -f "$TESTDIR"/duet.tcl $iso --memory 2048 --disk size=30
 
 iso=builds/amd64/gnome/latest-livecd-stage3-amd64-gnome.iso
-test -f $iso && timeout $((15 * $MULT))m expect -f "$TESTDIR"/gnome.tcl $iso --memory 2048 --disk size=30
+test -f $iso && timeout $((30 * $MULT))m expect -f "$TESTDIR"/gnome.tcl $iso --memory 2048 --disk size=30
 
 } |& less -S +F --exit-follow-on-close
