@@ -33,6 +33,8 @@ tempstage=$(mktemp)
 cataconf=$(mktemp)
 envscript=$(mktemp)
 
+trap "rm $tempstage $cataconf $envscript" EXIT
+
 cat $BASE_DIR/.config > $cataconf
 tee $envscript <<<"export MAKEOPTS=\"-j$nproc\""
 tee -a $cataconf <<<"envscript=\"${envscript}\""
@@ -88,8 +90,8 @@ for combo in $targets; do
 
 
 	# Enable single shared package cache
-	tee -a $tempstage <<<"pkgcache_path: ${BASE_DIR}/packages/${upstream}"
-	tee -a $tempstage <<<"kerncache_path: ${BASE_DIR}/kerncache/${upstream}"
+	tee -a $tempstage <<<"pkgcache_path: ${BASE_DIR}/packages"
+	tee -a $tempstage <<<"kerncache_path: ${BASE_DIR}/kerncache"
 	# add subarch and target
 	tee -a $tempstage <<<"subarch: $upstream$subarch"
 	if grep -q "target:" $tempstage; then

@@ -14,6 +14,16 @@ if test -d ${clst_root_path}/etc/portage; then
 fi
 
 echo > ${clst_root_path}/etc/machine-id
+touch ${clst_root_path}/usr/lib/os-release
+
+test -d ${clst_root_path}/etc/kernel || mkdir -p ${clst_root_path}/etc/kernel
+(if grep -q ID= ${clst_root_path}/usr/lib/os-release && which objcopy >&2; then
+	echo layout=uki
+	echo uki_generator=dracut
+	test -d ${clst_root_path}/etc/dracut.conf.d || mkdir -p ${clst_root_path}/etc/dracut.conf.d
+else
+	echo initrd_generator=dracut
+fi) | tee ${clst_root_path}/etc/kernel/install.conf
 
 [ -x /usr/sbin/env-update ] && /usr/sbin/env-update
 

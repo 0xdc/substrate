@@ -1,5 +1,3 @@
-consoleblank=3600
-fbcon=rotate:1
 i915.enable_fbc=1
 i915.enable_guc=2
 iwlwifi.power_level=5
@@ -12,7 +10,6 @@ rd.vconsole.font=latarcyrheb-sun32
 splash
 systemd.wants=NetworkManager.service
 systemd.wants=bluetooth.service
-systemd.wants=sddm.service
 systemd.wants=sysstat-collect.timer
 systemd.wants=thermald.service
 systemd.wants=vnstatd.service

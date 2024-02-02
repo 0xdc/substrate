@@ -8,6 +8,7 @@ stage4/use:
 
 stage4/packages:
 	app-admin/ansible
+	app-crypt/tpm2-totp
 	app-editors/vim
 	app-eselect/eselect-repository
 	app-i18n/ibus-anthy
@@ -18,7 +19,10 @@ stage4/packages:
 	media-fonts/droid
 	net-firewall/nftables
 	sys-apps/iproute2
+	sys-fs/btrfs-progs
+	sys-fs/dosfstools
 	sys-kernel/dracut
+	sys-kernel/linux-firmware
 	sys-process/htop
 	www-client/firefox
 
@@ -26,6 +30,3 @@ stage4/packages:
 
 stage4/unmerge:
 	app-editors/nano
-
-stage4/rm:
-	/etc/portage/package.use/libsndfile

@@ -1,0 +1,28 @@
+diff --git a/drivers/firmware/efi/sysfb_efi.c b/drivers/firmware/efi/sysfb_efi.c
+index 456d0e5eaf78..e7675a421ef9 100644
+--- a/drivers/firmware/efi/sysfb_efi.c
++++ b/drivers/firmware/efi/sysfb_efi.c
+@@ -268,7 +268,8 @@ static const struct dmi_system_id efifb_dmi_swap_width_height[] __initconst = {
+ 		/* Lenovo IdeaPad Duet 3 10IGL5 with 1200x1920 portrait screen */
+ 		.matches = {
+ 			DMI_EXACT_MATCH(DMI_SYS_VENDOR, "LENOVO"),
+-			DMI_EXACT_MATCH(DMI_PRODUCT_VERSION,
++			/* Non exact match to also cover -LTE */
++			DMI_MATCH(DMI_PRODUCT_VERSION,
+ 					"IdeaPad Duet 3 10IGL5"),
+ 		},
+ 	},
+diff --git a/drivers/gpu/drm/drm_panel_orientation_quirks.c b/drivers/gpu/drm/drm_panel_orientation_quirks.c
+index 0cb646cb04ee..464d5f7f866a 100644
+--- a/drivers/gpu/drm/drm_panel_orientation_quirks.c
++++ b/drivers/gpu/drm/drm_panel_orientation_quirks.c
+@@ -325,7 +325,8 @@ static const struct dmi_system_id orientation_data[] = {
+ 	}, {	/* Lenovo IdeaPad Duet 3 10IGL5 */
+ 		.matches = {
+ 		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "LENOVO"),
+-		  DMI_EXACT_MATCH(DMI_PRODUCT_VERSION, "IdeaPad Duet 3 10IGL5"),
++		  /* Non exact match to also cover -LTE */
++		  DMI_MATCH(DMI_PRODUCT_VERSION, "IdeaPad Duet 3 10IGL5"),
+ 		},
+ 		.driver_data = (void *)&lcd1200x1920_rightside_up,
+ 	}, {	/* Lenovo Yoga Book X90F / X90L */

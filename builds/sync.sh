@@ -10,11 +10,12 @@ rsync_args=(
 
 	--exclude="*livecd-stage2*"
 	--exclude="*-latest.tar.*"
+	--exclude="*unbound*"
 	--include='*.tar.*'
 	--include='latest-*.txt'
 	--include='*.iso'
 	--include='*.sh'
-	--include='*.ex'
+	--include='*.tcl'
 	--include='index.html'
 
 	--exclude='*'

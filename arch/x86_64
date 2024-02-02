@@ -16,6 +16,7 @@ targets=(
 
 	minimal:systemd
 
+	router:unbound
 	router:stage1
 
 	openstack:controller
@@ -24,8 +25,6 @@ targets=(
 	minimal:nginx
 
 	systemd:sso
-
-	dev:stage4
 )
 
 plasma=(
@@ -43,6 +42,8 @@ plasma=(
 	duet:livecd-stage1
 	duet:livecd-stage2
 	duet:livecd-stage3
+
+	dev:stage4
 )
 
 gnome=(
@@ -50,6 +51,9 @@ gnome=(
 	gnome:stage2
 	gnome:stage3
 	gnome:stage4
+
+	gnome:livecd-stage2
+	gnome:livecd-stage3
 )
 
 armv7a=(

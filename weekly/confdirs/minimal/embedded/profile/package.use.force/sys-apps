@@ -1,2 +1,2 @@
 ~sys-apps/systemd-254.5 python_single_target_python3_11
-=sys-apps/systemd-254.7::gentoo PYTHON_SINGLE_TARGET: python3_11
+~sys-apps/systemd-254.7::gentoo PYTHON_SINGLE_TARGET: python3_11

@@ -1,0 +1,2 @@
+>=dev-qt/qtsql-5.15.9::gentoo postgres
+net-irc/quassel crypt ldap postgres server

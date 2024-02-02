@@ -1,0 +1,2 @@
+sys-apps/iproute2 -iptables
+sys-apps/systemd boot cryptsetup
