@@ -1,4 +1,4 @@
--auth           requisite       pam_yubico.so id=27760 ldap_uri=ldaps://auth.0xdc.io ldapdn=ou=users,dc=0xdc,dc=io user_attr=uid yubi_attr=yubiKeyId ldap_filter=(uid=%u) mode=client
+-auth           requisite       pam_yubico.so id=27760 ldap_uri=ldaps://0xdc.xyz ldapdn=ou=users,dc=0xdc,dc=xyz user_attr=uid yubi_attr=yubiKeyId ldap_filter=(uid=%u) mode=client
 auth		include		system-login
 account		include		system-login
 password	include		system-login
