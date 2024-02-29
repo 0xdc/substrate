@@ -66,11 +66,11 @@ armv7a=(
 	systemd:stage1:armv7l
 	systemd:stage2:armv7l
 	systemd:stage3:armv7l
-	#systemd:stage4:armv7l
+	systemd:stage4:armv7l
 	ella:systemd:armv7l
 
 	xorg:stage4:armv7l
-	#xorg:systemd:armv7l
+	xorg:systemd:armv7l
 )
 
 upstream="$mach"

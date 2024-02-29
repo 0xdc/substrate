@@ -57,8 +57,9 @@ while true {
 			set LIVE [expr $LIVE + 1]
 		}
 		"root@router ~ #" {
-			if {$LIVE <= 25} { send "\r"}
-			if {$LIVE == 26} { send "nft list ruleset\r" }
+			if {$LIVE <= 24} { send "\r"}
+			if {$LIVE == 25} { send "nft list ruleset\r" }
+			if {$LIVE == 26} { send "ip l\r" }
 			if {$LIVE == 27} { exit }
 			set LIVE [expr $LIVE + 1]
 		}
