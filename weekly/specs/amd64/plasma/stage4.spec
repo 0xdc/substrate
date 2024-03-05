@@ -19,6 +19,7 @@ stage4/packages:
 	kde-apps/kmail
 	kde-apps/konsole
 	kde-plasma/breeze-gtk
+	kde-plasma/kdeplasma-addons
 	kde-plasma/kscreen
 	kde-plasma/plasma-desktop
 	kde-plasma/plasma-disks
