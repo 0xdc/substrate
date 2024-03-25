@@ -7,5 +7,5 @@ boot/kernel: gentoo
 boot/kernel/gentoo/config: @REPO_DIR@/kconfig.amd64
 boot/kernel/gentoo/console: ttyS0,115200
 
-livecd/bootargs: dokeymap verify
+livecd/bootargs: verify
 livecd/gk_mainargs: --all-ramdisk-modules --symlink --b2sum
