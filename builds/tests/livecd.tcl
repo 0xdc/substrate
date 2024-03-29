@@ -32,6 +32,7 @@ while true {
 		"device-mapper: remove ioctl" ioctl
 		"Please enter passphrase for disk" { send "\r" }
 		"Last login:" { if {$LIVE >= 10} { exit } }
+		$fat_clusters_msg fat_clusters
 		-re $failures handle_failures
 	}
 }

@@ -1,5 +1,14 @@
 set LIVE 0
 
+set fat_clusters_msg "WARNING: Number of clusters for 32 bit FAT is less then suggested minimum."
+
+proc fat_clusters {} {
+	while true {
+		expect "# " { break }
+	}
+	send "mkfs.vfat -F32 -nESP /dev/vda1\r"
+}
+
 proc ioctl {} {
 	while true {
 		expect {
