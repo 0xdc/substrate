@@ -4,8 +4,10 @@ set fat_clusters_msg "WARNING: Number of clusters for 32 bit FAT is less then su
 
 proc fat_clusters {} {
 	while true {
+		expect {
 		"device-mapper: remove ioctl" ioctl
-		expect "# " { break }
+		"# " { break }
+		}
 	}
 	send "mkfs.vfat -F32 -nESP /dev/vda1\r"
 }
