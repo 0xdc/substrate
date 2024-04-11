@@ -37,6 +37,7 @@ set fail_messages "
 	efusing
 	Kernel panic
 	netlink: Error: cache initialization failed: Invalid argument
+	Control-D
 "
 set reasons [join [lmap reason [split $fail_messages \n] {
 	set reason [string trim $reason]
