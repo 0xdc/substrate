@@ -23,6 +23,11 @@ proc ioctl {} {
 	send "while ! test -b /dev/vda2; do sleep 1; done\r"
 }
 
+proc enter_passphrase {} {
+	send "\r"
+	expect "::" { exit 4 }
+}
+
 proc handle_failures {} {
 	puts $::expect_out(0,string)
 	exec virsh pool-refresh default
