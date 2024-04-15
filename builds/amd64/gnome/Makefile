@@ -1,6 +1,6 @@
 ARCH=amd64
 BUILD=gnome
-UPSTREAM=systemd-mergedusr
+UPSTREAM=systemd
 
 .PHONY: latest
 latest:

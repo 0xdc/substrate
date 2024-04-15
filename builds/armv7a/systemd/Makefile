@@ -1,6 +1,6 @@
 ARCH=armv7a
 SUBA=hardfp
-PROF=systemd-mergedusr
+PROF=systemd
 
 .PHONY: latest
 latest:
