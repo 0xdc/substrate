@@ -34,5 +34,12 @@ while true {
 		"Last login:" { if {$LIVE >= 11} { exit } }
 		$fat_clusters_msg fat_clusters
 		-re $failures handle_failures
+		"Control-D": { send "\r" }
+		":/root# " {
+			if {$LIVE <= 13} { send "\r" }
+			if {$LIVE == 14} { send "systemd-cryptsetup attach root /dev/gpt-auto-root-luks\r" }
+			if {$LIVE == 15} { send "mount /dev/mapper/root /sysroot\r" }
+			if {$LIVE == 16} { send "systemctl default\r" }
+		}
 	}
 }
