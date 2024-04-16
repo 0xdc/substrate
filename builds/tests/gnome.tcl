@@ -19,27 +19,26 @@ while true {
 			if {$LIVE == 4} { send "rsync --archive /run/rootfsbase/ /run/media/system/root-x86-64\r" }
 			if {$LIVE == 5} { send "systemd-machine-id-setup --root /run/media/system/root-x86-64\r" }
 			if {$LIVE == 6} { send "systemd-nspawn --bind /sys/firmware/efi -D/run/media/system/root-x86-64\r" }
-			if {$LIVE == 11} { send "systemctl reboot\r" }
+			if {$LIVE == 10} { send "systemctl reboot\r" }
 			set LIVE [expr $LIVE + 1]
 		}
 		"root@root-x86-64 ~ #" {
 			if {$LIVE == 7} { send "bootctl install\r" }
 			if {$LIVE == 8} { send "dracut --uefi --kernel-image=/boot/gentoo -o plymouth --kernel-cmdline='systemd.mask=plymouth-start.service console=ttyS0'\r" }
-			if {$LIVE == 9} { send "systemctl enable gdm.service\r" }
-			if {$LIVE == 10} { send "exit\r" }
+			if {$LIVE == 9} { send "exit\r" }
 			set LIVE [expr $LIVE + 1]
 		}
 		"device-mapper: remove ioctl" ioctl
 		"Please enter passphrase for disk" enter_passphrase
-		"Last login:" { if {$LIVE >= 11} { exit } }
+		"Last login:" { if {$LIVE >= 10} { exit } }
 		$fat_clusters_msg fat_clusters
 		-re $failures handle_failures
 		"Control-D": { send "\r" }
 		":/root# " {
-			if {$LIVE <= 13} { send "\r" }
-			if {$LIVE == 14} { send "systemd-cryptsetup attach root /dev/gpt-auto-root-luks\r" }
-			if {$LIVE == 15} { send "mount /dev/mapper/root /sysroot\r" }
-			if {$LIVE == 16} { send "systemctl default\r" }
+			if {$LIVE <= 12} { send "\r" }
+			if {$LIVE == 13} { send "systemd-cryptsetup attach root /dev/gpt-auto-root-luks\r" }
+			if {$LIVE == 14} { send "mount /dev/mapper/root /sysroot\r" }
+			if {$LIVE == 15} { send "systemctl default\r" }
 		}
 	}
 }
