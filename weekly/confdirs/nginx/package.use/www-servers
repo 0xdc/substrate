@@ -1,1 +1,1 @@
-www-servers/nginx rtmp vim-syntax NGINX_MODULES_HTTP: auth_request javascript
+www-servers/nginx rtmp vim-syntax NGINX_MODULES_HTTP: auth_request javascript NGINX_MODULES_STREAM: limit_conn

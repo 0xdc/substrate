@@ -1,4 +1,4 @@
-profile: default/linux/amd64/17.1/desktop/plasma/systemd/merged-usr
+profile: default/linux/amd64/23.0/desktop/plasma/systemd
 portage_confdir: @REPO_DIR@/confdirs/plasma
 source_subpath: amd64/plasma/stage3-amd64-plasma-latest
 
@@ -19,6 +19,7 @@ stage4/packages:
 	kde-apps/kmail
 	kde-apps/konsole
 	kde-plasma/breeze-gtk
+	kde-plasma/kdeplasma-addons
 	kde-plasma/kscreen
 	kde-plasma/plasma-desktop
 	kde-plasma/plasma-disks

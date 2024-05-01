@@ -1,6 +1,6 @@
 ARCH=amd64
 BUILD=systemd
-UPSTREAM=nomultilib-systemd-mergedusr
+UPSTREAM=nomultilib-systemd
 
 .PHONY: latest
 latest:

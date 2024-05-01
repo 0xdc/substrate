@@ -1,1 +1,1 @@
-=mail-filter/rspamd-3.7.5::gentoo -hyperscan
+>=mail-filter/rspamd-3.7.5::gentoo -hyperscan

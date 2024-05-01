@@ -1,7 +1,8 @@
 #/usr/bin/expect -f
 
-set EXTRA [lassign $argv CD]
-# builds/amd64/duet/latest-livecd-stage3-amd64-duet.iso --memory 1024 --disk size=10
+set EXTRA [lassign $argv CD DM]
+# builds/amd64/duet/latest-livecd-stage3-amd64-duet.iso sddm --memory 1024 --disk size=10
+# builds/amd64/gnome/latest-livecd-stage3-amd64-gnome.iso gdm --memory 1024 --disk size=10
 
 source builds/tests/failures.tcl
 
@@ -24,14 +25,22 @@ while true {
 		}
 		"root@root-x86-64 ~ #" {
 			if {$LIVE == 7} { send "bootctl install\r" }
-			if {$LIVE == 8} { send "dracut --uefi --kernel-image=/boot/gentoo --kernel-cmdline=console=ttyS0\r" }
-			if {$LIVE == 9} { send "systemctl enable sddm.service\r" }
+			if {$LIVE == 8} { send "dracut --uefi --kernel-image=/boot/gentoo --kernel-cmdline='console=ttyS0 systemd.mask=plymouth-start.service' -o plymouth\r" }
+			if {$LIVE == 9} { send "systemctl enable $DM.service\r" }
 			if {$LIVE == 10} { send "exit\r" }
 			set LIVE [expr $LIVE + 1]
 		}
 		"device-mapper: remove ioctl" ioctl
-		"Please enter passphrase for disk" { send "\r" }
-		"Last login:" { if {$LIVE >= 11} { exit } }
+		"Please enter passphrase for disk" enter_passphrase
+		"Last login:" { if {$LIVE >= 10} { exit } }
+		$fat_clusters_msg fat_clusters
 		-re $failures handle_failures
+		"Control-D": { send "\r" }
+		":/root# " {
+			if {$LIVE <= 12} { send "\r" }
+			if {$LIVE == 13} { send "systemd-cryptsetup attach root /dev/gpt-auto-root-luks\r" }
+			if {$LIVE == 14} { send "mount /dev/mapper/root /sysroot\r" }
+			if {$LIVE == 15} { send "systemctl default\r" }
+		}
 	}
 }

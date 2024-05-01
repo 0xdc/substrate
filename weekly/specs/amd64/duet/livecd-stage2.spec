@@ -1,4 +1,4 @@
-profile: default/linux/amd64/17.1/no-multilib/systemd/merged-usr
+profile: default/linux/amd64/23.0/no-multilib/systemd
 source_subpath: amd64/duet/livecd-stage1-amd64-duet-latest
 portage_confdir: @REPO_DIR@/confdirs/amd64/plasma/duet
 
