@@ -21,6 +21,9 @@ if test -f $iso; then
 	timeout $((5 * $MULT))m expect -f "$TESTDIR"/router.tcl ${HOSTNAME}
 fi
 
+iso=builds/amd64/minimal/latest-systemd-amd64-minimal.iso
+test -f $iso && timeout $(( 5 * $MULT))m expect -f "$TESTDIR"/distkernel.tcl $iso
+
 iso=builds/amd64/plasma/latest-livecd-stage3-amd64-plasma.iso
 test -f $iso && timeout $((15 * $MULT))m expect -f "$TESTDIR"/livecd.tcl $iso --memory 1024 --disk size=10
 
