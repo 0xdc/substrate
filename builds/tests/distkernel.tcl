@@ -11,8 +11,8 @@ while true {
 		"Connected to domain" { exec virsh pool-refresh default }
 		"roflmaOS login:" { send "root\r" }
 		"root@roflmaOS ~ #" {
-			if {$LIVE == 0} { send "systemd-repart --no-pager /dev/vda --empty=require --dry-run=no\r" }
-			if {$LIVE == 1} { send "/lib/systemd/systemd-cryptsetup attach cryptoroot /dev/vda3\r" }
+			if {$LIVE == 0} { send "systemd-repart --no-pager /dev/vda --empty=require --dry-run=no --tpm2-device=auto\r" }
+			if {$LIVE == 1} { send "/lib/systemd/systemd-cryptsetup attach cryptoroot /dev/vda3 - tpm2-device=auto\r" }
 			if {$LIVE == 2} { send "systemd-mount /dev/mapper/cryptoroot\r" }
 			if {$LIVE == 3} { send "systemd-mount -o uid=0,gid=0,fmask=0077,dmask=0077 /dev/vda1 /run/media/system/root-x86-64/efi\r" }
 			if {$LIVE == 4} { send "rsync --archive /run/rootfsbase/ /run/media/system/root-x86-64\r" }
