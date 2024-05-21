@@ -11,6 +11,7 @@ embedded/fstype: btrfs
 embedded/fsops: -no-recovery -comp xz -Xbcj x86
 embedded/fsscript: @REPO_DIR@/fsscripts/livecd
 embedded/root_overlay: @REPO_DIR@/root_overlays/livecd
+embedded/volid: roflmaOS_systemd
 
 embedded/packages:
 	app-arch/tar

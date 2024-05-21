@@ -9,4 +9,4 @@ livecd/fsops: -comp xz -Xbcj x86
 livecd/iso: roflmaOS-gnome-@latest@.iso
 livecd/root_overlay: @REPO_DIR@/root_overlays/duet
 livecd/verify: yes
-livecd/volid: roflmaOS amd64 gnome @latest@
+livecd/volid: roflmaOS_gnome
