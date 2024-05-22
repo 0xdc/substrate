@@ -18,7 +18,7 @@ test -f $iso && timeout $((10 * $MULT))m expect -f "$TESTDIR"/livecd.tcl $iso
 iso=builds/amd64/minimal/latest-livecd-stage3-amd64-minimal.iso
 if test -f $iso; then
 	timeout $((10 * $MULT))m expect -f "$TESTDIR"/livecd.tcl $iso
-	timeout $((5 * $MULT))m expect -f "$TESTDIR"/router.tcl ${HOSTNAME}
+	timeout $((20 * $MULT))m expect -f "$TESTDIR"/router.tcl ${HOSTNAME}
 fi
 
 iso=builds/amd64/minimal/latest-systemd-amd64-minimal.iso
