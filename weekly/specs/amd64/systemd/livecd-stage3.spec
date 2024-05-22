@@ -7,6 +7,9 @@ livecd/fstype: squashfs
 livecd/fsscript: @REPO_DIR@/fsscripts/livecd
 livecd/fsops: -comp xz -Xbcj x86
 livecd/iso: roflmaOS-@latest@.iso
-livecd/root_overlay: @REPO_DIR@/root_overlays/livecd
 livecd/verify: yes
 livecd/volid: roflmaOS amd64 @latest@
+
+livecd/root_overlay:
+	@REPO_DIR@/root_overlays/livecd
+	@REPO_DIR@/root_overlays/repart.d/livecd
