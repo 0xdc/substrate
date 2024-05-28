@@ -10,3 +10,4 @@ boot/kernel/gentoo/packages: --usepkg=n sys-power/acpi_call
 boot/kernel/gentoo/dracut_args: --no-hostonly
 
 livecd/bootargs: systemd.wants=NetworkManager.service systemd.wants=bluetooth.service systemd.wants=gdm.service quiet splash
+livecd/volid: roflmaOS_gnome
