@@ -7,6 +7,7 @@ boot/kernel: gentoo
 boot/kernel/gentoo/distkernel: yes
 boot/kernel/gentoo/sources: >=sys-kernel/gentoo-kernel-6.3.1::gentoo
 boot/kernel/gentoo/packages: --usepkg=n sys-power/acpi_call
-boot/kernel/gentoo/dracut_args: --xz
+boot/kernel/gentoo/dracut_args: --no-hostonly
 
 livecd/bootargs: systemd.wants=NetworkManager.service systemd.wants=sddm.service splash quiet
+livecd/volid: roflmaOS_duet
