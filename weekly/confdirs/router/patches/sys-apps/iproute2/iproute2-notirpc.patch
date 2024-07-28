@@ -1,6 +1,6 @@
-commit 5561c73bfdfcfa11e8e850d9beef17f3590c43ce
+commit aa786177ee5b7c5f1acd39ee19f682957b17319f
 Author: Daniel Cordero <gentoo.iproute2@0xdc.xyz>
-Date:   Tue Feb 6 11:45:13 2024 +0000
+Date:   Sun Jul 28 22:05:49 2024 +0000
 
     Add magic libtirpc flag handling
 
@@ -20,17 +20,17 @@ index 19db3b45..999e77fa 100644
  # Rules can only be declared after all variables in them are known.
  %.o: %.c
 diff --git a/configure b/configure
-index 0a27555b..1b0dc00d 100755
+index 667dfbad..b0fad4b9 100755
 --- a/configure
 +++ b/configure
-@@ -401,8 +401,8 @@ check_tirpc()
+@@ -353,8 +353,8 @@ check_tirpc()
  		echo "HAVE_RPC:=y" >>$CONFIG
  		echo "yes"
  
--		echo 'LDLIBS +=' `${PKG_CONFIG} --libs libtirpc` >>$CONFIG
--		echo 'CFLAGS += -DHAVE_RPC' `${PKG_CONFIG} --cflags libtirpc` >>$CONFIG
-+		echo 'HAVE_RPC_LDLIBS +=' `${PKG_CONFIG} --libs libtirpc` >>$CONFIG
-+		echo 'HAVE_RPC_CFLAGS += -DHAVE_RPC' `${PKG_CONFIG} --cflags libtirpc` >>$CONFIG
+-		echo 'LDLIBS +=' "$(${PKG_CONFIG} --libs libtirpc)" >>$CONFIG
+-		echo 'CFLAGS += -DHAVE_RPC' "$(${PKG_CONFIG} --cflags libtirpc)" >>$CONFIG
++		echo 'HAVE_RPC_LDLIBS +=' "$(${PKG_CONFIG} --libs libtirpc)" >>$CONFIG
++		echo 'HAVE_RPC_CFLAGS += -DHAVE_RPC' "$(${PKG_CONFIG} --cflags libtirpc)" >>$CONFIG
  	else
  		echo "no"
  	fi
