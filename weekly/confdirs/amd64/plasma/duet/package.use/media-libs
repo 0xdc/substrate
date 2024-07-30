@@ -9,3 +9,5 @@ media-libs/x264 opencl
 
 # drop vlc dep
 >=media-libs/phonon-4.11.1-r2 -vlc gstreamer
+
+=media-libs/libv4l-1.26.1::gentoo bpf
