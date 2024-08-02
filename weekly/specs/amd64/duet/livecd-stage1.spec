@@ -23,7 +23,6 @@ livecd/packages:
 	kde-apps/ffmpegthumbs
 	kde-plasma/plasma-nm
 	kde-plasma/powerdevil
-	mail-client/thunderbird
 	media-gfx/zbar
 	media-libs/libva-intel-media-driver
 	media-tv/v4l-utils

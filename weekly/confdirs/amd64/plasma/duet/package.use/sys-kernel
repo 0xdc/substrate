@@ -1,2 +1,2 @@
-sys-kernel/linux-firmware savedconfig
+sys-kernel/linux-firmware savedconfig -initramfs
 >=sys-kernel/installkernel-18::gentoo -systemd
