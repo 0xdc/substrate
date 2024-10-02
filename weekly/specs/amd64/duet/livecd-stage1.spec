@@ -25,7 +25,6 @@ livecd/packages:
 	kde-plasma/powerdevil
 	media-gfx/zbar
 	media-libs/libva-intel-media-driver
-	media-tv/v4l-utils
 	media-video/mpv
 	net-analyzer/nmap
 	net-analyzer/traceroute

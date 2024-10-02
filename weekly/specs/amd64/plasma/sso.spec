@@ -4,8 +4,7 @@ portage_confdir: @REPO_DIR@/confdirs/sso
 target: stage4
 
 stage4/packages:
-	sys-auth/nss_ldap
-	sys-auth/pam_ldap
+	sys-auth/nss-pam-ldapd
 	sys-auth/pam_yubico
 	sys-auth/ssh-ldap-pubkey
 

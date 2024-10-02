@@ -26,7 +26,6 @@ stage4/packages:
 	kde-plasma/plasma-pa
 	kde-plasma/sddm-kcm
 	kde-plasma/systemsettings
-	kde-plasma/xembed-sni-proxy
 	media-fonts/droid
 	net-firewall/nftables
 	sys-apps/iproute2
