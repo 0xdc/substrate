@@ -21,6 +21,7 @@ while true {
 			if {$LIVE == 5} { send "systemd-machine-id-setup --root /run/media/system/root-x86-64\r" }
 			if {$LIVE == 6} { send "systemd-nspawn --bind /sys/firmware/efi -D/run/media/system/root-x86-64\r" }
 			if {$LIVE == 11} { send "systemctl reboot\r" }
+			if {$LIVE >= 13} { exit }
 			set LIVE [expr $LIVE + 1]
 		}
 		"root@root-x86-64 ~ #" {
