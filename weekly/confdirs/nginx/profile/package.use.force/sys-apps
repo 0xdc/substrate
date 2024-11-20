@@ -4,3 +4,4 @@
 ~sys-apps/systemd-255.4::gentoo PYTHON_SINGLE_TARGET: python3_12
 ~sys-apps/systemd-255.7::gentoo PYTHON_SINGLE_TARGET: python3_12
 ~sys-apps/systemd-255.11::gentoo PYTHON_SINGLE_TARGET: python3_12
+~sys-apps/systemd-256.7::gentoo PYTHON_SINGLE_TARGET: python3_12
