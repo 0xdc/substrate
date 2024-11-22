@@ -45,6 +45,8 @@ f=(
 		-o
 		-name '*.iso*'
 		-o
+		-name '*.qcow2*'
+		-o
 		-name 'latest-livecd-stage3-*.txt'
 		-o
 		-name 'latest-systemd-*.txt'

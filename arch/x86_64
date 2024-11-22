@@ -20,7 +20,8 @@ targets=(
 	router:stage1
 
 	openstack:controller
-	openstack:stage4
+	openstack:diskimage-stage1
+	openstack:diskimage-stage2
 
 	minimal:nginx
 

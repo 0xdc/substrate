@@ -2,7 +2,7 @@ profile: default/linux/amd64/23.0/no-multilib/systemd
 source_subpath: amd64/systemd/stage4-amd64-systemd-latest
 portage_confdir: @REPO_DIR@/confdirs/openstack
 
-stage4/packages:
+diskimage/packages:
 	app-admin/sshguard
 	app-admin/sysstat
 	app-containers/docker-registry
@@ -34,10 +34,7 @@ stage4/packages:
 	rclone
 	rspamd
 	ssh-ldap-pubkey
+	sys-boot/grub
 	vim
 	virtual/mysql
 	yarn
-
-stage4/empty:
-	/var/cache/edb/dep
-	/var/db/repos
