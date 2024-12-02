@@ -81,6 +81,9 @@ for combo in $targets; do
 	if grep -q /iso: $tempstage; then
 		iso=$(awk '$1~/\/iso:/{print$2}' $tempstage)
 		test -f $BUILDS_DIR/$target/$date/$iso && continue
+	elif grep -q /qcow2: $tempstage; then
+		qcow2=$(awk '$1~/\/qcow2:/{print$2}' $tempstage)
+		test -f $BUILDS_DIR/$target/$date/$qcow2 && continue
 	else
 		test -f $BUILDS_DIR/$target/$date/$stage-$upstream$rel-$date$ext && continue
 	fi
@@ -129,6 +132,10 @@ for combo in $targets; do
 		tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$iso"
 		rm -f $BUILDS_DIR/$target/latest-$stage-$upstream$rel.iso
 		ln -s $date/$iso $BUILDS_DIR/$target/latest-$stage-$upstream$rel.iso
+	elif grep -q /qcow2 $tempstage; then
+		tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$qcow2"
+		rm -f $BUILDS_DIR/$target/latest-$stage-$upstream$rel.qcow2
+		ln -s $date/$iso $BUILDS_DIR/$target/latest-$stage-$upstream$rel.qcow2
 	else
 		rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest*
 		ln -s $date/$stage-$upstream$rel-$date$ext $BUILDS_DIR/$target/$stage-$upstream$rel-latest$ext
