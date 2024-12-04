@@ -83,12 +83,6 @@ pulsar)
 	targets+=( ${plasma[*]} ${gnome[*]} )
 	;;
 maple)
-	targets+=( ${plasma[*]} ${armv7a[*]} )
-	;;
-esac
-
-case "${date}" in
-*01)
-	targets+=( ${gnome[*]} )
+	targets+=( ${plasma[*]} ${gnome[*]} ${armv7a[*]} )
 	;;
 esac
