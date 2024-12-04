@@ -7,8 +7,8 @@ if test "$1" == "-s"; then
 	test "$ST_AUTH"
 	test "$ST_USER"
 	test "$ST_KEY"
-	uploader="swift upload"
-	# to make it public: swift post -r '.r:*' $container
+	uploader="swift upload --skip-container-put"
+	# to create and make it public: swift post -r '.r:*' $container
 	shift
 else
 	which openstack
