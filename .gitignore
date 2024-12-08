@@ -2,6 +2,7 @@ builds/*/*/*.tar.*
 builds/*/*/*/
 builds/*/*/*.txt
 builds/*/*/latest-*.iso
+builds/*/*/latest-*.qcow2
 kerncache/
 packages
 snapshot_cache/
