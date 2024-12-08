@@ -89,4 +89,4 @@ for dir in */*/*/; do
 	popd
 done
 
-find */*/*/ */*/*.txt "${f[@]}" -o -name SHA256SUMS | xargs --no-run-if-empty $uploader $container
+find */*/*/ */*/*.txt "${f[@]}" -o -name SHA256SUMS -o -name index.html | xargs --no-run-if-empty $uploader $container
