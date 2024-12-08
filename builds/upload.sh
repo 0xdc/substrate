@@ -10,6 +10,12 @@ if test "$1" == "-s"; then
 	uploader="swift upload --skip-container-put"
 	# to create and make it public: swift post -r '.r:*' $container
 	shift
+elif test "$1" == "-r"; then
+	which rclone
+	test -f ~/.config/rclone/rclone.conf
+	uploader="-n1"
+	shift # set container to echo
+	# pipe to `rclone copyto --files-from - <src> <dst>`
 else
 	which openstack
 	test "$OS_CLOUD" = "envvars" || (test -f /etc/openstack/clouds.yaml || test -f ~/.config/openstack/clouds.yaml )
