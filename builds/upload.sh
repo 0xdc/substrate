@@ -7,9 +7,15 @@ if test "$1" == "-s"; then
 	test "$ST_AUTH"
 	test "$ST_USER"
 	test "$ST_KEY"
-	uploader="swift upload"
-	# to make it public: swift post -r '.r:*' $container
+	uploader="swift upload --skip-container-put"
+	# to create and make it public: swift post -r '.r:*' $container
 	shift
+elif test "$1" == "-r"; then
+	which rclone
+	test -f ~/.config/rclone/rclone.conf
+	uploader="-n1"
+	shift # set container to echo
+	# pipe to `rclone copyto --files-from - <src> <dst>`
 else
 	which openstack
 	test "$OS_CLOUD" = "envvars" || (test -f /etc/openstack/clouds.yaml || test -f ~/.config/openstack/clouds.yaml )
@@ -49,6 +55,8 @@ f=(
 		-o
 		-name 'latest-livecd-stage3-*.txt'
 		-o
+		-name 'latest-diskimage-stage2-*.txt'
+		-o
 		-name 'latest-systemd-*.txt'
 		-o
 		-name 'systemd-*'
@@ -87,4 +95,4 @@ for dir in */*/*/; do
 	popd
 done
 
-find */*/*/ */*/*.txt "${f[@]}" -o -name SHA256SUMS | xargs --no-run-if-empty $uploader $container
+find */*/*/ */*/*.txt "${f[@]}" -o -name SHA256SUMS -o -name index.html | xargs --no-run-if-empty $uploader $container

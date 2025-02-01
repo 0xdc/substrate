@@ -1,6 +1,8 @@
 profile: default/linux/amd64/23.0/no-multilib/systemd
 source_subpath: amd64/systemd/stage3-amd64-systemd-latest
-portage_confdir: @REPO_DIR@/confdirs/minimal/embedded
+portage_confdir:
+	@REPO_DIR@/confdirs/minimal/embedded
+	@REPO_DIR@/confdirs/minimal/systemd
 
 embedded/packages:
 	app-arch/tar

@@ -1,7 +1,3 @@
-builds/*/*/*.tar.*
-builds/*/*/*/
-builds/*/*/*.txt
-builds/*/*/latest-*.iso
 kerncache/
 packages
 snapshot_cache/

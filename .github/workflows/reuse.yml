@@ -1,0 +1,88 @@
+name: reusable action
+
+run-name: ${{ inputs.package }} check
+
+on:
+  workflow_call:
+    inputs:
+      date:
+        description: date
+        required: true
+        type: string
+      package:
+        description: package name
+        required: true
+        type: string
+
+jobs:
+  bestmatch:
+    runs-on: ubuntu-latest
+    container: gentoo/stage3
+
+    steps:
+    - name: fetch getuto keys
+      uses: actions/cache/restore@v4
+      with:
+        key: getuto-${{ inputs.date }}
+        path: /etc/portage/gnupg
+        restore-keys: getuto-
+
+    - name: fetch whole tree
+      id: cache-tree
+      uses: actions/cache/restore@v4
+      with:
+        key: portage-${{ inputs.date }}
+        path: /var/db/repos/gentoo
+        fail-on-cache-miss: true
+
+    - name: fetch tree snapshot
+      id: cache-snapshot
+      uses: actions/cache/restore@v4
+      with:
+        key: distfiles-${{ inputs.date }}
+        path: /var/cache/distfiles
+        restore-keys: distfiles-
+
+    - name: install git
+      run: |
+        echo ::group::getuto
+        getuto
+        echo ::endgroup::
+        echo ::group::install git
+        emerge --update --quiet --getbinpkg dev-vcs/git
+        echo ::endgroup::
+
+    - name: checkout source
+      uses: actions/checkout@v4
+
+    - name: Find best versions
+      run: .github/workflows/bestmatch-visible.py $PACKAGE
+      env:
+        PACKAGE: ${{ inputs.package }}
+
+    outputs:
+      package: ${{ env.NEWPKG }}
+
+  grep:
+    runs-on: ubuntu-latest
+    needs: bestmatch
+    steps:
+    - uses: actions/checkout@v4
+    - run: |
+        if git --no-pager grep --quiet $ATOM; then
+            if test -f "$GITHUB_STEP_SUMMARY"; then
+                echo ":white_check_mark: $ATOM" >> "$GITHUB_STEP_SUMMARY"
+            else
+                echo "Found $ATOM"
+            fi
+            exit 0
+        else
+            if test -f "$GITHUB_STEP_SUMMARY"; then
+                echo ":x: $ATOM" >> "$GITHUB_STEP_SUMMARY"
+            else
+                echo "$ATOM not found"
+            fi
+            exit 1
+        fi
+      env:
+        ATOM: ${{ needs.bestmatch.outputs.package }}

@@ -135,7 +135,7 @@ for combo in $targets; do
 	elif grep -q /qcow2 $tempstage; then
 		tee $BUILDS_DIR/$target/latest-$stage-$upstream$rel.txt <<<"$date/$qcow2"
 		rm -f $BUILDS_DIR/$target/latest-$stage-$upstream$rel.qcow2
-		ln -s $date/$iso $BUILDS_DIR/$target/latest-$stage-$upstream$rel.qcow2
+		ln -s $date/$qcow2 $BUILDS_DIR/$target/latest-$stage-$upstream$rel.qcow2
 	else
 		rm -f $BUILDS_DIR/$target/$stage-$upstream$rel-latest*
 		ln -s $date/$stage-$upstream$rel-$date$ext $BUILDS_DIR/$target/$stage-$upstream$rel-latest$ext
