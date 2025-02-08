@@ -64,6 +64,7 @@ jobs:
     uses: ./.github/workflows/reuse.yml
     needs: prep
     strategy:
+      fail-fast: false
       matrix:
         package:
         - kde-frameworks/kirigami

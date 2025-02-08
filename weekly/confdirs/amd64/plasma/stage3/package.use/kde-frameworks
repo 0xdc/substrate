@@ -2,3 +2,4 @@
 ~kde-frameworks/kirigami-6.6.0::gentoo -openmp
 ~kde-frameworks/kirigami-6.7.0::gentoo -openmp
 ~kde-frameworks/kirigami-6.9.0::gentoo -openmp
+~kde-frameworks/kirigami-6.10.0::gentoo -openmp
