@@ -10,6 +10,14 @@ proc fat_clusters {} {
 		}
 	}
 	send "mkfs.vfat -F32 -nESP /dev/vda1\r"
+	expect {
+	"unable to open /dev/vda1" {
+		expect "# "
+		send "while ! test -b /dev/vda1; do sleep 1; done\r"
+		fat_clusters
+	}
+	"# " { send "sleep 1\r" }
+	}
 }
 
 proc ioctl {} {
@@ -29,6 +37,7 @@ proc enter_passphrase {} {
 }
 
 proc handle_failures {} {
+	if {[regexp -line {udevd} $::expect_out(buffer) udevd]} { return }
 	puts $::expect_out(0,string)
 	exec virsh pool-refresh default
 	exit 2

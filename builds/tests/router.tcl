@@ -22,13 +22,16 @@ while true {
 			if {$LIVE == 2} {
 				send "systemd-mount /dev/vda2\r"
 				expect {
-				"Started unit" { continue }
 				"A dependency job" {
 					expect "# "
 					send "systemctl stop run-media-system-root\\x2dx86\\x2d64.mount\r"
-					set LIVE [expr $LIVE - 1]
+					continue
 				}
-				"does not contain a known file system" { set LIVE [expr $LIVE - 1] }
+				-re "(Failed to make path|does not contain a known file system)" {
+					expect "# "
+					send "sync; sleep 1\r"
+					continue
+				}
 				}
 			}
 			if {$LIVE == 3} { send "systemd-mount /dev/vda1 /run/media/system/root-x86-64/boot\r" }
@@ -57,10 +60,10 @@ while true {
 			set LIVE [expr $LIVE + 1]
 		}
 		"root@router ~ #" {
-			if {$LIVE <= 24} { send "\r"}
-			if {$LIVE == 25} { send "nft list ruleset\r" }
-			if {$LIVE == 26} { send "ip l\r" }
-			if {$LIVE == 27} { exit }
+			if {$LIVE <= 21} { send "\r"}
+			if {$LIVE == 22} { send "nft list ruleset\r" }
+			if {$LIVE == 23} { send "ip l\r" }
+			if {$LIVE == 24} { exit }
 			set LIVE [expr $LIVE + 1]
 		}
 		"device-mapper: remove ioctl" ioctl
