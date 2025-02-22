@@ -71,6 +71,7 @@ jobs:
         - sys-apps/systemd
         - app-crypt/libb2
         - net-libs/gnutls
+        - sys-devel/gettext
     with:
       date: ${{ needs.prep.outputs.date }}
       package: ${{ matrix.package }}
